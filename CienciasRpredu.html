@@ -14,8 +14,12 @@
         .propositions { background: #fdfdfd; border-left: 3px solid #7f8c8d; padding: 10px; margin: 10px 0; font-size: 14px; }
         .feedback { display: none; margin-top: 10px; padding: 10px; background: #eef2f3; border-left: 4px solid #2980b9; font-size: 14px; border-radius: 4px; }
         #resultado { display: none; background: #e2f0d9; border: 2px solid #385723; padding: 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .btn-enviar { display: block; width: 100%; background: #2c3e50; color: white; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 40px; }
+        .btn-enviar, .btn-copiar { display: block; width: 100%; color: white; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
+        .btn-enviar { background: #2c3e50; }
         .btn-enviar:hover { background: #34495e; }
+        .btn-copiar { background: #27ae60; display: none; }
+        .btn-copiar:hover { background: #219653; }
+        #avisoCopia { color: #27ae60; font-weight: bold; display: none; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -619,6 +623,8 @@
         </div>
 
         <button type="button" class="btn-enviar" onclick="corrigirProva()">Enviar Respostas e Ver Gabarito Explicado</button>
+        <button type="button" class="btn-copiar" id="btnCopiar" onclick="copiarResumoParaProfessor()">📋 Copiar Resumo para Enviar ao Professor</button>
+        <p id="avisoCopia">Resumo copiado com sucesso! Agora basta colar (Ctrl+V) no WhatsApp ou e-mail do seu professor.</p>
     </form>
 
     <script>
@@ -629,13 +635,18 @@
             0, 0, 1, 2, 0, 0, 0, 0, 0, 2
         ];
 
+        let textoRelatorioGlobal = "";
+
         function corrigirProva() {
             let acertos = 0;
+            let relatorioTexto = "=== RELATÓRIO DE DESEMPENHO - QUESTIONÁRIO DE BIOLOGIA ===\n\n";
 
             for(let i = 1; i <= 40; i++) {
                 const radios = document.getElementsByName('q' + i);
                 const feedbackDiv = document.getElementById('feedback' + i);
                 let respondida = -1;
+                let textoOpcaoRespondida = "Não respondida";
+                let textoOpcaoCorreta = "";
 
                 // Limpa cores anteriores
                 for(let j = 0; j < radios.length; j++) {
@@ -643,10 +654,14 @@
                     radios[j].parentElement.style.fontWeight = "normal";
                     if(radios[j].checked) {
                         respondida = j;
+                        textoOpcaoRespondida = radios[j].parentElement.textContent.trim();
+                    }
+                    if(j === gabarito[i-1]) {
+                        textoOpcaoCorreta = radios[j].parentElement.textContent.trim();
                     }
                 }
 
-                // Aplica formatação de correção nas opções
+                // Aplica formatação de correção nas opções visuais
                 for(let j = 0; j < radios.length; j++) {
                     if(j === gabarito[i-1]) {
                         radios[j].parentElement.style.color = "#27ae60"; // Verde para correto
@@ -660,16 +675,44 @@
                 // Mostra o bloco explicativo de cada questão
                 feedbackDiv.style.display = "block";
 
+                let statusQuestao = "❌ Errada";
                 if(respondida === gabarito[i-1]) {
                     acertos++;
+                    statusQuestao = "✅ Correta";
                 }
+
+                relatorioTexto += `Questão ${i}: ${statusQuestao}\n`;
+                relatorioTexto += `Sua resposta: ${textoOpcaoRespondida}\n`;
+                if(respondida !== gabarito[i-1]) {
+                    relatorioTexto += `Gabarito correto: ${textoOpcaoCorreta}\n`;
+                }
+                relatorioTexto += `-------------------------------------------\n`;
             }
 
-            const resDiv = document.getElementById('resultado');
             const percentual = ((acertos / 40) * 100).toFixed(1);
+            
+            let cabecalhoEstatistica = `ESTATÍSTICA FINAL:\nAcertos: ${acertos} de 40 (${percentual}%)\n\n`;
+            textoRelatorioGlobal = cabecalhoEstatistica + relatorioTexto;
+
+            const resDiv = document.getElementById('resultado');
             resDiv.innerHTML = `<h2>Resultado Final</h2><p style="font-size: 20px;">Você acertou <b>${acertos}</b> de 40 questões (<b>${percentual}%</b>).</p><p>As respostas corretas estão destacadas em <b>verde</b>, suas escolhas incorretas em <b>vermelho</b>, e as explicações detalhadas aparecem abaixo de cada questão.</p>`;
             resDiv.style.display = "block";
+
+            // Mostra o botão de copiar
+            document.getElementById('btnCopiar').style.display = "block";
             window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function copiarResumoParaProfessor() {
+            navigator.clipboard.writeText(textoRelatorioGlobal).then(() => {
+                const aviso = document.getElementById('avisoCopia');
+                aviso.style.display = "block";
+                setTimeout(() => {
+                    aviso.style.display = "none";
+                }, 5000);
+            }).catch(err => {
+                alert('Erro ao copiar texto automaticamente. Selecione e copie manualmente se necessário.');
+            });
         }
     </script>
 </body>
