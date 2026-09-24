@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação Interativa de Artes - 8º Ano</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col items-center py-8 px-4 font-sans">
+    <div class="max-w-3xl w-full bg-white shadow-xl rounded-2xl p-6 sm:p-10 border border-slate-100">
+        <header class="border-b pb-6 mb-8 text-center">
+            <span class="text-xs font-bold tracking-widest text-indigo-600 uppercase bg-indigo-50 px-3.5 py-1.5 rounded-full">Ensino Fundamental II • 8º Ano</span>
+            <h1 class="text-3xl font-extrabold text-slate-900 mt-3">Avaliação Interativa de Artes</h1>
+            <p class="text-slate-600 mt-2 text-sm sm:text-base">Temática: A Calçada da Fama e a História da Ópera (Mundial e Brasileira)</p>
+        </header>
+
+        <div id="studentInfoBox" class="mb-8 bg-indigo-50/60 p-5 rounded-xl border border-indigo-100">
+            <h2 class="text-sm font-bold text-indigo-900 mb-3 uppercase tracking-wider">Identificação do Aluno</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-700 mb-1">Nome Completo</label>
+                    <input type="text" id="studentName" placeholder="Digite seu nome aqui" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-700 mb-1">Turma</label>
+                    <input type="text" id="studentClass" placeholder="Ex: 8º Ano A" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+            </div>
+        </div>
+
+        <div id="quizContainer" class="space-y-10">
+            <!-- As questões serão injetadas dinamicamente via JS -->
+        </div>
+
+        <div class="mt-10 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4">
+            <button id="submitBtn" onclick="submitQuiz()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3.5 rounded-xl transition duration-200 shadow-md">
+                Enviar Respostas e Ver Resultados
+            </button>
+            <div id="scoreBox" class="hidden text-center sm:text-right">
+                <span class="text-sm text-slate-500 block">Pontuação Final</span>
+                <span class="text-2xl font-black text-indigo-600" id="finalScoreText">0 / 20</span>
+            </div>
+        </div>
+
+        <div id="shareBox" class="hidden mt-8 p-5 bg-emerald-50 border border-emerald-200 rounded-xl text-center">
+            <h3 class="text-emerald-900 font-bold mb-2">Avaliação Concluída com Sucesso!</h3>
+            <p class="text-emerald-700 text-sm mb-4">Você pode copiar o relatório de seus erros e acertos para enviar ao seu professor(a).</p>
+            <button onclick="generateReport()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-6 py-2.5 rounded-lg text-sm transition">
+                Copiar Relatório para Enviar ao Professor
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                id: 1,
+                type: "convencional",
+                question: "Em que ano a Calçada da Fama de Hollywood foi idealizada pelo presidente da Câmara de Comércio de Hollywood?",
+                options: [
+                    { letter: "A", text: "1943", isCorrect: false, rationale: "Incorreto. Em 1943 foi lançado o primeiro filme da cadela Lassie." },
+                    { letter: "B", text: "1953", isCorrect: true, rationale: "Correto! A Calçada da Fama foi idealizada em 1953, embora inaugurada oficialmente em 1960." },
+                    { letter: "C", text: "1960", isCorrect: false, rationale: "Incorreto. 1960 foi o ano da inauguração oficial da Calçada da Fama." },
+                    { letter: "D", text: "1938", isCorrect: false, rationale: "Incorreto. 1938 refere-se ao pôster do filme de Gene Autry." },
+                    { letter: "E", text: "1984", isCorrect: false, rationale: "Incorreto. 1984 foi o ano de criação do brasão do teatro." }
+                ]
+            },
+            {
+                id: 2,
+                type: "V ou F",
+                question: "Analise a afirmação sobre a Calçada da Fama: 'O brasão em formato de máscaras clássicas da comédia e da tragédia representa o teatro, categoria criada em 1984 que representa apenas 2% do total de estrelas.'",
+                options: [
+                    { letter: "A", text: "Falso, pois o teatro foi a primeira categoria a ser criada na calçada.", isCorrect: false, rationale: "Incorreto. O teatro foi criado tardiamente, apenas em 1984." },
+                    { letter: "B", text: "Falso, pois o teatro representa 47% das estrelas da calçada.", isCorrect: false, rationale: "Incorreto. Quem representa 47% é o cinema." },
+                    { letter: "C", text: "Verdadeiro, pois o brasão do teatro foi criado em 1984 e representa 2% das estrelas.", isCorrect: true, rationale: "Correto! O brasão com as máscaras clássicas representa o teatro, criado em 1984 (2% das estrelas)." },
+                    { letter: "D", text: "Verdadeiro, mas representando a maior fatia das estrelas.", isCorrect: false, rationale: "Incorreto. O teatro representa apenas 2%." },
+                    { letter: "E", text: "Falso, pois as máscaras representam a indústria fonográfica.", isCorrect: false, rationale: "Incorreto. A indústria fonográfica é representada por um fonógrafo." }
+                ]
+            },
+            {
+                id: 3,
+                type: "convencional",
+                question: "Qual celebridade americana é detentora do recorde de possuir o maior número de estrelas na Calçada da Fama, sendo homenageada em cinco ocasiões diferentes?",
+                options: [
+                    { letter: "A", text: "Charles Chaplin Jr.", isCorrect: false, rationale: "Incorreto. Charles Chaplin Jr. abriu processo pela ausência do nome de seu pai." },
+                    { letter: "B", text: "Mickey Mouse", isCorrect: false, rationale: "Incorreto. Mickey Mouse é um personagem de desenho animado." },
+                    { letter: "C", text: "Godzilla", isCorrect: false, rationale: "Incorreto. Godzilla ganhou uma estrela em 2004." },
+                    { letter: "D", text: "Gene Autry", isCorrect: true, rationale: "Correto! O polivalente galã caubói texano Gene Autry foi homenageado em cinco ocasiões." },
+                    { letter: "E", text: "Carmen Miranda", isCorrect: false, rationale: "Incorreto. Carmen Miranda recebeu uma estrela póstuma em 1955." }
+                ]
+            },
+            {
+                id: 4,
+                type: "I, II e III",
+                question: "Considere os itens sobre os brasões e categorias na Calçada da Fama:\nI. Câmera: representa a indústria cinematográfica (47% das estrelas).\nII. Televisão antiga: representa a indústria televisiva (24% das estrelas).\nIII. Fonógrafo: representa a indústria de radiodifusão (10% das estrelas).\nQuais estão corretas?",
+                options: [
+                    { letter: "A", text: "Apenas I", isCorrect: false, rationale: "Incorreto. O item II também está correto." },
+                    { letter: "B", text: "Apenas III", isCorrect: false, rationale: "Incorreto. O fonógrafo representa a música (17%), e não a radiodifusão." },
+                    { letter: "C", text: "Apenas I e II", isCorrect: true, rationale: "Correto! O item III erra ao atribuir o fonógrafo à radiodifusão (que é o microfone)." },
+                    { letter: "D", text: "Apenas II e III", isCorrect: false, rationale: "Incorreto. O item III contém erro conceitual." },
+                    { letter: "E", text: "I, II e III", isCorrect: false, rationale: "Incorreto. O item III está incorreto." }
+                ]
+            },
+            {
+                id: 5,
+                type: "convencional",
+                question: "Por qual motivo o número de estrelas homenageando o teatro na Calçada da Fama é expressivamente menor do que o relacionado ao cinema e à televisão?",
+                options: [
+                    { letter: "A", text: "Porque o teatro e a ópera surgiram apenas no século XX em Hollywood.", isCorrect: false, rationale: "Incorreto. O teatro tem origens milenares." },
+                    { letter: "B", text: "Porque as leis de Hollywood proíbiam atores teatrais de terem estrelas até 1984.", isCorrect: false, rationale: "Incorreto. A categoria foi criada em 1984 por expansão." },
+                    { letter: "C", text: "Porque o cinema e a televisão atingem muito mais pessoas, gerando mais lucro e dinheiro.", isCorrect: true, rationale: "Correto! O cinema e a TV alcançam público massivo e movimentam mais recursos financeiros." },
+                    { letter: "D", text: "Porque os artistas de teatro recusavam coletivamente as homenagens.", isCorrect: false, rationale: "Incorreto. Isso não aconteceu." },
+                    { letter: "E", text: "Porque o teatro não possui nenhum brasão oficial reconhecido na calçada.", isCorrect: false, rationale: "Incorreto. Possui brasão próprio." }
+                ]
+            },
+            {
+                id: 6,
+                type: "convencional",
+                question: "Onde e em que período histórico surgiu a ópera?",
+                options: [
+                    { letter: "A", text: "Em Nápoles, na Itália, no século XVIII (durante o Barroco tardio).", isCorrect: false, rationale: "Incorreto. Nápoles abriga o San Carlo, mas a ópera nasceu antes." },
+                    { letter: "B", text: "Em Paris, na França, no início do século XIX (durante o Romantismo).", isCorrect: false, rationale: "Incorreto. A ópera surgiu na Itália." },
+                    { letter: "C", text: "Em Veneza, na Itália, no século XVII (com o primeiro teatro público).", isCorrect: false, rationale: "Incorreto. O primeiro teatro público foi em 1637, mas a ópera nasceu antes em Florença." },
+                    { letter: "D", text: "Em Florença, na Itália, no fim do século XVI (durante o Renascimento).", isCorrect: true, rationale: "Correto! A ópera nasceu em Florença no final do século XVI, no contexto renascentista." },
+                    { letter: "E", text: "No Rio de Janeiro, no Brasil, no início do século XIX.", isCorrect: false, rationale: "Incorreto. O Brasil teve ópera impulsionada após 1808, mas o gênero é europeu." }
+                ]
+            },
+            {
+                id: 7,
+                type: "V ou F",
+                question: "Avalie a veracidade da afirmação:\n'A Camerata Florentina empenhou-se em reviver o estilo musical dramático da Grécia Antiga, a tragédia, que era declamado de modo quase cantado (recitativo) e acompanhado por flautas e liras.'",
+                options: [
+                    { letter: "A", text: "Falso, pois a Camerata apoiava rigidamente as restrições da Igreja Católica.", isCorrect: false, rationale: "Incorreto. O grupo rompeu com o padrão estrito da Igreja." },
+                    { letter: "B", text: "Verdadeiro, pois o grupo buscou resgatar a tragédia da Grécia Antiga em formato recitativo.", isCorrect: true, rationale: "Correto! Esse esforço de resgate da tragédia grega deu origem ao estilo recitativo." },
+                    { letter: "C", text: "Verdadeiro, mas focando exclusivamente em comédias populares (ópera-bufa).", isCorrect: false, rationale: "Incorreto. O foco inicial era o estilo dramático trágico." },
+                    { letter: "D", text: "Falso, pois a tragédia grega utilizava apenas instrumentos de percussão.", isCorrect: false, rationale: "Incorreto. O texto menciona flautas e liras." },
+                    { letter: "E", text: "Falso, pois a Camerata Florentina operava na Alemanha durante o Barroco.", isCorrect: false, rationale: "Incorreto. Atuava em Florença, na Itália." }
+                ]
+            },
+            {
+                id: 8,
+                type: "convencional",
+                question: "Quem foi o criador da célebre ópera L'Orfeo (1607), obra que iniciou o repertório clássico do gênero?",
+                options: [
+                    { letter: "A", text: "Claudio Monteverdi", isCorrect: true, rationale: "Correto! Claudio Monteverdi (1567-1643) criou L'Orfeo em 1607, consagrando-se na ópera." },
+                    { letter: "B", text: "Padre José Maurício Nunes Garcia", isCorrect: false, rationale: "Incorreto. É um compositor brasileiro do século XIX." },
+                    { letter: "C", text: "Antônio Carlos Gomes", isCorrect: false, rationale: "Incorreto. Carlos Gomes foi o grande expoente brasileiro." },
+                    { letter: "D", text: "Heitor Villa-Lobos", isCorrect: false, rationale: "Incorreto. Villa-Lobos é modernista brasileiro." },
+                    { letter: "E", text: "Jacopo Peri", isCorrect: false, rationale: "Incorreto. Jacopo Peri compôs Dafne e Eurídice, obras precursoras." }
+                ]
+            },
+            {
+                id: 9,
+                type: "I, II e III",
+                question: "Sobre o enredo de L'Orfeo (1607), analise os itens:\nI. No Ato I, os pastores celebram o casamento de Orfeo e Eurídice.\nII. No Ato II, uma mensageira anuncia que Eurídice morreu picada por uma serpente.\nIII. No Ato IV, Orfeo consegue resgatar Eurídice definitivamente sem desobedecer a nenhuma regra.\nQuais estão corretas?",
+                options: [
+                    { letter: "A", text: "Apenas I", isCorrect: false, rationale: "Incorreto. O item II também está correto." },
+                    { letter: "B", text: "Apenas I e II", isCorrect: true, rationale: "Correto! O item III falha porque Orfeo olha para trás e perde Eurídice novamente." },
+                    { letter: "C", text: "Apenas III", isCorrect: false, rationale: "Incorreto. O item III é falso." },
+                    { letter: "D", text: "Apenas II e III", isCorrect: false, rationale: "Incorreto. O item III está incorreto." },
+                    { letter: "E", text: "I, II e III", isCorrect: false, rationale: "Incorreto. O terceiro enunciado contém erro factual." }
+                ]
+            },
+            {
+                id: 10,
+                type: "convencional",
+                question: "Qual é o nome do mais antigo teatro de ópera do mundo ainda em funcionamento, fundado em 1737 em Nápoles?",
+                options: [
+                    { letter: "A", text: "Teatro Scala de Milão", isCorrect: false, rationale: "Incorreto. Fica em Milão, mas não é o mais antigo de 1737." },
+                    { letter: "B", text: "Imperial Academia de Música", isCorrect: false, rationale: "Incorreto. Instituição brasileira." },
+                    { letter: "C", text: "Teatro San Carlo", isCorrect: true, rationale: "Correto! Fundado em 1737 em Nápoles e homenageando o rei Carlos III de Bourbon." },
+                    { letter: "D", text: "Teatro de Veneza de 1637", isCorrect: false, rationale: "Incorreto. O San Carlo em Nápoles é o mais antigo ainda em funcionamento." },
+                    { letter: "E", text: "Teatro Municipal do Rio de Janeiro", isCorrect: false, rationale: "Incorreto. Teatro brasileiro." }
+                ]
+            },
+            {
+                id: 11,
+                type: "convencional",
+                question: "Como a ópera chegou inicialmente ao Brasil durante o século XVI?",
+                options: [
+                    { letter: "A", text: "Por influência da colonização portuguesa, com montagens teatrais e musicais produzidas pelos jesuítas.", isCorrect: true, rationale: "Correto! Os jesuítas realizavam montagens com músicas usando flautas, pandeiro e viola." },
+                    { letter: "B", text: "Por meio da vinda da família real em 1808.", isCorrect: false, rationale: "Incorreto. Em 1808 a produção tomou impulso, mas as raízes do séc. XVI foram jesuíticas." },
+                    { letter: "C", text: "Através da Semana de Arte Moderna de 1922.", isCorrect: false, rationale: "Incorreto. Ocorre no século XX." },
+                    { letter: "D", text: "Através de turnês de Claudio Monteverdi.", isCorrect: false, rationale: "Incorreto. Monteverdi nunca esteve no Brasil." },
+                    { letter: "E", text: "Por intermédio das composições de Villa-Lobos.", isCorrect: false, rationale: "Incorreto. Villa-Lobos é do século XX." }
+                ]
+            },
+            {
+                id: 12,
+                type: "convencional",
+                question: "Quem é apontado por pesquisas acadêmicas como o autor da primeira ópera brasileira, intitulada Le Due Gemelle?",
+                options: [
+                    { letter: "A", text: "Antônio Carlos Gomes", isCorrect: false, rationale: "Incorreto. Carlos Gomes destacou-se no final do século XIX." },
+                    { letter: "B", text: "Heitor Villa-Lobos", isCorrect: false, rationale: "Incorreto. Villa-Lobos é compositor do século XX." },
+                    { letter: "C", text: "Oscar Lorenzo Fernández", isCorrect: false, rationale: "Incorreto. Compôs Malazarte." },
+                    { letter: "D", text: "Padre José Maurício Nunes Garcia", isCorrect: true, rationale: "Correto! O padre carioca (1767-1830), maestro e multi-instrumentista, é apontado como autor de Le Due Gemelle." },
+                    { letter: "E", text: "Mozart Camargo Guarnieri", isCorrect: false, rationale: "Incorreto. Destacou-se na fase modernista." }
+                ]
+            },
+            {
+                id: 13,
+                type: "convencional",
+                question: "Qual foi o primeiro compositor brasileiro a alcançar reconhecimento internacional, apresentando-se no Teatro Scala de Milão?",
+                options: [
+                    { letter: "A", text: "Elias Álvares Lobo", isCorrect: false, rationale: "Incorreto. Compôs A noite de São João." },
+                    { letter: "B", text: "Antônio Carlos Gomes", isCorrect: true, rationale: "Correto! Carlos Gomes (1836-1896) foi o primeiro brasileiro reconhecido internacionalmente em Milão." },
+                    { letter: "C", text: "Padre José Maurício Nunes Garcia", isCorrect: false, rationale: "Incorreto. Teve destaque nacional, mas não internacional na Itália." },
+                    { letter: "D", text: "Heitor Villa-Lobos", isCorrect: false, rationale: "Incorreto. Projeção modernista posterior." },
+                    { letter: "E", text: "Mozart Camargo Guarnieri", isCorrect: false, rationale: "Incorreto. Compositor nacionalista moderno." }
+                ]
+            },
+            {
+                id: 14,
+                type: "I, II e III",
+                question: "Dentre as composições de Antônio Carlos Gomes, assinale a alternativa com obras e locais de estreia corretos:\nI. O guarani (Milão, 1870)\nII. Fosca (Milão, 1873)\nIII. Colombo (Rio de Janeiro, 1892)\nQuais estão corretas?",
+                options: [
+                    { letter: "A", text: "Apenas I", isCorrect: false, rationale: "Incorreto. Os outros itens também estão corretos." },
+                    { letter: "B", text: "Apenas I e II", isCorrect: false, rationale: "Incorreto. O item III também está correto." },
+                    { letter: "C", text: "I, II e III", isCorrect: true, rationale: "Correto! Todas as três obras mencionadas estão com locais e anos corretos conforme o texto." },
+                    { letter: "D", text: "Apenas II e III", isCorrect: false, rationale: "Incorreto. O item I também está correto." },
+                    { letter: "E", text: "Nenhuma está correta", isCorrect: false, rationale: "Incorreto. Todas constam na lista do texto." }
+                ]
+            },
+            {
+                id: 15,
+                type: "convencional",
+                question: "Qual grande evento artístico nacional ocorrido na primeira metade do século XX contribuiu para a modernização da ópera e integrou Heitor Villa-Lobos?",
+                options: [
+                    { letter: "A", text: "A chegada da família real portuguesa em 1808", isCorrect: false, rationale: "Incorreto. Impulso inicial com D. João." },
+                    { letter: "B", text: "A fundação do Teatro San Carlo em 1737", isCorrect: false, rationale: "Incorreto. Teatro italiano do século XVIII." },
+                    { letter: "C", text: "A fundação da Imperial Academia de Música em 1860", isCorrect: false, rationale: "Incorreto. Ocorre no século XIX." },
+                    { letter: "D", text: "A criação do brasão do teatro na Calçada da Fama em 1984", isCorrect: false, rationale: "Incorreto. Refere-se a Hollywood." },
+                    { letter: "E", text: "A Semana de Arte Moderna de 1922", isCorrect: true, rationale: "Correto! A Semana de Arte Moderna de 1922 foi o marco modernista de renovação musical." }
+                ]
+            },
+            {
+                id: 16,
+                type: "convencional",
+                question: "Qual compositor brasileiro, após desistir da Medicina, tornou-se parceiro de Mário de Andrade e compôs a ópera Malazarte (1941)?",
+                options: [
+                    { letter: "A", text: "Oscar Lorenzo Fernández", isCorrect: true, rationale: "Correto! Lorenzo Fernández optou pela música e compôs Malazarte em parceria com Graça Aranha." },
+                    { letter: "B", text: "Heitor Villa-Lobos", isCorrect: false, rationale: "Incorreto. Villa-Lobos compôs Magdalena e Izath." },
+                    { letter: "C", text: "Mozart Camargo Guarnieri", isCorrect: false, rationale: "Incorreto. Camargo Guarnieri teve libreto escrito por Mário de Andrade em Pedro Malazarte." },
+                    { letter: "D", text: "Padre José Maurício Nunes Garcia", isCorrect: false, rationale: "Incorreto. Compositor do início do século XIX." },
+                    { letter: "E", text: "Antônio Carlos Gomes", isCorrect: false, rationale: "Incorreto. Autor de O guarani." }
+                ]
+            },
+            {
+                id: 17,
+                type: "convencional",
+                question: "Qual foi a contribuição do escritor modernista Mário de Andrade em relação à obra de Mozart Camargo Guarnieri?",
+                options: [
+                    { letter: "A", text: "Mário compôs a trilha sonora de 'Um homem só' em parceria com Villa-Lobos.", isCorrect: false, rationale: "Incorreto. Obra de Guarnieri." },
+                    { letter: "B", text: "Mário escreveu o libreto da ópera-cômica Pedro Malazarte para Camargo Guarnieri compor.", isCorrect: true, rationale: "Correto! Mário de Andrade escreveu o libreto de Pedro Malazarte." },
+                    { letter: "C", text: "Mário foi o arquiteto do Teatro San Carlo.", isCorrect: false, rationale: "Incorreto. Fica na Itália." },
+                    { letter: "D", text: "Mário fundou a primeira casa de ópera no Brasil colonial.", isCorrect: false, rationale: "Incorreto. Mário é do século XX." },
+                    { letter: "E", text: "Mário atuou como tenor em L'Orfeo.", isCorrect: false, rationale: "Incorreto. Obra de Monteverdi." }
+                ]
+            },
+            {
+                id: 18,
+                type: "V ou F",
+                question: "Analise a afirmação sobre Heitor Villa-Lobos:\n'Villa-Lobos participou da Semana de Arte Moderna de 1922 em três espetáculos e é autor de óperas como Izath, Magdalena, A menina das nuvens e Yerma.'",
+                options: [
+                    { letter: "A", text: "Falso, pois Villa-Lobos recusou-se a participar da Semana de Arte Moderna.", isCorrect: false, rationale: "Incorreto. Villa-Lobos participou ativamente." },
+                    { letter: "B", text: "Falso, pois as óperas citadas foram compostas por Claudio Monteverdi.", isCorrect: false, rationale: "Incorreto. As óperas são de Villa-Lobos." },
+                    { letter: "C", text: "Verdadeiro, pois ele participou de três espetáculos em 1922 e compôs tais óperas.", isCorrect: true, rationale: "Correto! O texto confirma sua participação em 1922 e relaciona essas óperas à sua autoria." },
+                    { letter: "D", text: "Verdadeiro, mas ele nunca compôs óperas.", isCorrect: false, rationale: "Incorreto. Ele compôs várias óperas." },
+                    { letter: "E", text: "Falso, pois sua única ópera foi Malazarte.", isCorrect: false, rationale: "Incorreto. Malazarte é de Lorenzo Fernández." }
+                ]
+            },
+            {
+                id: 19,
+                type: "convencional",
+                question: "Dentre as alternativas, qual aponta corretamente uma ópera de Mozart Camargo Guarnieri na categoria de tragédia lírica (1960)?",
+                options: [
+                    { letter: "A", text: "Pedro Malazarte", isCorrect: false, rationale: "Incorreto. É ópera-cômica de 1932." },
+                    { letter: "B", text: "Malazarte", isCorrect: false, rationale: "Incorreto. Ópera de Oscar Lorenzo Fernández (1941)." },
+                    { letter: "C", text: "A menina das nuvens", isCorrect: false, rationale: "Incorreto. Ópera de Heitor Villa-Lobos." },
+                    { letter: "D", text: "Le Due Gemelle", isCorrect: false, rationale: "Incorreto. Atribuída ao Padre José Maurício." },
+                    { letter: "E", text: "Um homem só", isCorrect: true, rationale: "Correto! 'Um homem só' (1960) é classificada como tragédia lírica de Camargo Guarnieri." }
+                ]
+            },
+            {
+                id: 20,
+                type: "I, II e III",
+                question: "Resumindo a trajetória da ópera, analise:\nI. A ópera nasceu no final do século XVI em Florença, buscando resgatar o estilo dramático grego.\nII. O Teatro San Carlo em Nápoles é o teatro de ópera mais antigo do mundo em funcionamento.\nIII. No Brasil, o modernismo do séc. XX impulsionou Villa-Lobos, Lorenzo Fernández e Camargo Guarnieri na criação de óperas.\nQuais estão corretas?",
+                options: [
+                    { letter: "A", text: "Apenas I", isCorrect: false, rationale: "Incorreto. Todos os itens estão corretos." },
+                    { letter: "B", text: "Apenas I e II", isCorrect: false, rationale: "Incorreto. O item III também está correto." },
+                    { letter: "C", text: "Apenas II e III", isCorrect: false, rationale: "Incorreto. O item I também está correto." },
+                    { letter: "D", text: "Nenhuma está correta", isCorrect: false, rationale: "Incorreto. Todas estão corretas." },
+                    { letter: "E", text: "I, II e III", isCorrect: true, rationale: "Correto! Todos os enunciados sintetizam perfeitamente os fatos históricos do conteúdo." }
+                ]
+            }
+        ];
+
+        const container = document.getElementById('quizContainer');
+
+        quizData.forEach((q, index) => {
+            const card = document.createElement('div');
+            card.className = "bg-slate-50/80 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm";
+
+            let optionsHtml = '';
+            q.options.forEach(opt => {
+                optionsHtml += `
+                    <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:bg-white cursor-pointer transition">
+                        <input type="radio" name="q${index}" value="${opt.letter}" class="mt-1 text-indigo-600 focus:ring-indigo-500" required>
+                        <span class="text-slate-700 text-sm sm:text-base"><strong>${opt.letter})</strong> ${opt.text}</span>
+                    </label>
+                `;
+            });
+
+            card.innerHTML = `
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold uppercase bg-indigo-100 text-indigo-700 px-2.5 py-1 rounded-md">Questão ${index + 1}</span>
+                    <span class="text-xs text-slate-500 italic">Tipo: ${q.type}</span>
+                </div>
+                <h3 class="font-semibold text-slate-900 mb-4 whitespace-pre-line text-sm sm:text-base">${q.question}</h3>
+                <div class="space-y-2 mb-3">
+                    ${optionsHtml}
+                </div>
+                <div id="feedback${index}" class="hidden mt-3 p-3 rounded-lg text-sm font-medium"></div>
+            `;
+            container.appendChild(card);
+        });
+
+        let lastScore = 0;
+        let lastReportText = "";
+
+        function submitQuiz() {
+            const name = document.getElementById('studentName').value.trim();
+            const turma = document.getElementById('studentClass').value.trim();
+
+            if (!name || !turma) {
+                alert("Por favor, preencha o seu Nome Completo e a sua Turma antes de enviar a avaliação!");
+                document.getElementById('studentName').focus();
+                return;
+            }
+
+            let score = 0;
+            let report = `Relatório de Avaliação - Artes (8º Ano)\nAluno: ${name}\nTurma: ${turma}\nData: ${new Date().toLocaleDateString()}\n----------------------------------------\n\n`;
+
+            quizData.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback${index}`);
+                feedbackDiv.classList.remove('hidden');
+
+                if (selected) {
+                    const chosenLetter = selected.value;
+                    const chosenOption = q.options.find(o => o.letter === chosenLetter);
+                    
+                    report += `Questão ${index + 1} (${q.type}):\n`;
+                    report += `Resposta Escolhida: ${chosenLetter}) ${chosenOption.text}\n`;
+
+                    if (chosenOption.isCorrect) {
+                        score++;
+                        feedbackDiv.className = "mt-3 p-3 rounded-lg text-sm bg-emerald-50 text-emerald-800 border border-emerald-200";
+                        feedbackDiv.innerHTML = `<strong>Resposta Correta! (${chosenLetter})</strong> ${chosenOption.rationale}`;
+                        report += `Status: CORRETO\n\n`;
+                    } else {
+                        const correctOpt = q.options.find(o => o.isCorrect);
+                        feedbackDiv.className = "mt-3 p-3 rounded-lg text-sm bg-rose-50 text-rose-800 border border-rose-200";
+                        feedbackDiv.innerHTML = `<strong>Resposta Incorreta.</strong> Você escolheu (${chosenLetter}). A correta era (${correctOpt.letter}). ${chosenOption.rationale}`;
+                        report += `Status: INCORRETO (Correta era ${correctOpt.letter})\n\n`;
+                    }
+                } else {
+                    report += `Questão ${index + 1}: Não respondida\n\n`;
+                }
+            });
+
+            lastScore = score;
+            lastReportText = report;
+
+            const scoreBox = document.getElementById('scoreBox');
+            const finalScoreText = document.getElementById('finalScoreText');
+            finalScoreText.textContent = `${score} / 20`;
+            scoreBox.classList.remove('hidden');
+
+            document.getElementById('shareBox').classList.remove('hidden');
+            
+            // Desabilitar edição após o envio
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => input.disabled = true);
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').classList.add('opacity-50', 'cursor-not-allowed');
+
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function generateReport() {
+            navigator.clipboard.writeText(lastReportText).then(() => {
+                alert("Relatório copiado com sucesso! Agora basta colá-lo (Ctrl+V) no WhatsApp, e-mail ou chat para enviar ao seu professor(a).");
+            }).catch(err => {
+                console.error('Erro ao copiar relatório: ', err);
+                alert("Não foi possível copiar automaticamente. Verifique as permissões do navegador.");
+            });
+        }
+    </script>
+</body>
+</html>
+```eof
+
+### Resumo das Funcionalidades da Aplicação Interativa:
+* **Ambiente Interativo Único:** Tudo o que você precisa está contido em um arquivo web funcional e responsivo.
+* **Identificação do Aluno:** O estudante preenche nome e turma antes de iniciar.
+* **Gabaritos Distribuídos e Variados:** 20 questões cobrindo V ou F, itens (I, II e III) e questões convencionais, com alternativas distribuídas de A a E de forma distinta.
+* **Feedback Completo e Imediato:** Ao finalizar, o sistema valida cada alternativa escolhida, mostrando a resposta correta e a justificativa exata para o erro ou acerto.
+* **Envio e Verificação de Erros:** O aluno pode clicar em um botão para copiar um relatório detalhado de seus erros e acertos para enviar diretamente a você!
+
+Espero que esta ferramenta ajude muito nas suas aulas de Artes do 8º ano! Divirta-se aplicando a avaliação.
