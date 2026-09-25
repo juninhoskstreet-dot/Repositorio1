@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário Completo - Múltiplo Formato com Gabarito Explicativo</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; text-align: center; }
+        .question { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .question p { font-weight: bold; }
+        .options { margin-left: 20px; }
+        .options label { display: block; margin-bottom: 8px; cursor: pointer; padding: 4px; border-radius: 4px; }
+        .propositions { background: #fdfdfd; border-left: 3px solid #7f8c8d; padding: 10px; margin: 10px 0; font-size: 14px; }
+        .feedback { display: none; margin-top: 10px; padding: 10px; background: #eef2f3; border-left: 4px solid #2980b9; font-size: 14px; border-radius: 4px; }
+        #resultado { display: none; background: #e2f0d9; border: 2px solid #385723; padding: 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
+        .btn-enviar, .btn-copiar { display: block; width: 100%; color: white; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
+        .btn-enviar { background: #2c3e50; }
+        .btn-enviar:hover { background: #34495e; }
+        .btn-copiar { background: #27ae60; display: none; }
+        .btn-copiar:hover { background: #219653; }
+        #avisoCopia { color: #27ae60; font-weight: bold; display: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Questionário Educativo: Biologia Humana (40 Questões Variadas)</h1>
+    <hr>
+
+    <div id="resultado"></div>
+
+    <form id="quizForm">
+        <!-- BLOCO 1: QUESTÕES 1 A 20 -->
+        <h2>Parte 1: Sistema Reprodutor e Fisiologia Humana</h2>
+
+        <div class="question" data-q="1">
+            <p>1. (Convencional) Qual estrutura do sistema genital masculino é responsável pela produção dos espermatozoides?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="0"> a) Próstata</label>
+                <label><input type="radio" name="q1" value="1"> b) Testículos</label>
+                <label><input type="radio" name="q1" value="2"> c) Vesícula seminal</label>
+                <label><input type="radio" name="q1" value="3"> d) Uretra</label>
+            </div>
+            <div class="feedback" id="feedback1"><b>Resposta Correta:</b> b) Testículos. Os testículos são as gônadas masculinas responsáveis pela produção dos espermatozoides e da testosterona.</div>
+        </div>
+
+        <div class="question" data-q="2">
+            <p>2. (Itens I, II e III) Analise as proposições sobre o sistema genital feminino:</p>
+            <div class="propositions">
+                I. A fecundação ocorre usualmente na tuba uterina.<br>
+                II. O endométrio é a camada uterina que descama na menstruação.<br>
+                III. Os ovários produzem exclusivamente testosterona.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="0"> a) Apenas I e III</label>
+                <label><input type="radio" name="q2" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q2" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q2" value="3"> d) I, II e III</label>
+            </div>
+            <div class="feedback" id="feedback2"><b>Resposta Correta:</b> b) Apenas I e II. O item III está incorreto pois os ovários produzem estrogênio e progesterona.</div>
+        </div>
+
+        <div class="question" data-q="3">
+            <p>3. (Verdadeiro ou Falso) Analise as afirmações a seguir e assinale a alternativa que indica a sequência correta:</p>
+            <div class="propositions">
+                ( ) O miométrio é a camada muscular lisa do útero responsável pelas contrações do parto.<br>
+                ( ) A nidação consiste na fixação do embrião na parede da tuba uterina.<br>
+                ( ) A placenta é o órgão responsável pelas trocas gasosas e de nutrientes entre mãe e feto.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q3" value="1"> b) V - V - F</label>
+                <label><input type="radio" name="q3" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q3" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback3"><b>Resposta Correta:</b> a) V - F - V. A segunda assertiva é falsa porque a nidação ocorre no endométrio do útero.</div>
+        </div>
+
+        <div class="question" data-q="4">
+            <p>4. (Convencional) Qual é o tipo de reprodução característica da espécie humana?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="0"> a) Assexuada por brotamento</label>
+                <label><input type="radio" name="q4" value="1"> b) Sexuada, com fecundação interna e desenvolvimento geralmente vivíparo</label>
+                <label><input type="radio" name="q4" value="2"> c) Assexuada por bipartição</label>
+                <label><input type="radio" name="q4" value="3"> d) Sexuada com fecundação estritamente externa</label>
+            </div>
+            <div class="feedback" id="feedback4"><b>Resposta Correta:</b> b) Sexuada, com fecundação interna e desenvolvimento geralmente vivíparo.</div>
+        </div>
+
+        <div class="question" data-q="5">
+            <p>5. (Itens I, II e III) Sobre os hormônios da reprodução humana, avalie:</p>
+            <div class="propositions">
+                I. A ocitocina estimula as contrações uterinas no parto e a ejeção do leite.<br>
+                II. A prolactina é essencial para a produção do leite materno.<br>
+                III. A progesterona é o principal hormônio que mantém o endométrio na gravidez.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q5" value="1"> b) I, II e III</label>
+                <label><input type="radio" name="q5" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q5" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback5"><b>Resposta Correta:</b> b) I, II e III. Todos os três enunciados descrevem corretamente os papéis hormonais citados.</div>
+        </div>
+
+        <div class="question" data-q="6">
+            <p>6. (Verdadeiro ou Falso) Julgue os itens sobre o ciclo menstrual e gônadas:</p>
+            <div class="propositions">
+                ( ) Em um ciclo de 28 dias, a ovulação ocorre tipicamente por volta do 14º dia.<br>
+                ( ) O epidídimo armazena e permite a maturação dos espermatozoides.<br>
+                ( ) A próstata produz um líquido ácido que paralisa os espermatozoides.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="0"> a) F - V - F</label>
+                <label><input type="radio" name="q6" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q6" value="2"> c) V - V - F</label>
+                <label><input type="radio" name="q6" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback6"><b>Resposta Correta:</b> c) V - V - F. O terceiro item é falso pois a próstata secreta um líquido alcalino.</div>
+        </div>
+
+        <div class="question" data-q="7">
+            <p>7. (Convencional) O que caracteriza o planejamento familiar no contexto da saúde e dos direitos reprodutivos?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="0"> a) A proibição do uso de métodos contraceptivos</label>
+                <label><input type="radio" name="q7" value="1"> b) O conjunto de ações de regulação da fecundidade que garante o direito de decisão sobre ter ou não filhos</label>
+                <label><input type="radio" name="q7" value="2"> c) A obrigatoriedade de esterilização após o segundo filho</label>
+                <label><input type="radio" name="q7" value="3"> d) A exclusão dos métodos de barreira das políticas públicas</label>
+            </div>
+            <div class="feedback" id="feedback7"><b>Resposta Correta:</b> b) O conjunto de ações de regulação da fecundidade que garante o direito de decisão sobre ter ou não filhos.</div>
+        </div>
+
+        <div class="question" data-q="8">
+            <p>8. (Itens I, II e III) Sobre a anatomia do sistema reprodutor masculino, analise:</p>
+            <div class="propositions">
+                I. A uretra masculina conduz tanto a urina quanto o esperma.<br>
+                II. As vesículas seminais produzem fluido rico em frutose para nutrir os gametas.<br>
+                III. Os ductos deferentes conectam o epidídimo à uretra.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q8" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q8" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q8" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback8"><b>Resposta Correta:</b> c) I, II e III. Todas as estruturas e funções descritas estão corretas.</div>
+        </div>
+
+        <div class="question" data-q="9">
+            <p>9. (Verdadeiro ou Falso) Analise as afirmações sobre a embriologia e gametogênese inicial:</p>
+            <div class="propositions">
+                ( ) O gameta feminino é liberado na ovulação sob a forma de ovócito secundário.<br>
+                ( ) A ovogênese na mulher começa e termina totalmente antes do nascimento.<br>
+                ( ) O clitóris é um órgão erétil e altamente sensível da genitália externa feminina.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q9" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q9" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q9" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback9"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso pois a ovogênese estagna na fase fetal.</div>
+        </div>
+
+        <div class="question" data-q="10">
+            <p>10. (Convencional) Qual glândula endócrina localizada na base do cérebro comanda o ciclo menstrual liberando FSH e LH?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="0"> a) Tireoide</label>
+                <label><input type="radio" name="q10" value="1"> b) Hipófise (pituitária)</label>
+                <label><input type="radio" name="q10" value="2"> c) Adrenal</label>
+                <label><input type="radio" name="q10" value="3"> d) Pâncreas</label>
+            </div>
+            <div class="feedback" id="feedback10"><b>Resposta Correta:</b> b) Hipófise (pituitária).</div>
+        </div>
+
+        <div class="question" data-q="11">
+            <p>11. (Itens I, II e III) Sobre a gestação e o desenvolvimento embrionário, analise:</p>
+            <div class="propositions">
+                I. O embrião se implanta no endométrio do útero.<br>
+                II. A placenta atua nas trocas metabólicas entre a mãe e o feto.<br>
+                III. O corpo lúteo regride e cessa a produção de progesterona durante toda a gravidez.
+            </div>
+            <p>Está correto apenas o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="0"> a) I e II</label>
+                <label><input type="radio" name="q11" value="1"> b) II e III</label>
+                <label><input type="radio" name="q11" value="2"> c) I e III</label>
+                <label><input type="radio" name="q11" value="3"> d) I, II e III</label>
+            </div>
+            <div class="feedback" id="feedback11"><b>Resposta Correta:</b> a) I e II. O item III está incorreto porque o corpo lúteo mantém-se ativo no início.</div>
+        </div>
+
+        <div class="question" data-q="12">
+            <p>12. (Verdadeiro ou Falso) Julgue os conceitos anatômicos e fisiológicos:</p>
+            <div class="propositions">
+                ( ) O miométrio é formado por tecido muscular liso.<br>
+                ( ) A tuba uterina é o local onde o espermatozoide se forma originalmente.<br>
+                ( ) Os testículos realizam a espermatogênese e produzem testosterona.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q12" value="0"> a) V - V - V</label>
+                <label><input type="radio" name="q12" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q12" value="2"> c) F - V - F</label>
+                <label><input type="radio" name="q12" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback12"><b>Resposta Correta:</b> b) V - F - V. O segundo item é falso pois os espermatozoides são produzidos nos testículos.</div>
+        </div>
+
+        <div class="question" data-q="13">
+            <p>13. (Convencional) Qual das opções representa corretamente o caminho percorrido pelo espermatozoide desde a sua produção até a saída do corpo masculino?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="0"> a) Testículo -> Uretra -> Epidídimo -> Canal deferente</label>
+                <label><input type="radio" name="q13" value="1"> b) Testículo -> Epidídimo -> Canal deferente -> Uretra</label>
+                <label><input type="radio" name="q13" value="2"> c) Próstata -> Testículo -> Epidídimo -> Uretra</label>
+                <label><input type="radio" name="q13" value="3"> d) Epidídimo -> Testículo -> Uretra -> Canal deferente</label>
+            </div>
+            <div class="feedback" id="feedback13"><b>Resposta Correta:</b> b) Testículo -> Epidídimo -> Canal deferente -> Uretra.</div>
+        </div>
+
+        <div class="question" data-q="14">
+            <p>14. (Itens I, II e III) Sobre a regulação hormonal masculina, avalie:</p>
+            <div class="propositions">
+                I. O hormônio LH estimula as células intersticiais a produzirem testosterona.<br>
+                II. O FSH atua nos túbulos seminíferos estimulando a espermatogênese.<br>
+                III. A testosterona inibe a produção de gonadotrofinas pela hipófise (feedback negativo).
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q14" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q14" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q14" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback14"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações descrevem com precisão o eixo hormonal masculino.</div>
+        </div>
+
+        <div class="question" data-q="15">
+            <p>15. (Verdadeiro ou Falso) Julgue os itens relativos ao útero e anexos:</p>
+            <div class="propositions">
+                ( ) O colo do útero faz a transição entre o canal vaginal e a cavidade uterina.<br>
+                ( ) A vagina possui glândulas que secretam o muco para a nidação embrionária.<br>
+                ( ) As vesículas seminais e a próstata ajudam a compor o sêmen.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q15" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q15" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q15" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback15"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso porque a nidação ocorre no endométrio do útero.</div>
+        </div>
+
+        <div class="question" data-q="16">
+            <p>16. (Convencional) O processo de formação dos gametas femininos nos ovários denomina-se:</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="0"> a) Espermatogênese</label>
+                <label><input type="radio" name="q16" value="1"> b) Ovogênese (ou oogênese)</label>
+                <label><input type="radio" name="q16" value="2"> c) Clivagem</label>
+                <label><input type="radio" name="q16" value="3"> d) Espermiogênese</label>
+            </div>
+            <div class="feedback" id="feedback16"><b>Resposta Correta:</b> b) Ovogênese (ou oogênese).</div>
+        </div>
+
+        <div class="question" data-q="17">
+            <p>17. (Itens I, II e III) Sobre as características sexuais secundárias humanas, analise:</p>
+            <div class="propositions">
+                I. A testosterona promove o engrossamento da voz e o crescimento de pelos nos homens.<br>
+                II. O estrogênio atua no desenvolvimento das mamas e redistribuição da gordura corporal nas mulheres.<br>
+                III. Os hormônios sexuais não interferem no comportamento e humor.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="0"> a) I, II e III</label>
+                <label><input type="radio" name="q17" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q17" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q17" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback17"><b>Resposta Correta:</b> b) Apenas I e II. O item III está incorreto pois os hormônios influenciam o metabolismo e sistema nervoso.</div>
+        </div>
+
+        <div class="question" data-q="18">
+            <p>18. (Verdadeiro ou Falso) Analise as proposições sobre fecundação e desenvolvimento:</p>
+            <div class="propositions">
+                ( ) A união dos núcleos do espermatozoide e do ovócito gera o zigoto (ou ovo).<br>
+                ( ) A placenta secreta hormônios como a gonadotrofina coriônica humana (hCG).<br>
+                ( ) O gêmeo dizigótico (fraterno) origina-se de um único óvulo fecundado por dois espermatozoides.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q18" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q18" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q18" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q18" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback18"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso: gêmeos dizigóticos resultam de dois óvulos diferentes.</div>
+        </div>
+
+        <div class="question" data-q="19">
+            <p>19. (Convencional) Qual das camadas do útero sofre alterações cíclicas sob estímulo hormonal e descama na menstruação?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="0"> a) Miométrio</label>
+                <label><input type="radio" name="q19" value="1"> b) Endométrio</label>
+                <label><input type="radio" name="q19" value="2"> c) Perimétrio</label>
+                <label><input type="radio" name="q19" value="3"> d) Colo uterino</label>
+            </div>
+            <div class="feedback" id="feedback19"><b>Resposta Correta:</b> b) Endométrio.</div>
+        </div>
+
+        <div class="question" data-q="20">
+            <p>20. (Itens I, II e III) Sobre a fase lútea do ciclo menstrual, avalie:</p>
+            <div class="propositions">
+                I. O corpo lúteo forma-se a partir dos restos do folículo rompido após a ovulação.<br>
+                II. Ele secreta grandes quantidades de progesterona.<br>
+                III. Se houver gravidez, o corpo lúteo regride imediatamente no 14º dia sem suporte de hormônios.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q20" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q20" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q20" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback20"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso porque o hCG sustenta o corpo lúteo na gravidez.</div>
+        </div>
+
+        <hr>
+
+        <!-- BLOCO 2: QUESTÕES 21 A 40 -->
+        <h2>Parte 2: Métodos Contraceptivos e Infecções Sexualmente Transmissíveis (ISTs)</h2>
+
+        <div class="question" data-q="21">
+            <p>21. (Convencional) Qual dos métodos abaixo atua como barreira física e é o único capaz de prevenir simultaneamente a gravidez e as ISTs?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="0"> a) Pílula anticoncepcional oral</label>
+                <label><input type="radio" name="q21" value="1"> b) Preservativo (masculino e feminino)</label>
+                <label><input type="radio" name="q21" value="2"> c) DIU de cobre</label>
+                <label><input type="radio" name="q21" value="3"> d) Laqueadura tubária</label>
+            </div>
+            <div class="feedback" id="feedback21"><b>Resposta Correta:</b> b) Preservativo (masculino e feminino).</div>
+        </div>
+
+        <div class="question" data-q="22">
+            <p>22. (Itens I, II e III) Sobre os métodos contraceptivos hormonais combinados, analise:</p>
+            <div class="propositions">
+                I. Contêm análogos de estrogênio e progesterona.<br>
+                II. O principal mecanismo é inibir a ovulação.<br>
+                III. Protegem eficazmente o usuário contra o contágio por HIV e sífilis.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q22" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q22" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q22" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback22"><b>Resposta Correta:</b> a) Apenas I e II. O item III é incorreto, pois pílulas não oferecem barreira contra ISTs.</div>
+        </div>
+
+        <div class="question" data-q="23">
+            <p>23. (Verdadeiro ou Falso) Julgue os itens sobre cirurgias de esterilização voluntária:</p>
+            <div class="propositions">
+                ( ) A vasectomia corta ou bloqueia os ductos deferentes no homem.<br>
+                ( ) A laqueadura corta ou bloqueia as tubas uterinas na mulher.<br>
+                ( ) A vasectomia impede imediatamente a produção de espermatozoides pelos testículos.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q23" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q23" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q23" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q23" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback23"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso: a vasectomia apenas impede a passagem, mas os testículos continuam produzindo gametas.</div>
+        </div>
+
+        <div class="question" data-q="24">
+            <p>24. (Convencional) Onde deve ser posicionado o diafragma antes da relação sexual?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="0"> a) Na entrada do colo do útero</label>
+                <label><input type="radio" name="q24" value="1"> b) No interior dos testículos</label>
+                <label><input type="radio" name="q24" value="2"> c) Nos ductos deferentes</label>
+                <label><input type="radio" name="q24" value="3"> d) No canal da uretra masculina</label>
+            </div>
+            <div class="feedback" id="feedback24"><b>Resposta Correta:</b> a) Na entrada do colo do útero.</div>
+        </div>
+
+        <div class="question" data-q="25">
+            <p>25. (Itens I, II e III) Sobre as Infecções Sexualmente Transmissíveis (ISTs), analise:</p>
+            <div class="propositions">
+                I. O termo IST substituiu DST por abranger também infecções assintomáticas.<br>
+                II. O HIV é um retrovírus que ataca os linfócitos T auxiliares.<br>
+                III. Todas as ISTs virais possuem cura total através de cursos rápidos de antibióticos.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q25" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q25" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q25" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback25"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso porque vírus não são curados por antibióticos.</div>
+        </div>
+
+        <div class="question" data-q="26">
+            <p>26. (Verdadeiro ou Falso) Julgue as afirmações sobre sífilis e gonorreia:</p>
+            <div class="propositions">
+                ( ) A sífilis é causada pela bactéria Treponema pallidum e apresenta o cancro duro no estágio inicial.<br>
+                ( ) A gonorreia é uma infecção viral que causa verrugas genitais generalizadas.<br>
+                ( ) Infecções bacterianas como a clamídia e a gonorreia podem ser tratadas com antibióticos adequados.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q26" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q26" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q26" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q26" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback26"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso porque a gonorreia é uma infecção bacteriana.</div>
+        </div>
+
+        <div class="question" data-q="27">
+            <p>27. (Convencional) O papilomavírus humano (HPV) está associado diretamente ao risco de desenvolvimento de qual tipo de patologia maligna?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="0"> a) Câncer do colo do útero e de pênis</label>
+                <label><input type="radio" name="q27" value="1"> b) Câncer de fígado fulminante</label>
+                <label><input type="radio" name="q27" value="2"> c) Leucemia mieloide aguda</label>
+                <label><input type="radio" name="q27" value="3"> d) Câncer gástrico avançado</label>
+            </div>
+            <div class="feedback" id="feedback27"><b>Resposta Correta:</b> a) Câncer do colo do útero e de pênis.</div>
+        </div>
+
+        <div class="question" data-q="28">
+            <p>28. (Itens I, II e III) Sobre a Hepatite B, analise as afirmativas:</p>
+            <div class="propositions">
+                I. É uma infecção viral que afeta principalmente o fígado.<br>
+                II. Pode ser transmitida por meio de fluidos corporais como sangue e esperma.<br>
+                III. O SUS oferece vacinação preventiva de forma gratuita.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q28" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q28" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q28" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback28"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações sobre a hepatite B estão corretas.</div>
+        </div>
+
+        <div class="question" data-q="29">
+            <p>29. (Verdadeiro ou Falso) Avalie as inter-relações entre ISTs e o sistema imune:</p>
+            <div class="propositions">
+                ( ) A presença de feridas geradas por ISTs facilita a porta de entrada para o HIV.<br>
+                ( ) O vírus da herpes simples gera lesões vesiculosas que podem reaparecer em baixas imunidades.<br>
+                ( ) O tratamento da aids com antirretrovirais elimina por completo o vírus do organismo infectado.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q29" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q29" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q29" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q29" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback29"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso porque os antirretrovirais controlam, mas não eradicam totalmente o HIV.</div>
+        </div>
+
+        <div class="question" data-q="30">
+            <p>30. (Convencional) O que caracteriza o caráter "silencioso" de várias ISTs na população?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="0"> a) A ausência completa de sintomas nas fases iniciais, dificultando o diagnóstico precoce</label>
+                <label><input type="radio" name="q30" value="1"> b) A transmissão restrita exclusivamente a ambientes hospitalares</label>
+                <label><input type="radio" name="q30" value="2"> c) O fato de desaparecerem sozinhas em poucas horas sem intervenção</label>
+                <label><input type="radio" name="q30" value="3"> d) A imunidade permanente gerada logo após o primeiro contato</label>
+            </div>
+            <div class="feedback" id="feedback30"><b>Resposta Correta:</b> a) A ausência completa de sintomas nas fases iniciais, dificultando o diagnóstico precoce.</div>
+        </div>
+
+        <div class="question" data-q="31">
+            <p>31. (Itens I, II e III) Sobre a prevenção combinada contra o HIV, analise:</p>
+            <div class="propositions">
+                I. A Profilaxia Pré-Exposição (PrEP) envolve o uso de antirretrovirais por pessoas não infectadas antes da exposição ao risco.<br>
+                II. A Profilaxia Pós-Exposição (PEP) deve ser iniciada preferencialmente nas primeiras 72 horas após uma situação de risco.<br>
+                III. Indivíduos com carga viral indetectável em tratamento adequado não transmitem o HIV por via sexual.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q31" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q31" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q31" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback31"><b>Resposta Correta:</b> c) I, II e III. O conceito moderno de prevenção combinada engloba PrEP, PEP e o princípio I = I (Indetectável = Intransmissível).</div>
+        </div>
+
+        <div class="question" data-q="32">
+            <p>32. (Verdadeiro ou Falso) Julgue os itens sobre métodos contraceptivos comportamentais:</p>
+            <div class="propositions">
+                ( ) O método da tabelinha baseia-se no cálculo do período fértil com base na duração dos ciclos anteriores.<br>
+                ( ) A temperatura basal do corpo sofre uma leve queda no momento da ovulação e depois se eleva.<br>
+                ( ) Os métodos comportamentais apresentam altos índices de eficácia quando comparados aos dispositivos intrauterinos (DIU).
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q32" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q32" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q32" value="2"> c) F - V - F</label>
+                <label><input type="radio" name="q32" value="3"> d) V - F - F</label>
+            </div>
+            <div class="feedback" id="feedback32"><b>Resposta Correta:</b> d) V - F - F. O terceiro item é falso porque os métodos comportamentais possuem taxas de falha consideravelmente mais altas que os métodos de alta eficácia como o DIU.</div>
+        </div>
+
+        <div class="question" data-q="33">
+            <p>33. (Convencional) Como atua prioritariamente o Dispositivo Intrauterino (DIU) de cobre?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="0"> a) Bloqueando permanentemente a produção de hormônios na hipófise</label>
+                <label><input type="radio" name="q33" value="1"> b) Provocando uma reação inflamatória local estéril que é tóxica aos espermatozoides e impede a fecundação</label>
+                <label><input type="radio" name="q33" value="2"> c) Destruindo todas as bactérias da microbiota vaginal</label>
+                <label><input type="radio" name="q33" value="3"> d) Impedindo o crescimento dos ovários</label>
+            </div>
+            <div class="feedback" id="feedback33"><b>Resposta Correta:</b> b) Provocando uma reação inflamatória local estéril que é tóxica aos espermatozoides e impede a fecundação.</div>
+        </div>
+
+        <div class="question" data-q="34">
+            <p>34. (Itens I, II e III) Sobre a candidíase vaginal, avalie:</p>
+            <div class="propositions">
+                I. É causada por um fungo (*Candida albicans*) que pode proliferar com desequilíbrios da flora local.<br>
+                II. O principal sintoma costuma incluir co intensa, ardência e corrimento esbranquiçado espesso.<br>
+                III. É classificada obrigatoriamente como uma IST de alta gravidade sistêmica.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q34" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q34" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q34" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback34"><b>Resposta Correta:</b> a) Apenas I e II. O item III está incorreto porque a candidíase não é classicamente uma IST, pois o fungo já habita o organismo e se manifesta por desequilíbrios na imunidade ou pH.</div>
+        </div>
+
+        <div class="question" data-q="35">
+            <p>35. (Verdadeiro ou Falso) Analise as assertivas sobre o HPV e vacinação:</p>
+            <div class="propositions">
+                ( ) A vacina contra o HPV quadrivalente protege contra os principais tipos virais causadores de verrugas genitais e cânceres do colo uterino.<br>
+                ( ) A transmissão do HPV ocorre estritamente por transfusão de sangue contaminado, sem relação com o contato sexual.<br>
+                ( ) O uso do preservativo reduz o risco de infecção por HPV, embora possa não cobrir toda a área de pele exposta.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q35" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q35" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q35" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q35" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback35"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso pois o HPV é transmitido por contato direto pele a pele ou mucosa durante a relação sexual.</div>
+        </div>
+
+        <div class="question" data-q="36">
+            <p>36. (Convencional) Qual exame preventivo de rotina ginecológica é amplamente utilizado para rastrear lesões precursoras do câncer do colo do útero?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="0"> a) Exame de sangue oculto nas fezes</label>
+                <label><input type="radio" name="q36" value="1"> b) Colpocitologia oncótica (Preventivo ou Papanicolau)</label>
+                <label><input type="radio" name="q36" value="2"> c) Ressonância magnética craniana</label>
+                <label><input type="radio" name="q36" value="3"> d) Espirometria pulmonar</label>
+            </div>
+            <div class="feedback" id="feedback36"><b>Resposta Correta:</b> b) Colpocitologia oncótica (Preventivo ou Papanicolau).</div>
+        </div>
+
+        <div class="question" data-q="37">
+            <p>37. (Itens I, II e III) Sobre os métodos de barreira quimico-mecânicos (espermicidas), analise:</p>
+            <div class="propositions">
+                I. Substanciam-se em cremes ou géis aplicados na vagina para imobilizar ou destruir espermatozoides.<br>
+                II. Quando usados isoladamente, possuem eficácia contraceptiva inferior aos preservativos e métodos hormonais.<br>
+                III. Protegem de forma altamente segura contra o vírus HIV e outras ISTs quando empregados sozinhos.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q37" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q37" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q37" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback37"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso pois espermicidas não protegem contra ISTs e podem causar irritações mucosas que aumentam o risco de infecções.</div>
+        </div>
+
+        <div class="question" data-q="38">
+            <p>38. (Verdadeiro ou Falso) Julgue os conceitos acerca da pílula do dia seguinte (contracepção de emergência):</p>
+            <div class="propositions">
+                ( ) Deve ser utilizada rotineiramente como substituta dos métodos contraceptivos regulares de longa duração.<br>
+                ( ) Seu mecanismo principal consiste em retardar ou inibir a ocorrência da ovulação.<br>
+                ( ) É capaz de interromper uma gravidez já estabelecida (nidação efetivada).
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q38" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q38" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q38" value="2"> c) F - F - V</label>
+                <label><input type="radio" name="q38" value="3"> d) V - F - V</label>
+            </div>
+            <div class="feedback" id="feedback38"><b>Resposta Correta:</b> b) F - V - F. O primeiro item é falso (é método de emergência e perde eficácia se usado constantemente) e o terceiro é falso (ela não aborta embriões já implantados).</div>
+        </div>
+
+        <div class="question" data-q="39">
+            <p>39. (Convencional) O que caracteriza essencialmente a tricomoniase?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="0"> a) Uma infecção causada por um protozoário (*Trichomonas vaginalis*) transmitida por via sexual</label>
+                <label><input type="radio" name="q39" value="1"> b) Uma alteração genética congênita ligada ao cromossomo Y</label>
+                <label><input type="radio" name="q39" value="2"> c) Um distúrbio metabólico causado pelo excesso de açúcar no sangue</label>
+                <label><input type="radio" name="q39" value="3"> d) Uma inflamação estritamente alérgica provocada por tecidos sintéticos</label>
+            </div>
+            <div class="feedback" id="feedback39"><b>Resposta Correta:</b> a) Uma infecção causada por um protozoário (*Trichomonas vaginalis*) transmitida por via sexual.</div>
+        </div>
+
+        <div class="question" data-q="40">
+            <p>40. (Itens I, II e III) Sobre a responsabilidade em saúde pública relacionada à prevenção de gravidez indesejada e ISTs, conclui-se que:</p>
+            <div class="propositions">
+                I. A educação sexual nas escolas e comunidades promove a redução de taxas de infecções e gestações precoces.<br>
+                II. O acesso universal a insumos de prevenção pelo sistema público é fundamental para a equidade em saúde.<br>
+                III. O diagnóstico e tratamento simultâneo de parceiros sexuais em casos de ISTs evitam o efeito "ping-pong" (reinfecção mútua).
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q40" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q40" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q40" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback40"><b>Resposta Correta:</b> c) I, II e III. Todas as diretrizes apontadas refletem as melhores práticas da saúde coletiva e reprodutiva.</div>
+        </div>
+
+        <button type="button" class="btn-enviar" onclick="corrigirQuiz()">Enviar e Conferir Respostas</button>
+        <button type="button" class="btn-copiar" id="btnCopiar" onclick="copiarResultados()">Copiar Resultado para Envio</button>
+        <div id="avisoCopia">Texto copiado com sucesso!</div>
+    </form>
+
+    <script>
+        const gabarito = [1, 1, 0, 1, 1, 2, 1, 2, 0, 1, 0, 1, 1, 2, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 3, 1, 0, 0, 1, 0, 1, 0, 2];
+
+        function corrigirQuiz() {
+            let acertos = 0;
+            let totalRespondidas = 0;
+
+            for (let i = 1; i <= 40; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let respondida = false;
+                let userAnswer = -1;
+
+                for (let r = 0; r < radios.length; r++) {
+                    if (radios[r].checked) {
+                        respondida = true;
+                        userAnswer = parseInt(radios[r].value);
+                        break;
+                    }
+                }
+
+                const feedbackDiv = document.getElementById('feedback' + i);
+                feedbackDiv.style.display = 'block';
+
+                if (respondida) {
+                    totalRespondidas++;
+                    if (userAnswer === gabarito[i - 1]) {
+                        acertos++;
+                        feedbackDiv.style.borderLeftColor = '#27ae60';
+                    } else {
+                        feedbackDiv.style.borderLeftColor = '#c0392b';
+                    }
+                } else {
+                    feedbackDiv.style.borderLeftColor = '#f39c12';
+                }
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `<h2>Resultado Final</h2><p>Você acertou <b>${acertos}</b> de <b>40</b> questões (${((acertos/40)*100).toFixed(1)}%).</p>`;
+            
+            document.getElementById('btnCopiar').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function copiarResultados() {
+            const resultadoTexto = document.getElementById('resultado').innerText;
+            navigator.clipboard.writeText(resultadoTexto).then(() => {
+                const aviso = document.getElementById('avisoCopia');
+                aviso.style.display = 'block';
+                setTimeout(() => { aviso.style.display = 'none'; }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
