@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário: População e Aspectos Humanos da África (40 Questões)</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; text-align: center; }
+        .question { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .question p { font-weight: bold; }
+        .options { margin-left: 20px; }
+        .options label { display: block; margin-bottom: 8px; cursor: pointer; padding: 4px; border-radius: 4px; }
+        .propositions { background: #fdfdfd; border-left: 3px solid #7f8c8d; padding: 10px; margin: 10px 0; font-size: 14px; }
+        .feedback { display: none; margin-top: 10px; padding: 10px; background: #eef2f3; border-left: 4px solid #2980b9; font-size: 14px; border-radius: 4px; }
+        #resultado { display: none; background: #e2f0d9; border: 2px solid #385723; padding: 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
+        .btn-enviar, .btn-copiar { display: block; width: 100%; color: white; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
+        .btn-enviar { background: #2c3e50; }
+        .btn-enviar:hover { background: #34495e; }
+        .btn-copiar { background: #27ae60; display: none; }
+        .btn-copiar:hover { background: #219653; }
+        #avisoCopia { color: #27ae60; font-weight: bold; display: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Questionário Geográfico: População e Dinâmica Humana da África</h1>
+    <hr>
+
+    <div id="resultado"></div>
+
+    <form id="quizForm">
+        <!-- BLOCO 1: QUESTÕES 1 A 20 -->
+        <h2>Parte 1: Crescimento Demográfico, Distribuição e Urbanização</h2>
+
+        <div class="question" data-q="1">
+            <p>1. (Convencional) Com uma população de cerca de 1,3 bilhão de habitantes, a África ocupa qual posição entre os continentes mais populosos do planeta?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="0"> a) Primeiro</label>
+                <label><input type="radio" name="q1" value="1"> b) Segundo</label>
+                <label><input type="radio" name="q1" value="2"> c) Terceiro</label>
+                <label><input type="radio" name="q1" value="3"> d) Quarto</label>
+            </div>
+            <div class="feedback" id="feedback1"><b>Resposta Correta:</b> b) Segundo. A África é o segundo continente mais populoso do planeta, atrás apenas da Ásia.</div>
+        </div>
+
+        <div class="question" data-q="2">
+            <p>2. (Itens I, II e III) Analise as proposições sobre a população dos países africanos:</p>
+            <div class="propositions">
+                I. A Nigéria é o país mais populoso da África, com mais de 200 milhões de habitantes.<br>
+                II. Etiópia, Egito e República Democrática do Congo estão entre os países com as maiores populações do continente.<br>
+                III. Lagos é a maior cidade da África e da Nigéria.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="0"> a) Apenas I e III</label>
+                <label><input type="radio" name="q2" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q2" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q2" value="3"> d) I, II e III</label>
+            </div>
+            <div class="feedback" id="feedback2"><b>Resposta Correta:</b> d) I, II e III. Todas as afirmações constam corretamente no texto base.</div>
+        </div>
+
+        <div class="question" data-q="3">
+            <p>3. (Verdadeiro ou Falso) Analise as afirmações a seguir sobre o crescimento demográfico africano:</p>
+            <div class="propositions">
+                ( ) Com exceção do Egito, a maioria dos países da África apresenta crescimento populacional superior a 2%.<br>
+                ( ) O crescimento populacional da maioria dos países africanos é cerca de 5 a 6 vezes superior ao registrado no Brasil em 2022 (0,5%).<br>
+                ( ) A projeção é de que a população africana diminua drasticamente até 2050, ficando abaixo de 500 milhões.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q3" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q3" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q3" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback3"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois o texto indica que em 2050 a população ultrapassará 2 bilhões.</div>
+        </div>
+
+        <div class="question" data-q="4">
+            <p>4. (Convencional) Como se caracteriza a distribuição da população pelo território africano?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="0"> a) De maneira totalmente homogênea em todas as regiões.</label>
+                <label><input type="radio" name="q4" value="1"> b) De maneira desigual, com baixíssima densidade no Deserto do Saara (exceto nas margens do Rio Nilo) e foco demográfico no litoral e grandes rios.</label>
+                <label><input type="radio" name="q4" value="2"> c) Estritamente concentrada no interior desértico e ausente no litoral.</label>
+                <label><input type="radio" name="q4" value="3"> d) Concentrada exclusivamente nas florestas tropicais equatoriais.</label>
+            </div>
+            <div class="feedback" id="feedback4"><b>Resposta Correta:</b> b) De maneira desigual, com baixíssima densidade no Deserto do Saara...</div>
+        </div>
+
+        <div class="question" data-q="5">
+            <p>5. (Itens I, II e III) Sobre os povos nômades do Deserto do Saara, avalie:</p>
+            <div class="propositions">
+                I. Os beduínos e os tuaregues são exemplos desses grupos nômades que vivem na região.<br>
+                II. Embora sejam numericamente poucos na atualidade, tiveram grande importância histórica na comunicação e comércio entre o norte e o sul do continente.<br>
+                III. Todos esses povos possuem pátria fixa oficializada por governos centrais.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q5" value="1"> b) I, II e III</label>
+                <label><input type="radio" name="q5" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q5" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback5"><b>Resposta Correta:</b> a) Apenas I e II. O item III está incorreto pois o texto aponta que muitos deles não possuem pátria.</div>
+        </div>
+
+        <div class="question" data-q="6">
+            <p>6. (Verdadeiro ou Falso) Julgue os itens sobre densidade demográfica e urbanização na África:</p>
+            <div class="propositions">
+                ( ) Com densidade demográfica média de 39,7 hab/km², a África pode ser considerada um continente pouco povoado.<br>
+                ( ) A África é o continente com o maior percentual de população urbana do mundo, superando 90%.<br>
+                ( ) O continente passa por um rápido processo de urbanização, gerando desafios pois as cidades não dispõem de infraestrutura necessária.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="0"> a) F - V - F</label>
+                <label><input type="radio" name="q6" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q6" value="2"> c) V - V - F</label>
+                <label><input type="radio" name="q6" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback6"><b>Resposta Correta:</b> b) V - F - V. O segundo item é falso pois a África tem o *menor* percentual de população urbana do mundo (cerca de 40%).</div>
+        </div>
+
+        <div class="question" data-q="7">
+            <p>7. (Convencional) Dentre as três maiores economias da África, qual delas apresenta a maior parte de sua população vivendo em áreas rurais?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="0"> a) África do Sul</label>
+                <label><input type="radio" name="q7" value="1"> b) Nigéria</label>
+                <label><input type="radio" name="q7" value="2"> c) Egito</label>
+                <label><input type="radio" name="q7" value="3"> d) Argélia</label>
+            </div>
+            <div class="feedback" id="feedback7"><b>Resposta Correta:</b> c) Egito. (O texto aponta que África do Sul e Nigéria têm maioria urbana, enquanto o Egito tem a maior parte rural).</div>
+        </div>
+
+        <div class="question" data-q="8">
+            <p>8. (Itens I, II e III) Sobre o crescimento vegetativo e transição demográfica na África, analise:</p>
+            <div class="propositions">
+                I. Crescimento vegetativo é a diferença entre as taxas de natalidade e de mortalidade.<br>
+                II. Nenhum país africano concluiu totalmente o processo de transição demográfica.<br>
+                III. Os países da África Subsaariana registram, em geral, grandes taxas de natalidade e mortalidade, impulsionando o crescimento vegetativo.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q8" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q8" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q8" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback8"><b>Resposta Correta:</b> c) I, II e III. Todas as definições estão estritamente de acordo com o texto.</div>
+        </div>
+
+        <div class="question" data-q="9">
+            <p>9. (Verdadeiro ou Falso) Analise as afirmações sobre pirâmides etárias e estrutura populacional:</p>
+            <div class="propositions">
+                ( ) As pirâmides etárias dos países africanos apresentam base muito larga, indicando alta taxa de fecundidade.<br>
+                ( ) A África Subsaariana abriga países com algumas das maiores taxas de fecundidade do mundo, como Níger, Somália e República Democrática do Congo.<br>
+                ( ) O topo das pirâmides etárias africanas é muito largo, indicando altíssima expectativa de vida geral.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q9" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q9" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q9" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback9"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso: o topo é muito *estreito*, indicando baixa expectativa de vida.</div>
+        </div>
+
+        <div class="question" data-q="10">
+            <p>10. (Convencional) Qual país da África do Norte destaca-se por ter a maior expectativa de vida de todo o continente?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="0"> a) Egito</label>
+                <label><input type="radio" name="q10" value="1"> b) Argélia</label>
+                <label><input type="radio" name="q10" value="2"> c) Tunísia</label>
+                <label><input type="radio" name="q10" value="3"> d) Marrocos</label>
+            </div>
+            <div class="feedback" id="feedback10"><b>Resposta Correta:</b> b) Argélia. (O texto aponta explicitamente que a Argélia é o país da África do Norte com a maior expectativa de vida do continente todo).</div>
+        </div>
+
+        <div class="question" data-q="11">
+            <p>11. (Itens I, II e III) Sobre a população em idade ativa e o mercado de trabalho na África, avalie:</p>
+            <div class="propositions">
+                I. A população em idade ativa (10 a 65 anos) está crescendo em todos os países do continente.<br>
+                II. Os jovens representam cerca de 60% dos desempregados segundo dados do Banco Mundial.<br>
+                III. Quando conseguem trabalho, a esmagadora maioria dos jovens encontra-se na economia formal com plenos direitos trabalhistas.
+            </div>
+            <p>Está correto apenas o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="0"> a) I e II</label>
+                <label><input type="radio" name="q11" value="1"> b) II e III</label>
+                <label><input type="radio" name="q11" value="2"> c) I e III</label>
+                <label><input type="radio" name="q11" value="3"> d) I, II e III</label>
+            </div>
+            <div class="feedback" id="feedback11"><b>Resposta Correta:</b> a) I e II. O item III é incorreto pois o texto afirma que a esmagadora maioria está no setor da economia *informal*.</div>
+        </div>
+
+        <div class="question" data-q="12">
+            <p>12. (Verdadeiro ou Falso) Julgue os conceitos sobre pobreza extrema na África:</p>
+            <div class="propositions">
+                ( ) Segundo a ONU, dos 18 países do mundo com parte significativa da população vivendo em extrema pobreza, 14 estão na África.<br>
+                ( ) As economias africanas são frequentemente baseadas na exploração de recursos naturais com lucros que ficam apenas para elites ou empresas estrangeiras.<br>
+                ( ) Não há bairros precários ou favelas nas grandes metrópoles africanas, como Lagos.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q12" value="0"> a) V - V - V</label>
+                <label><input type="radio" name="q12" value="1"> b) V - V - F</label>
+                <label><input type="radio" name="q12" value="2"> c) F - V - F</label>
+                <label><input type="radio" name="q12" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback12"><b>Resposta Correta:</b> b) V - V - F. O terceiro item é falso; o texto cita explicitamente o bairro pobre de Makoko em Lagos, com moradias precárias.</div>
+        </div>
+
+        <div class="question" data-q="13">
+            <p>13. (Convencional) Qual região africana apresenta a situação mais crítica em relação à subnutrição e insegurança alimentar, segundo a FAO?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="0"> a) África do Norte</label>
+                <label><input type="radio" name="q13" value="1"> b) África Subsaariana (com destaque para a África Oriental)</label>
+                <label><input type="radio" name="q13" value="2"> c) Arquipélago de Maurício</label>
+                <label><input type="radio" name="q13" value="3"> d) Seychelles</label>
+            </div>
+            <div class="feedback" id="feedback13"><b>Resposta Correta:</b> b) África Subsaariana (com destaque para a África Oriental).</div>
+        </div>
+
+        <div class="question" data-q="14">
+            <p>14. (Itens I, II e III) Sobre os problemas alimentares e climáticos na África, analise:</p>
+            <div class="propositions">
+                I. Eventos climáticos como secas, inundações e chuvas irregulares contribuem severamente para crises alimentares na região.<br>
+                II. A região do Sahel é apontada como uma das mais ameaçadas pelas mudanças climáticas.<br>
+                III. Os problemas de fome e desnutrição na África são isolados de questões climáticas e econômicas.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q14" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q14" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q14" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback14"><b>Resposta Correta:</b> a) Apenas I e II. O item III está incorreto pois a fome está intimamente ligada à pobreza e agravada pelas mudanças climáticas.</div>
+        </div>
+
+        <div class="question" data-q="15">
+            <p>15. (Verdadeiro ou Falso) Julgue os itens sobre saúde e endemias na África:</p>
+            <div class="propositions">
+                ( ) Das 38,4 milhões de pessoas vivendo com AIDS no mundo, mais da metade (20,6 milhões) estão na África Subsaariana.<br>
+                ( ) A África do Sul possui milhões de pessoas vivendo com HIV, mas tem apresentado aumento no tratamento e queda de óbitos.<br>
+                ( ) Doenças tropicais como malária, febre amarela, ebola e MPOX não possuem qualquer relevância epidemiológica no continente.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q15" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q15" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q15" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback15"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois o texto destaca essas doenças como muito comuns e graves no continente.</div>
+        </div>
+
+        <div class="question" data-q="16">
+            <p>16. (Convencional) Qual é o único país do continente africano que apresenta IDH classificado como "muito alto"?</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="0"> a) África do Sul</label>
+                <label><input type="radio" name="q16" value="1"> b) Seychelles</label>
+                <label><input type="radio" name="q16" value="2"> c) Argélia</label>
+                <label><input type="radio" name="q16" value="3"> d) Egito</label>
+            </div>
+            <div class="feedback" id="feedback16"><b>Resposta Correta:</b> b) Seychelles. (Seychelles apresenta IDH de 0,802, figurando no IDH muito alto).</div>
+        </div>
+
+        <div class="question" data-q="17">
+            <p>17. (Itens I, II e III) Sobre os fatores que influenciam o IDH dos países africanos, analise:</p>
+            <div class="propositions">
+                I. Problemas nas áreas de saúde, educação e renda refletem diretamente nos baixos IDHs de vários países.<br>
+                II. Conflitos internos e guerras civis afetam severamente o IDH, sendo que os países com IDH mais alto não estão envolvidos nesses conflitos armados.<br>
+                III. O IDH de todos os países africanos situa-se obrigatoriamente na faixa de desenvolvimento muito alto.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="0"> a) I, II e III</label>
+                <label><input type="radio" name="q17" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q17" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q17" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback17"><b>Resposta Correta:</b> b) Apenas I e II. O item III está incorreto pois há países com IDH baixo (como Nigéria, Ruanda, Togo).</div>
+        </div>
+
+        <div class="question" data-q="18">
+            <p>18. (Verdadeiro ou Falso) Analise as proposições sobre a história das migrações na África:</p>
+            <div class="propositions">
+                ( ) A África é considerada o berço da civilização e de lá partiram as primeiras emigrações humanas para outros continentes.<br>
+                ( ) O tráfico de pessoas escravizadas durante as Grandes Navegações representou um fluxo emigratório forçado rumo à América.<br>
+                ( ) O Império Árabe não exerceu influência demográfica ou étnica na porção norte da África.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q18" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q18" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q18" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q18" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback18"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois os árabes conquistaram a região a partir de 647, tornando a etnia árabe a maioria no norte da África.</div>
+        </div>
+
+        <div class="question" data-q="19">
+            <p>19. (Convencional) Devido ao alto índice de pobreza, poucas perspectivas econômicas e conflitos, a África atua majoritariamente como:</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="0"> a) Uma zona atrativa de imigração mundial de alta renda.</label>
+                <label><input type="radio" name="q19" value="1"> b) Uma zona repulsora de migrantes (emigração).</label>
+                <label><input type="radio" name="q19" value="2"> c) Um território totalmente isolado sem fluxos migratórios externos.</label>
+                <label><input type="radio" name="q19" value="3"> d) Um polo exclusivo de imigração asiática e oceânica.</label>
+            </div>
+            <div class="feedback" id="feedback19"><b>Resposta Correta:</b> b) Uma zona repulsora de migrantes (emigração).</div>
+        </div>
+
+        <div class="question" data-q="20">
+            <p>20. (Itens I, II e III) Sobre os fluxos de emigrantes africanos em direção a outros continentes, avalie:</p>
+            <div class="propositions">
+                I. Os países desenvolvidos, especialmente os antigos colonizadores, são os mais procurados devido a facilidades linguísticas e redes de apoio.<br>
+                II. Exemplos disso são imigrantes argelinos na França, nigerianos no Reino Unido e congoleses na Bélgica.<br>
+                III. A travessia pelo Mar Mediterrâneo em direção à Europa ocorre exclusivamente de forma legalizada e segura por transatlânticos.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q20" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q20" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q20" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback20"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso porque a maior parte entra ilegalmente utilizando embarcações precárias/superlotadas.</div>
+        </div>
+
+        <hr>
+
+        <!-- BLOCO 2: QUESTÕES 21 A 40 -->
+        <h2>Parte 2: Migrações Internas, Refugiados e Questões Regionais</h2>
+
+        <div class="question" data-q="21">
+            <p>21. (Convencional) Qual tipo de migração interna destaca-se com maior intensidade dentro dos países africanos, motivada pela crise no campo e questões ambientais?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="0"> a) Êxodo rural</label>
+                <label><input type="radio" name="q21" value="1"> b) Movimento pendular metropolitano ferroviário diário</label>
+                <label><input type="radio" name="q21" value="2"> c) Migração intercontinental reversa da Europa para a África</label>
+                <label><input type="radio" name="q21" value="3"> d) Deslocamento exclusivo de capitais litorâneas para o deserto</label>
+            </div>
+            <div class="feedback" id="feedback21"><b>Resposta Correta:</b> a) Êxodo rural.</div>
+        </div>
+
+        <div class="question" data-q="22">
+            <p>22. (Itens I, II e III) Sobre as migrações internas entre países africanos, analise:</p>
+            <div class="propositions">
+                I. Há fluxos do tipo rural-rural em busca de terras ou atividades ligadas ao extrativismo mineral e garimpo.<br>
+                II. Ocorrem também deslocamentos urbano-urbano rumo a cidades maiores e mais ricas.<br>
+                III. Milhões de africanos vivem em outro país do próprio continente africano.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q22" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q22" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q22" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback22"><b>Resposta Correta:</b> c) I, II e III. Todas as descrições constam no texto oficial.</div>
+        </div>
+
+        <div class="question" data-q="23">
+            <p>23. (Verdadeiro ou Falso) Julgue os itens sobre as características regionais das migrações na África:</p>
+            <div class="propositions">
+                ( ) A África do Norte é a região com maior movimentação de migrantes com predominância de emigração para outros continentes (como a Europa).<br>
+                ( ) Na África Oriental e na África Ocidental há grande movimentação de migrantes, principalmente dentro da própria região.<br>
+                ( ) Não há circulação de migrantes nas regiões Central e Austral da África.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q23" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q23" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q23" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q23" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback23"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois o texto indica certo equilíbrio entre migrações na região e para outras regiões do continente na África Austral e Central.</div>
+        </div>
+
+        <div class="question" data-q="24">
+            <p>24. (Convencional) O que define conceitualmente um refugiado, conforme abordado no texto?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="0"> a) Pessoa que viaja exclusivamente por motivos de turismo e lazer internacional.</label>
+                <label><input type="radio" name="q24" value="1"> b) Pessoa que saiu forçosamente de seu país de origem por perseguição (étnica, política, religiosa) ou por correr risco de morte (questões climáticas, conflitos).</label>
+                <label><input type="radio" name="q24" value="2"> c) Trabalhador contratado temporariamente por multinacionais estrangeiras.</label>
+                <label><input type="radio" name="q24" value="3"> d) Cidadão que muda de bairro dentro da mesma cidade por motivos residenciais.</label>
+            </div>
+            <div class="feedback" id="feedback24"><b>Resposta Correta:</b> b) Pessoa que saiu forçosamente de seu país de origem por perseguição...</div>
+        </div>
+
+        <div class="question" data-q="25">
+            <p>25. (Itens I, II e III) Sobre refugiados e deslocados internos na África, analise:</p>
+            <div class="propositions">
+                I. O Sudão do Sul, a República Democrática do Congo e o Sudão destacam-se entre os países que mais geraram refugiados.<br>
+                II. Deslocados internos são pessoas forçadas a sair de seu local de origem, mas que continuam dentro de seus próprios países.<br>
+                III. Uganda destaca-se mundialmente no abrigo de um grande número de refugiados.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q25" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q25" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q25" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback25"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações estão corretas e fundamentadas no texto.</div>
+        </div>
+
+        <div class="question" data-q="26">
+            <p>26. (Verdadeiro ou Falso) Julgue as afirmações sobre demografia e economia africana:</p>
+            <div class="propositions">
+                ( ) O forte crescimento populacional africano traz grandes desafios para a garantia de serviços básicos, como educação e saúde.<br>
+                ( ) A proporção de jovens na população africana é baixa, predominando adultos e idosos em toda a África Subsaariana.<br>
+                ( ) O jogo digital "Salaam", criado por um refugiado, retrata as dificuldades de sobrevivência, busca por água e energia em contextos de campos de refugiados.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q26" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q26" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q26" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q26" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback26"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso pois a população africana é eminentemente jovem.</div>
+        </div>
+
+        <div class="question" data-q="27">
+            <p>27. (Convencional) Qual região da África apresenta pirâmides etárias com base muito larga devido a altíssimas taxas de fecundidade?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="0"> a) África Subsaariana</label>
+                <label><input type="radio" name="q27" value="1"> b) Europa Ocidental</label>
+                <label><input type="radio" name="q27" value="2"> c) América do Norte</label>
+                <label><input type="radio" name="q27" value="3"> d) Extremo Oriente</label>
+            </div>
+            <div class="feedback" id="feedback27"><b>Resposta Correta:</b> a) África Subsaariana.</div>
+        </div>
+
+        <div class="question" data-q="28">
+            <p>28. (Itens I, II e III) Sobre os desafios educacionais e de saúde decorrentes da estrutura etária, analise:</p>
+            <div class="propositions">
+                I. Com a maior parte da população jovem, há forte pressão para expandir o acesso à educação de qualidade.<br>
+                II. Os sistemas escolares e de saúde necessitam de investimentos urgentes para absorver o crescimento da população jovem.<br>
+                III. As taxas de fecundidade na África têm se mantido estagnadas sem qualquer alteração decrescente histórica.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q28" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q28" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q28" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback28"><b>Resposta Correta:</b> a) Apenas I e II. O item III é incorreto pois o texto afirma que as taxas de fecundidade diminuíram nos últimos anos.</div>
+        </div>
+
+        <div class="question" data-q="29">
+            <p>29. (Verdadeiro ou Falso) Avalie os dados demográficos e econômicos das tabelas apresentadas:</p>
+            <div class="propositions">
+                ( ) A Nigéria possui população superior a 218 milhões de habitantes segundo os dados da tabela do IBGE citada.<br>
+                ( ) A Etiópia apresenta população superior a 123 milhões de habitantes.<br>
+                ( ) O crescimento populacional da Tanzânia registrado na tabela é inferior a 1%.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q29" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q29" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q29" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q29" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback29"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois o crescimento da Tanzânia listado é de 3,0%.</div>
+        </div>
+
+        <div class="question" data-q="30">
+            <p>30. (Convencional) De acordo com o texto, qual é o principal motivo apontado para o rápido processo de urbanização na África associado aos problemas urbanos?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="0"> a) O intenso êxodo rural impulsionado por crises econômicas no campo e fatores ambientais.</label>
+                <label><input type="radio" name="q30" value="1"> b) A imigração em massa de populações europeias para o interior rural.</label>
+                <label><input type="radio" name="q30" value="2"> c) A desativação completa de todas as metrópoles do litoral.</label>
+                <label><input type="radio" name="q30" value="3"> d) A obrigatoriedade legal de moradia urbana imposta por governos centrais.</label>
+            </div>
+            <div class="feedback" id="feedback30"><b>Resposta Correta:</b> a) O intenso êxodo rural impulsionado por crises econômicas no campo e fatores ambientais.</div>
+        </div>
+
+        <div class="question" data-q="31">
+            <p>31. (Itens I, II e III) Sobre a distribuição demográfica e geografia física do povoamento africano, analise:</p>
+            <div class="propositions">
+                I. As margens do Rio Nilo registram população relativa bastante elevada, especialmente no Egito.<br>
+                II. O Deserto da Namíbia e o Kalahari configuram-se como áreas de densidade demográfica muito baixa.<br>
+                III. As capitais e maiores cidades africanas localizam-se predominantemente no litoral ou nas margens de grandes rios.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q31" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q31" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q31" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback31"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações espaciais estão corretas conforme o texto.</div>
+        </div>
+
+        <div class="question" data-q="32">
+            <p>32. (Verdadeiro ou Falso) Julgue os itens sobre os índices de IDH e países líderes no ranking africano:</p>
+            <div class="propositions">
+                ( ) Seychelles e Ilhas Maurício ocupam posições de destaque com IDH muito alto e alto, respectivamente.<br>
+                ( ) A Argélia e a Tunísia possuem indicadores de IDH na categoria alta.<br>
+                ( ) Todos os países africanos possuem IDH superior a 0,850.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q32" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q32" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q32" value="2"> c) F - V - F</label>
+                <label><input type="radio" name="q32" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback32"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois há vários países na faixa de IDH baixo (como Nigéria, Ruanda, Togo com cerca de 0,54).</div>
+        </div>
+
+        <div class="question" data-q="33">
+            <p>33. (Convencional) O que indica o topo estreito nas pirâmides etárias dos países da África Subsaariana?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="0"> a) Elevada expectativa de vida e população idosa supernumerária.</label>
+                <label><input type="radio" name="q33" value="1"> b) Baixa expectativa de vida ao nascer decorrente de problemas de saúde, fome, epidemias e conflitos.</label>
+                <label><input type="radio" name="q33" value="2"> c) Ausência total de crianças na faixa de base.</label>
+                <label><input type="radio" name="q33" value="3"> d) Crescimento econômico estabilizado em nível industrial avançado.</label>
+            </div>
+            <div class="feedback" id="feedback33"><b>Resposta Correta:</b> b) Baixa expectativa de vida ao nascer decorrente de problemas de saúde, fome, epidemias e conflitos.</div>
+        </div>
+
+        <div class="question" data-q="34">
+            <p>34. (Itens I, II e III) Sobre a relação entre demografia e desenvolvimento econômico na África, avalie:</p>
+            <div class="propositions">
+                I. O forte crescimento populacional, quando não acompanhado pelo desenvolvimento econômico, acentua a pobreza e o desemprego juvenil.<br>
+                II. A maior parte dos jovens desempregados ou inseridos no mercado de trabalho acaba recorrendo ao setor de economia informal.<br>
+                III. O continente africano gera riquezas abundantes com recursos naturais cujos lucros beneficiam equitativamente toda a população local.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q34" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q34" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q34" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback34"><b>Resposta Correta:</b> a) Apenas I e II. O item III está incorreto pois o texto aponta que os lucros vão apenas para uma pequena elite e/ou empresas estrangeiras.</div>
+        </div>
+
+        <div class="question" data-q="35">
+            <p>35. (Verdadeiro ou Falso) Analise as assertivas sobre as migrações e o esporte/cultura global:</p>
+            <div class="propositions">
+                ( ) A seleção francesa campeã da Copa do Mundo de 2018 contava com jogadores nascidos em países africanos ou com pais/mães africanos em seu elenco.<br>
+                ( ) Os fluxos migratórios africanos direcionam-se exclusivamente para países sul-americanos em desenvolvimento.<br>
+                ( ) A proximidade geográfica entre a África do Norte e a Europa facilita rotas de travessia migrante pelo Mar Mediterrâneo.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q35" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q35" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q35" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q35" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback35"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso pois os principais destinos citados são Europa, América do Norte e Oriente Médio.</div>
+        </div>
+
+        <div class="question" data-q="36">
+            <p>36. (Convencional) Com base na questão 5 da atividade do texto base, qual alternativa aponta, respectivamente, a região com maior emigração do continente e a com maior migração intrarregional?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="0"> a) África Central e África Ocidental</label>
+                <label><input type="radio" name="q36" value="1"> b) África Ocidental e África Oriental</label>
+                <label><input type="radio" name="q36" value="2"> c) África Oriental e África do Norte</label>
+                <label><input type="radio" name="q36" value="3"> d) África do Norte e África Ocidental</label>
+            </div>
+            <div class="feedback" id="feedback36"><b>Resposta Correta:</b> d) África do Norte e África Ocidental. (Conforme gabarito da atividade 5 do texto original).</div>
+        </div>
+
+        <div class="question" data-q="37">
+            <p>37. (Itens I, II e III) Sobre os reflexos da transição demográfica na África Subsaariana, analise:</p>
+            <div class="propositions">
+                I. Países como Nigéria e República Democrática do Congo encontram-se em fases onde a mortalidade diminuiu, mas as taxas de natalidade continuam elevadas.<br>
+                II. Esse descompasso eleva temporariamente o crescimento vegetativo em relação ao início do processo.<br>
+                III. Todos os países da África Subsaariana já concluíram a transição demográfica e possuem crescimento próximo de zero.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q37" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q37" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q37" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback37"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso pois nenhum país africano concluiu a transição demográfica.</div>
+        </div>
+
+        <div class="question" data-q="38">
+            <p>38. (Verdadeiro ou Falso) Julgue os conceitos de transição demográfica e expectativas populacionais futuras:</p>
+            <div class="propositions">
+                ( ) Estudo publicado na revista *The Lancet* indicou que, até o final do século, grande parte dos países do mundo terá fecundidade abaixo da reposição, gerando interesse analítico sobre o crescimento demográfico na África Subsaariana.<br>
+                ( ) A população da África está projetada para diminuir drasticamente nas próximas duas décadas, esvaziando o continente.<br>
+                ( ) Metade da população africana terá menos de 25 anos em projeções para 2050.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q38" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q38" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q38" value="2"> c) F - F - V</label>
+                <label><input type="radio" name="q38" value="3"> d) F - V - V</label>
+            </div>
+            <div class="feedback" id="feedback38"><b>Resposta Correta:</b> b) V - F - V. O segundo item é falso pois o continente duplicará sua população e não se esvaziará.</div>
+        </div>
+
+        <div class="question" data-q="39">
+            <p>39. (Convencional) Qual é o principal fator demográfico responsável pelo intenso crescimento populacional verificado na África contemporânea?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="0"> a) O elevado crescimento vegetativo (altas taxas de natalidade combinadas com queda de mortalidade).</label>
+                <label><input type="radio" name="q39" value="1"> b) A imigração maciça de milhões de europeus e asiáticos para o território africano.</label>
+                <label><input type="radio" name="q39" value="2"> c) A estabilização total da fecundidade abaixo do nível de reposição.</label>
+                <label><input type="radio" name="q39" value="3"> d) O aumento expressivo da expectativa de vida para mais de 100 anos em média.</label>
+            </div>
+            <div class="feedback" id="feedback39"><b>Resposta Correta:</b> a) O elevado crescimento vegetativo (altas taxas de natalidade combinadas com queda de mortalidade).</div>
+        </div>
+
+        <div class="question" data-q="40">
+            <p>40. (Itens I, II e III) Concluindo os aspectos humanos da África estudados no texto, avalie:</p>
+            <div class="propositions">
+                I. A África possui enorme riqueza cultural, mas convive com grandes contrastes socioeconômicos e desafios demográficos marcantes.<br>
+                II. Questões como fome, subnutrição, epidemias e conflitos armados impactam diretamente a qualidade de vida e a expectativa de vida em partes do continente.<br>
+                III. Os fluxos migratórios (internos, intrarregionais e internacionais) refletem as buscadas por melhores condições de sobrevivência e fuga de conflitos.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q40" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q40" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q40" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback40"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações sintetizam perfeitamente o panorama geral apresentado no texto.</div>
+        </div>
+
+        <button type="button" class="btn-enviar" onclick="corrigirQuiz()">Enviar e Conferir Respostas</button>
+        <button type="button" class="btn-copiar" id="btnCopiar" onclick="copiarResultados()">Copiar Resultado para Envio</button>
+        <div id="avisoCopia">Texto copiado com sucesso!</div>
+    </form>
+
+    <script>
+        // Gabarito correspondente aos índices corretos de cada questão (0 a 3) baseado exclusivamente no texto fornecido
+        const gabarito = [1, 3, 0, 1, 0, 1, 2, 2, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 2, 0, 1, 2, 0, 0, 0, 0, 0, 2, 0, 1, 0, 2, 3, 0, 1, 0, 2];
+
+        function corrigirQuiz() {
+            let acertos = 0;
+            let totalRespondidas = 0;
+
+            for (let i = 1; i <= 40; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let respondida = false;
+                let userAnswer = -1;
+
+                for (let r = 0; r < radios.length; r++) {
+                    if (radios[r].checked) {
+                        respondida = true;
+                        userAnswer = parseInt(radios[r].value);
+                        break;
+                    }
+                }
+
+                const feedbackDiv = document.getElementById('feedback' + i);
+                feedbackDiv.style.display = 'block';
+
+                if (respondida) {
+                    totalRespondidas++;
+                    if (userAnswer === gabarito[i - 1]) {
+                        acertos++;
+                        feedbackDiv.style.borderLeftColor = '#27ae60';
+                    } else {
+                        feedbackDiv.style.borderLeftColor = '#c0392b';
+                    }
+                } else {
+                    feedbackDiv.style.borderLeftColor = '#f39c12';
+                }
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `<h2>Resultado Final</h2><p>Você acertou <b>${acertos}</b> de <b>40</b> questões (${((acertos/40)*100).toFixed(1)}%).</p>`;
+            
+            document.getElementById('btnCopiar').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function copiarResultados() {
+            const resultadoTexto = document.getElementById('resultado').innerText;
+            navigator.clipboard.writeText(resultadoTexto).then(() => {
+                const aviso = document.getElementById('avisoCopia');
+                aviso.style.display = 'block';
+                setTimeout(() => { aviso.style.display = 'none'; }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
