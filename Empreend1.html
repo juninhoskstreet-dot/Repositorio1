@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário: Marketing, Redes Sociais e A Arte do Pitch (20 Questões)</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; text-align: center; }
+        .question { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .question p { font-weight: bold; }
+        .options { margin-left: 20px; }
+        .options label { display: block; margin-bottom: 8px; cursor: pointer; padding: 4px; border-radius: 4px; }
+        .propositions { background: #fdfdfd; border-left: 3px solid #7f8c8d; padding: 10px; margin: 10px 0; font-size: 14px; }
+        .feedback { display: none; margin-top: 10px; padding: 10px; background: #eef2f3; border-left: 4px solid #2980b9; font-size: 14px; border-radius: 4px; }
+        #resultado { display: none; background: #e2f0d9; border: 2px solid #385723; padding: 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
+        .btn-enviar, .btn-copiar { display: block; width: 100%; color: white; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
+        .btn-enviar { background: #2c3e50; }
+        .btn-enviar:hover { background: #34495e; }
+        .btn-copiar { background: #27ae60; display: none; }
+        .btn-copiar:hover { background: #219653; }
+        #avisoCopia { color: #27ae60; font-weight: bold; display: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Questionário: Os 4 Ps, Marketing Digital e A Arte do Pitch</h1>
+    <hr>
+
+    <div id="resultado"></div>
+
+    <form id="quizForm">
+        <!-- BLOCO 1: OS 4 PS DO MARKETING -->
+        <h2>Parte 1: Os 4 Ps do Marketing (Aulas 17-18)</h2>
+
+        <div class="question" data-q="1">
+            <p>1. (Convencional) Quem criou o conceito do Composto de Marketing, mundialmente conhecido como os 4 Ps?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="0"> a) Philip Kotler e E. Jerome McCarthy</label>
+                <label><input type="radio" name="q1" value="1"> b) Lual Mayen</label>
+                <label><input type="radio" name="q1" value="2"> c) Martina Schwikowski</label>
+                <label><input type="radio" name="q1" value="3"> d) Steve Jobs</label>
+            </div>
+            <div class="feedback" id="feedback1"><b>Resposta Correta:</b> a) Philip Kotler e E. Jerome McCarthy. (McCarthy criou e Kotler popularizou).</div>
+        </div>
+
+        <div class="question" data-q="2">
+            <p>2. (Itens I, II e III) Sobre os pilares que compõem os 4 Ps do Marketing, analise as proposições:</p>
+            <div class="propositions">
+                I. O Produto refere-se ao bem tangível ou serviço oferecido, incluindo design, qualidade e diferenciais competitivos.<br>
+                II. O Preço resume-se apenas a somar os custos e jogar uma margem de lucro fixa, desconsiderando o mercado.<br>
+                III. A Praça está relacionada a onde e como o produto será disponibilizado para o consumidor final (distribuição e logística).
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q2" value="1"> b) Apenas I e III</label>
+                <label><input type="radio" name="q2" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q2" value="3"> d) I, II e III</label>
+            </div>
+            <div class="feedback" id="feedback2"><b>Resposta Correta:</b> b) Apenas I e III. O item II é falso porque o texto afirma explicitamente que precificar *não* significa apenas somar custos, mas envolve analisar valor percebido e concorrência.</div>
+        </div>
+
+        <div class="question" data-q="3">
+            <p>3. (Verdadeiro ou Falso) Julgue os itens a seguir sobre a dinâmica dos 4 Ps:</p>
+            <div class="propositions">
+                ( ) A Promoção envolve todas as estratégias de comunicação utilizadas para divulgar o produto e atrair o público.<br>
+                ( ) Os 4 Ps funcionam como engrenagens de um relógio: se um deles estiver desalinhado, o negócio poderá falhar no mercado.<br>
+                ( ) Um preço muito baixo nunca afeta as vendas e não transmite nenhuma percepção de qualidade ao consumidor.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q3" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q3" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q3" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback3"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso pois o texto diz que um preço muito baixo pode passar a ideia de péssima qualidade.</div>
+        </div>
+
+        <div class="question" data-q="4">
+            <p>4. (Convencional) O que engloba o pilar "Praça" na estrutura do composto de marketing?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="0"> a) Apenas a escolha de cores da embalagem do produto.</label>
+                <label><input type="radio" name="q4" value="1"> b) A localização física das lojas, canais de vendas online, logística de entrega e gestão de estoques.</label>
+                <label><input type="radio" name="q4" value="2"> c) Os descontos e cupons de promoções de vendas na televisão.</label>
+                <label><input type="radio" name="q4" value="3"> d) A definição do salário dos funcionários da empresa.</label>
+            </div>
+            <div class="feedback" id="feedback4"><b>Resposta Correta:</b> b) A localização física das lojas, canais de vendas online, logística de entrega e gestão de estoques.</div>
+        </div>
+
+        <div class="question" data-q="5">
+            <p>5. (Itens I, II e III) Sobre o papel da publicidade e dos 4 Ps, analise:</p>
+            <div class="propositions">
+                I. A publicidade é apenas uma pequena fatia de uma estratégia de marketing muito maior.<br>
+                II. O quarto P (Promoção) inclui publicidade, assessoria de imprensa, eventos, promoções de vendas e marketing digital.<br>
+                III. O mix de marketing descarta completamente a necessidade de planejamento de canais de distribuição.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q5" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q5" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q5" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback5"><b>Resposta Correta:</b> a) Apenas I e II. O item III está incorreto pois a Praça (distribuição) é fundamental no composto.</div>
+        </div>
+
+        <hr>
+
+        <!-- BLOCO 2: MARKETING DIGITAL E REDES SOCIAIS -->
+        <h2>Parte 2: Marketing Digital e Redes Sociais (Aulas 19-20)</h2>
+
+        <div class="question" data-q="6">
+            <p>6. (Convencional) Qual é a diferença fundamental entre a comunicação do marketing tradicional (TV, rádio e jornais impressos) e a do Marketing Digital?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="0"> a) O marketing tradicional é uma via de mão dupla interativa, enquanto o digital é passivo.</label>
+                <label><input type="radio" name="q6" value="1"> b) O marketing tradicional era uma via de mão única onde o público apenas consumia passivamente, enquanto o digital tornou-se uma conversa de mão dupla e interativa.</label>
+                <label><input type="radio" name="q6" value="2"> c) Não há nenhuma diferença metodológica entre os dois modelos.</label>
+                <label><input type="radio" name="q6" value="3"> d) O marketing digital abole o uso de conteúdos em vídeo e foca apenas em panfletos de papel.</label>
+            </div>
+            <div class="feedback" id="feedback6"><b>Resposta Correta:</b> b) O marketing tradicional era uma via de mão única... enquanto o digital tornou-se uma conversa de mão dupla.</div>
+        </div>
+
+        <div class="question" data-q="7">
+            <p>7. (Itens I, II e III) Sobre o Marketing de Conteúdo nas redes sociais, analise:</p>
+            <div class="propositions">
+                I. Estar presente nas redes sociais resume-se a postar panfletos virtuais com fotos de produtos e preços o tempo todo.<br>
+                II. O novo marketing baseia-se na criação de conteúdo de valor, como dicas, vídeos educativos e bastidores.<br>
+                III. O Marketing Digital permite mensurar resultados e segmentar o público-alvo com muito mais precisão que panfletos impressos.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q7" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q7" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q7" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback7"><b>Resposta Correta:</b> b) Apenas II e III. O item I é falso pois o texto ressalta que estar nas redes não é apenas postar panfletos virtuais o tempo todo, mas sim criar conteúdo de valor.</div>
+        </div>
+
+        <div class="question" data-q="8">
+            <p>8. (Verdadeiro ou Falso) Julgue os itens sobre ética e responsabilidade no ambiente digital:</p>
+            <div class="propositions">
+                ( ) A exposição digital exige autenticidade e transparência, pois o público percebe rapidamente se uma empresa é artificial.<br>
+                ( ) O relacionamento nas redes sociais dispensa qualquer agilidade no atendimento ao cliente.<br>
+                ( ) O Marketing Digital democratizou as vendas, permitindo que um pequeno negócio escolar bem posicionado tenha grande impacto.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q8" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q8" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q8" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback8"><b>Resposta Correta:</b> b) V - F - V. O segundo item é falso porque o texto aponta que o atendimento exige agilidade e respeito aos dados e privacidade.</div>
+        </div>
+
+        <div class="question" data-q="9">
+            <p>9. (Convencional) O que diferencia a mensuração de campanhas impressas tradicionais em relação ao ambiente digital?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="0"> a) No digital é possível direcionar mensagens exatas a públicos específicos e medir em tempo real cliques e conversões.</label>
+                <label><input type="radio" name="q9" value="1"> b) O meio impresso fornece dados detalhados por segundo sobre quem leu o papel na rua.</label>
+                <label><input type="radio" name="q9" value="2"> c) O meio digital impede qualquer tipo de métrica de visualização.</label>
+                <label><input type="radio" name="q9" value="3"> d) Não há ferramentas de anúncios segmentados na internet.</label>
+            </div>
+            <div class="feedback" id="feedback9"><b>Resposta Correta:</b> a) No digital é possível direcionar mensagens exatas a públicos específicos e medir em tempo real cliques e conversões.</div>
+        </div>
+
+        <div class="question" data-q="10">
+            <p>10. (Itens I, II e III) A atividade prática de planejamento digital sugerida para os alunos pede a criação de:</p>
+            <div class="propositions">
+                I. A definição do público-alvo digital.<br>
+                II. A criação de 3 posts/vídeos de conteúdo (educativo, bastidores e oferta).<br>
+                III. A escolha de hashtags estratégicas para engajamento.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q10" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q10" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q10" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback10"><b>Resposta Correta:</b> c) I, II e III. Todos esses pontos constam explicitamente na Ficha de Planejamento de Campanha Digital.</div>
+        </div>
+
+        <hr>
+
+        <!-- BLOCO 3: A ARTE DO PITCH -->
+        <h2>Parte 3: A Arte do Pitch (Apresentação de Impacto)</h2>
+
+        <div class="question" data-q="11">
+            <p>11. (Convencional) O que é um Elevator Pitch (ou simplesmente Pitch)?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="0"> a) Um documento técnico escrito de 50 páginas com todos os balanços contábeis da empresa.</label>
+                <label><input type="radio" name="q11" value="1"> b) Uma apresentação verbal direta, persuasiva e altamente estruturada de um projeto feita em curto espaço de tempo.</label>
+                <label><input type="radio" name="q11" value="2"> c) Uma aula teórica gravada em vídeo com duração mínima de 4 horas.</label>
+                <label><input type="radio" name="q11" value="3"> d) Um anúncio impresso fixado em elevadores comerciais.</label>
+            </div>
+            <div class="feedback" id="feedback11"><b>Resposta Correta:</b> b) Uma apresentação verbal direta, persuasiva e altamente estruturada de um projeto feita em curto espaço de tempo.</div>
+        </div>
+
+        <div class="question" data-q="12">
+            <p>12. (Itens I, II e III) Sobre os objetivos e características de um Pitch, analise:</p>
+            <div class="propositions">
+                I. O principal objetivo do Pitch é despertar o interesse e a curiosidade do ouvinte para que ele queira dar o próximo passo.<br>
+                II. Deve-se tentar falar o mais rápido possível para colocar mil informações técnicas minuciosas no tempo limite.<br>
+                III. A concisão, a clareza e o controle da ansiedade são chaves fundamentais para uma boa apresentação.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q12" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q12" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q12" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback12"><b>Resposta Correta:</b> d) Apenas I e III. O item II está incorreto pois o texto aponta que o maior erro é tentar falar rápido demais para colocar mil informações.</div>
+        </div>
+
+        <div class="question" data-q="13">
+            <p>13. (Verdadeiro ou Falso) Julgue os blocos da estrutura narrativa consagrada de um Pitch de 3 minutos:</p>
+            <div class="propositions">
+                ( ) O primeiro bloco (Gancho/Problema) utiliza pergunta impactante, história ou dado estatístico para mostrar a dor do mercado.<br>
+                ( ) O segundo bloco apresenta a Solução e Proposta de Valor como o remédio ideal para aquela dor.<br>
+                ( ) O último bloco (Call to Action) finaliza dizendo exatamente o que se deseja do ouvinte.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q13" value="0"> a) V - V - V</label>
+                <label><input type="radio" name="q13" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q13" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q13" value="3"> d) V - V - F</label>
+            </div>
+            <div class="feedback" id="feedback13"><b>Resposta Correta:</b> a) V - V - V. Todas as descrições da estrutura narrativa do pitch estão corretas.</div>
+        </div>
+
+        <div class="question" data-q="14">
+            <p>14. (Convencional) O que significa a sigla CTA (Call to Action) na estrutura final de um Pitch?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="0"> a) Custo Total Anual de produção.</label>
+                <label><input type="radio" name="q14" value="1"> b) Chamada para Ação, onde o empreendedor diz exatamente o que deseja do ouvinte (ex: parceiro para teste).</label>
+                <label><input type="radio" name="q14" value="2"> c) Campanha de Tecnologia Avançada.</label>
+                <label><input type="radio" name="q14" value="3"> d) Controle de Tráfego de Alimentos.</label>
+            </div>
+            <div class="feedback" id="feedback14"><b>Resposta Correta:</b> b) Chamada para Ação, onde o empreendedor diz exatamente o que deseja do ouvinte.</div>
+        </div>
+
+        <div class="question" data-q="15">
+            <p>15. (Itens I, II e III) Para dominar a arte de apresentar um Pitch de sucesso, o apresentador deve:</p>
+            <div class="propositions">
+                I. Treinar a linguagem corporal e manter contato visual com a plateia.<br>
+                II. Cuidar do tom de voz e controlar a ansiedade.<br>
+                III. Evitar focar em clareza, priorizando textos longos decorados sem expressão.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="0"> a) I, II e III</label>
+                <label><input type="radio" name="q15" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q15" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q15" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback15"><b>Resposta Correta:</b> b) Apenas I e II. O item III é falso porque a clareza e a concisão são fundamentais.</div>
+        </div>
+
+        <hr>
+
+        <!-- BLOCO 4: INTEGRAÇÃO E APLICAÇÃO PRÁTICA -->
+        <h2>Parte 4: Integração de Conceitos (Matriz dos 4 Ps, Digital e Pitch)</h2>
+
+        <div class="question" data-q="16">
+            <p>16. (Convencional) Na Matriz dos 4 Ps do Meu Negócio proposta nas atividades práticas, o que deve ser detalhado no pilar "Produto"?</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="0"> a) Apenas o canal de anúncios do Instagram.</label>
+                <label><input type="radio" name="q16" value="1"> b) O nome, a embalagem e o principal benefício gerado ao cliente.</label>
+                <label><input type="radio" name="q16" value="2"> c) O valor financeiro de venda e os custos fixos.</label>
+                <label><input type="radio" name="q16" value="3"> d) O roteiro de 3 minutos para os investidores.</label>
+            </div>
+            <div class="feedback" id="feedback16"><b>Resposta Correta:</b> b) O nome, a embalagem e o principal benefício gerado ao cliente.</div>
+        </div>
+
+        <div class="question" data-q="17">
+            <p>17. (Itens I, II e III) Analise as conexões entre o plano de marketing e a apresentação do Pitch:</p>
+            <div class="propositions">
+                I. O dimensionamento correto do Preço e da Praça fundamenta a seção de mercado e modelo de negócios do Pitch.<br>
+                II. A Solução apresentada no Pitch conecta-se diretamente à proposta de valor do Produto estruturado nos 4 Ps.<br>
+                III. O Marketing Digital atua como canal estratégico de promoção e atração para o negócio consolidado.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q17" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q17" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q17" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback17"><b>Resposta Correta:</b> c) I, II e III. Todos os conceitos se integram na construção do projeto empreendedor do aluno.</div>
+        </div>
+
+        <div class="question" data-q="18">
+            <p>18. (Verdadeiro ou Falso) Julgue os elementos abordados sobre a criação da presença de marca:</p>
+            <div class="propositions">
+                ( ) O mix de marketing (4 Ps) ajuda a estruturar a presença de um negócio no mercado de forma completa.<br>
+                ( ) O conceito de praça foca exclusivamente em propagandas de rádio e TV aberta.<br>
+                ( ) O pitch utiliza uma narrativa curta e estruturada para atrair parceiros ou investidores.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q18" value="0"> a) V - V - V</label>
+                <label><input type="radio" name="q18" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q18" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q18" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback18"><b>Resposta Correta:</b> b) V - F - V. O segundo item é falso pois praça refere-se à distribuição, canais de venda e logística, e não a propagandas de rádio/TV (que entram em Promoção).</div>
+        </div>
+
+        <div class="question" data-q="19">
+            <p>19. (Convencional) Qual dos seguintes itens faz parte do bloco de "Resultados/Protótipo e Equipe" em um Pitch campeão?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="0"> a) Apenas a pergunta sobre o problema de mercado.</label>
+                <label><input type="radio" name="q19" value="1"> b) Mostrar os testes já feitos, quem são os talentos por trás da ideia e os resultados obtidos.</label>
+                <label><input type="radio" name="q19" value="2"> c) O custo detalhado de impressão de panfletos de rua.</label>
+                <label><input type="radio" name="q19" value="3"> d) A escolha do logotipo da empresa concorrente.</label>
+            </div>
+            <div class="feedback" id="feedback19"><b>Resposta Correta:</b> b) Mostrar os testes já feitos, quem são os talentos por trás da ideia e os resultados obtidos.</div>
+        </div>
+
+        <div class="question" data-q="20">
+            <p>20. (Itens I, II e III) Sintetizando o aprendizado das aulas de empreendedorismo, marketing e comunicação:</p>
+            <div class="propositions">
+                I. Compreender os 4 Ps garante que o produto, preço, praça e promoção estejam alinhados ao plano comercial.<br>
+                II. O uso adequado do marketing digital fortalece o relacionamento e a comunidade em torno da marca.<br>
+                III. Saber comunicar o valor da ideia de forma sintética através do pitch transforma conceitos do papel em projetos reais.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q20" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q20" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q20" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback20"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações concluem com precisão os tópicos abordados no texto.</div>
+        </div>
+
+        <button type="button" class="btn-enviar" onclick="corrigirQuiz()">Enviar e Conferir Respostas</button>
+        <button type="button" class="btn-copiar" id="btnCopiar" onclick="copiarResultados()">Copiar Resultado para Envio</button>
+        <div id="avisoCopia">Texto copiado com sucesso!</div>
+    </form>
+
+    <script>
+        // Gabarito com os índices corretos (0 a 3) para as 20 questões
+        const gabarito = [0, 1, 0, 1, 0, 1, 1, 1, 0, 2, 1, 3, 0, 1, 1, 1, 2, 1, 1, 2];
+
+        function corrigirQuiz() {
+            let acertos = 0;
+            let totalRespondidas = 0;
+
+            for (let i = 1; i <= 20; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let respondida = false;
+                let userAnswer = -1;
+
+                for (let r = 0; r < radios.length; r++) {
+                    if (radios[r].checked) {
+                        respondida = true;
+                        userAnswer = parseInt(radios[r].value);
+                        break;
+                    }
+                }
+
+                const feedbackDiv = document.getElementById('feedback' + i);
+                feedbackDiv.style.display = 'block';
+
+                if (respondida) {
+                    totalRespondidas++;
+                    if (userAnswer === gabarito[i - 1]) {
+                        acertos++;
+                        feedbackDiv.style.borderLeftColor = '#27ae60';
+                    } else {
+                        feedbackDiv.style.borderLeftColor = '#c0392b';
+                    }
+                } else {
+                    feedbackDiv.style.borderLeftColor = '#f39c12';
+                }
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `<h2>Resultado Final</h2><p>Você acertou <b>${acertos}</b> de <b>20</b> questões (${((acertos/20)*100).toFixed(1)}%).</p>`;
+            
+            document.getElementById('btnCopiar').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function copiarResultados() {
+            const resultadoTexto = document.getElementById('resultado').innerText;
+            navigator.clipboard.writeText(resultadoTexto).then(() => {
+                const aviso = document.getElementById('avisoCopia');
+                aviso.style.display = 'block';
+                setTimeout(() => { aviso.style.display = 'none'; }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
