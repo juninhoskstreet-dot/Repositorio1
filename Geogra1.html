@@ -1,678 +1,717 @@
-<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10 border border-slate-200">
-    
-    <!-- Cabeçalho -->
-    <header class="text-center border-b border-slate-200 pb-6 mb-8">
-        <h1 class="text-2xl sm:text-4xl font-extrabold text-blue-900 tracking-tight">Geografia: Aspectos Humanos da África</h1>
-        <p class="text-sm sm:text-base text-slate-600 mt-2">Avaliação interativa completa com 30 questões baseada no conteúdo demográfico, social, econômico e migratório.</p>
-    </header>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Geografia - África: Aspectos Humanos</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --success-color: #16a34a;
+            --error-color: #dc2626;
+        }
 
-    <!-- Identificação do Aluno -->
-    <div id="student-info-container" class="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-8 shadow-sm">
-        <label for="student-name" class="block text-sm sm:text-base font-bold text-blue-900 mb-2">Digite o seu Nome Completo (Obrigatório):</label>
-        <input type="text" id="student-name" placeholder="Ex: Ana Clara Souza Lima" class="w-full px-4 py-3 rounded-lg border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white text-slate-700 font-medium text-base">
-        <p id="name-alert" class="text-xs sm:text-sm text-red-600 font-bold mt-2 hidden">⚠️ Por favor, digite o seu nome completo antes de enviar o questionário.</p>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .student-info {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .student-info label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .student-info input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .options label {
+            display: block;
+            padding: 8px 12px;
+            margin: 6px 0;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .options label:hover {
+            background: #f1f5f9;
+        }
+
+        .options input {
+            margin-right: 10px;
+        }
+
+        .feedback {
+            margin-top: 12px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .feedback.correct-fb {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .feedback.incorrect-fb {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .highlight-correct {
+            font-weight: bold;
+            color: var(--success-color) !important;
+        }
+
+        .highlight-incorrect {
+            font-weight: bold;
+            color: var(--error-color) !important;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 30px;
+        }
+
+        .btn-submit:hover {
+            background: #2563eb;
+        }
+
+        #results-container {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        #results-container h2 {
+            color: #166534;
+            margin-top: 0;
+        }
+
+        .btn-copy {
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: #15803d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Geografia - Aspectos Humanos da África</h1>
+
+    <div class="student-info" id="studentInfoBox">
+        <label for="studentName">Nome Completo do Aluno (Obrigatório):</label>
+        <input type="text" id="studentName" placeholder="Digite seu nome completo aqui..." required>
     </div>
 
-    <!-- Painel de Resultados (Oculto Inicialmente) -->
-    <div id="results-panel" class="hidden bg-slate-900 text-white rounded-2xl p-6 mb-10 text-center shadow-lg transition-all duration-300">
-        <h2 class="text-2xl font-bold mb-2">📊 Relatório de Desempenho</h2>
-        <p id="score-text" class="text-3xl font-extrabold text-emerald-400 mb-4"></p>
-        <p id="score-message" class="text-sm text-slate-300 mb-6"></p>
-        <button type="button" onclick="copyReport()" class="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-colors cursor-pointer text-base">
-            📋 Copiar Resumo para Enviar ao Professor
-        </button>
-        <p id="copy-feedback" class="text-xs text-emerald-300 font-medium mt-2 hidden">✅ Resumo copiado com sucesso para a área de transferência!</p>
+    <div id="results-container">
+        <h2>Resultado do Questionário</h2>
+        <p id="scoreText" style="font-size: 18px; font-weight: bold;"></p>
+        <button class="btn-copy" id="copyBtn" onclick="copySummary()">Copiar Resumo para Enviar ao Professor</button>
     </div>
 
-    <!-- Formulário do Quiz -->
-    <form id="quiz-form" onsubmit="handleFormSubmit(event)" class="space-y-8">
-
-        <!-- QUESTÃO 1 (V ou F) -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="1">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 1 • Verdadeiro ou Falso</span>
-            <p class="font-medium text-slate-800 mt-3 mb-4">Analise as afirmações sobre a população total e o crescimento demográfico da África:</p>
-            <div class="space-y-3 text-sm">
-                <div class="bg-white p-3 rounded-lg border border-slate-200">
-                    <p class="mb-2 text-slate-700 font-medium">1. Com cerca de 1,3 bilhão de habitantes, a África é o segundo continente mais populoso do mundo.</p>
-                    <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_1" value="V"> V</label>
-                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_1" value="F"> F</label>
-                    </div>
-                </div>
-                <div class="bg-white p-3 rounded-lg border border-slate-200">
-                    <p class="mb-2 text-slate-700 font-medium">2. O crescimento populacional da maioria dos países africanos é inferior ao registrado no Brasil.</p>
-                    <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_2" value="V"> V</label>
-                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_2" value="F"> F</label>
-                    </div>
-                </div>
+    <form id="quizForm">
+        <!-- Q1: VF -->
+        <div class="question-card" data-qtype="vf" data-answer="V,V,F,V">
+            <div class="question-title">Questão 1 (Verdadeiro ou Falso): Analise as afirmativas sobre a população africana:</div>
+            <p>I. () A África tem uma grande população, com aproximadamente 1,3 bilhão de habitantes.<br>
+            II. () Apesar de as taxas de crescimento vegetativo estarem caindo, o continente africano ainda crescerá por décadas.<br>
+            III. () Os países da África do Norte são os mais populosos e os com piores indicadores do continente.<br>
+            IV. () A população rural é maior do que a urbana, apesar da crescente urbanização do continente.</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A) V - V - F - V</label>
+                <label><input type="radio" name="q1" value="B"> B) V - F - V - F</label>
+                <label><input type="radio" name="q1" value="C"> C) F - V - V - V</label>
+                <label><input type="radio" name="q1" value="D"> D) V - V - V - F</label>
             </div>
-            <div id="feedback-1" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito:</span> 1: V | 2: F. (O crescimento africano é muito superior ao brasileiro).
-            </div>
+            <div class="feedback"><b>Explicação:</b> A África possui cerca de 1,3 bilhão de habitantes (V), continuará crescendo (V), a África do Norte possui bons indicadores comparada à Subsaariana (F no trecho de piores indicadores) e a África possui o menor percentual de população urbana do mundo, cerca de 40%, predominando a rural (V). Gabarito correto: A.</div>
         </div>
 
-        <!-- QUESTÃO 2 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="2">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 2 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é o país mais populoso do continente africano atualmente?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="a" class="mr-2"> a) Egito</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="b" class="mr-2"> b) Etiópia</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="c" class="mr-2"> c) Nigéria</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="d" class="mr-2"> d) África do Sul</label>
+        <!-- Q2: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 2: Sobre o país mais populoso da África e seus dados demográficos recentes, assinale a alternativa correta:</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A) O Egito é o país mais populoso, superando 200 milhões de habitantes.</label>
+                <label><input type="radio" name="q2" value="B"> B) A Nigéria é o país mais populoso, com mais de 200 milhões de habitantes.</label>
+                <label><input type="radio" name="q2" value="C"> C) A África do Sul concentra o maior contingente populacional da África Subsaariana com mais de 300 milhões de habitantes.</label>
+                <label><input type="radio" name="q2" value="D"> D) A Etiópia possui população inferior a 50 milhões de habitantes.</label>
             </div>
-            <div id="feedback-2" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra C.</span> A Nigéria é o país mais populoso, com mais de 200 milhões de habitantes.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A Nigéria destaca-se como o país mais populoso da África, ultrapassando a marca de 200 milhões de habitantes.</div>
         </div>
 
-        <!-- QUESTÃO 3 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="3">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 3 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é a maior cidade da África e da Nigéria?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="a" class="mr-2"> a) Cairo</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="b" class="mr-2"> b) Lagos</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="c" class="mr-2"> c) Joanesburgo</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="d" class="mr-2"> d) Nairóbi</label>
+        <!-- Q3: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="C">
+            <div class="question-title">Questão 3: Em relação ao crescimento populacional comparativo entre a África e o Brasil, o texto aponta que:</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A) O Brasil apresenta um crescimento populacional superior à maioria dos países africanos.</label>
+                <label><input type="radio" name="q3" value="B"> B) O Egito tem o maior crescimento populacional do continente, superando 4% ao ano.</label>
+                <label><input type="radio" name="q3" value="C"> C) Com exceção do Egito, os países africanos listados têm crescimento populacional cerca de 5 a 6 vezes superior ao do Brasil.</label>
+                <label><input type="radio" name="q3" value="D"> D) Todos os países africanos possuem taxa de crescimento idêntica à brasileira.</label>
             </div>
-            <div id="feedback-3" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra B.</span> Lagos possui cerca de 16 milhões de habitantes, sendo a maior cidade nigeriana e africana.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O texto destaca que o Brasil registrou 0,5% de crescimento em 2022, enquanto os países africanos (exceto o Egito) apresentam taxas superiores a 2%, sendo de 5 a 6 vezes maiores.</div>
         </div>
 
-        <!-- QUESTÃO 4 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="4">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 4 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Como se caracteriza a distribuição demográfica geral no Deserto do Saara?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="a" class="mr-2"> a) Altíssima densidade em toda a sua extensão territorial.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="b" class="mr-2"> b) Baixíssima densidade demográfica, com exceção das margens do Rio Nilo.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="c" class="mr-2"> c) Totalmente desabitada, sem nenhum tipo de povoamento ou atividade humana.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="d" class="mr-2"> d) Concentração exclusiva de megacidades industriais.</label>
+        <!-- Q4: Múltipla Escolha -->
+        <div class="question-title-wrapper"></div>
+        <div class="question-card" data-qtype="mc" data-answer="A">
+            <div class="question-title">Questão 4: Sobre a distribuição da população africana e a densidade demográfica, é correto afirmar:</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A) A região do Deserto do Saara tem baixíssima densidade demográfica, exceto nas margens do Rio Nilo.</label>
+                <label><input type="radio" name="q4" value="B"> B) A densidade demográfica média da África é extremamente alta, superando 200 hab/km².</label>
+                <label><input type="radio" name="q4" value="C"> C) O Deserto do Kalahari e a Namíbia apresentam as maiores concentrações urbanas do continente.</label>
+                <label><input type="radio" name="q4" value="D"> D) A população distribui-se de forma perfeitamente homogênea por todo o território africano.</label>
             </div>
-            <div id="feedback-4" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra B.</span> O Saara tem baixa densidade, exceto junto ao Rio Nilo e oásis.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O Saara possui baixíssima densidade, com exceção notável das margens do Rio Nilo, especialmente no Egito.</div>
         </div>
 
-        <!-- QUESTÃO 5 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="5">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 5 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Quais povos nômades tradicionais destacam-se no Deserto do Saara?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="a" class="mr-2"> a) Beduínos e tuaregues.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="b" class="mr-2"> b) b) Esquimós e inuítes.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="c" class="mr-2"> c) Aborígenes e maoris.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="d" class="mr-2"> d) Cossacos e curdos.</label>
+        <!-- Q5: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="D">
+            <div class="question-title">Questão 5: A respeito dos povos nômades do Deserto do Saara, como os berberes, beduínos e tuaregues, assinale a alternativa correta:</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A) Eles possuem grande densidade populacional e habitam exclusivamente grandes metrópoles litorâneas.</label>
+                <label><input type="radio" name="q5" value="B"> B) Perderam completamente qualquer relevância histórica nos dias atuais.</label>
+                <label><input type="radio" name="q5" value="C"> C) São grupos sedentários dedicados exclusivamente à agricultura irrigada de alta tecnologia.</label>
+                <label><input type="radio" name="q5" value="D"> D) Têm grande importância histórica na comunicação e comércio entre a África do Norte e a África Subsaariana.</label>
             </div>
-            <div id="feedback-5" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Beduínos e tuaregues são nômades fundamentais na história comercial e travessia do Saara.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Os povos nômades desempenharam importante papel histórico unindo comercialmente o norte e o sul do continente.</div>
         </div>
 
-        <!-- QUESTÃO 6 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="6">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 6 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é a porcentagem aproximada da população urbana no continente africano?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="a" class="mr-2"> a) 20%</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="b" class="mr-2"> b) 40%</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="c" class="mr-2"> c) 70%</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="d" class="mr-2"> d) 90%</label>
+        <!-- Q6: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 6: No que tange à taxa de urbanização do continente africano, o texto aponta que:</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A) A África é o continente mais urbanizado do planeta, com mais de 80% nas cidades.</label>
+                <label><input type="radio" name="q6" value="B"> B) A África é o continente com o menor percentual de população urbana do mundo, cerca de 40%.</label>
+                <label><input type="radio" name="q6" value="C"> C) O Egito tem a maioria absoluta de sua população vivendo em áreas estritamente urbanas e industriais.</label>
+                <label><input type="radio" name="q6" value="D"> D) O rápido processo de urbanização tem sido acompanhado por uma infraestrutura urbana exemplar.</label>
             </div>
-            <div id="feedback-6" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra B.</span> A África possui o menor percentual de população urbana do mundo, cerca de 40%.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A África possui cerca de 40% da população em áreas urbanas, sendo o menor percentual mundial, enfrentando desafios severos de infraestrutura.</div>
         </div>
 
-        <!-- QUESTÃO 7 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="7">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 7 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">O que significa o conceito de "crescimento vegetativo"?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="a" class="mr-2"> a) A diferença entre as taxas de natalidade e de mortalidade.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="b" class="mr-2"> b) O saldo migratório de entradas e saídas de estrangeiros.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="c" class="mr-2"> c) A taxa de expansão agrícola nos países em desenvolvimento.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="d" class="mr-2"> d) O crescimento exclusivo da população idosa urbana.</label>
+        <!-- Q7: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="C">
+            <div class="question-title">Questão 7: O conceito de "transição demográfica" refere-se a:</div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A) O deslocamento forçado de populações urbanas para o campo devido a conflitos armados.</label>
+                <label><input type="radio" name="q7" value="B"> B) A migração em massa de africanos rumo ao continente europeu pelo Mar Mediterrâneo.</label>
+                <label><input type="radio" name="q7" value="C"> C) O processo de modificação das taxas de crescimento vegetativo, natalidade e mortalidade de patamares elevados para patamares mais baixos.</label>
+                <label><input type="radio" name="q7" value="D"> D) A estabilização imediata da taxa de fecundidade abaixo de zero em todos os países da África Subsaariana.</label>
             </div>
-            <div id="feedback-7" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> É a diferença estatística entre natalidade e mortalidade.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A transição demográfica descreve a mudança de taxas altas para baixas, aproximando o crescimento vegetativo de zero.</div>
         </div>
 
-        <!-- QUESTÃO 8 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="8">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 8 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual região africana destaca-se por iniciar o processo de transição demográfica mantendo altas taxas de natalidade e reduzindo a mortalidade, resultando em explosão demográfica?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="a" class="mr-2"> a) África Subsaariana</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="b" class="mr-2"> b) Europa Ocidental</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="c" class="mr-2"> c) América do Norte</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="d" class="mr-2"> d) Oceania</label>
+        <!-- Q8: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="A">
+            <div class="question-title">Questão 8: Sobre a estrutura da população e pirâmides etárias na África, assinale a alternativa correta:</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A) As pirâmides etárias apresentam uma base muito larga, indicando alta taxa de fecundidade e população jovem.</label>
+                <label><input type="radio" name="q8" value="B"> B) O topo das pirâmides etárias é extremamente largo, indicando uma população majoritariamente idosa.</label>
+                <label><input type="radio" name="q8" value="C"> C) A África do Sul e o Níger possuem as maiores taxas de fecundidade do mundo.</label>
+                <label><input type="radio" name="q8" value="D"> D) A África do Norte apresenta taxas de fecundidade superiores às da África Subsaariana.</label>
             </div>
-            <div id="feedback-8" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> A África Subsaariana concentra países em plena fase de alta taxa de crescimento vegetativo.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A base larga reflete a alta fecundidade e a predominância de jovens, enquanto o topo estreito aponta menor expectativa de vida.</div>
         </div>
 
-        <!-- QUESTÃO 9 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="9">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 9 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">O formato típico da pirâmide etária da maioria dos países africanos possui:</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="a" class="mr-2"> a) Base muito larga e topo estreito.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="b" class="mr-2"> b) Base estreita e topo muito largo.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="c" class="mr-2"> c) Formato perfeitamente retangular.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="d" class="mr-2"> d) Ausência total de base infantil.</label>
+        <!-- Q9: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="D">
+            <div class="question-title">Questão 9: Entre os fatores que contribuem para as baixas expectativas de vida em partes da África, NÃO se pode citar:</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A"> Condições precárias de saúde e mortalidade infantil.</label>
+                <label><input type="radio" name="q9" value="B"> O problema da fome e de epidemias/endemias.</label>
+                <label><input type="radio" name="q9" value="C"> Conflitos armados e episódios de violência.</label>
+                <label><input type="radio" name="q9" value="D"> O pleno desenvolvimento de sistemas de saúde universais altamente eficazes e sem carências.</label>
             </div>
-            <div id="feedback-9" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Base larga indica muita fecundidade e juventude; topo estreito reflete menor expectativa de vida.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Sistemas de saúde universais e eficazes elevam a expectativa de vida, logo o oposto (defasagem) é que causa baixas expectativas.</div>
         </div>
 
-        <!-- QUESTÃO 10 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="10">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 10 • Itens Estruturados</span>
-            <p class="font-medium text-slate-800 mt-3 mb-2">Sobre os desafios socioeconômicos dos jovens africanos, avalie:</p>
-            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs sm:text-sm mb-3 text-slate-700">
-                <p><strong>I.</strong> Os jovens representam fatia expressiva dos desempregados na África.</p>
-                <p><strong>II.</strong> Quando conseguem ocupação, a esmagadora maioria está no setor informal.</p>
+        <!-- Q10: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 10: Sobre o desemprego e a informalidade no continente africano, o texto aponta que:</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A"> A economia formal absorve todos os jovens que entram anualmente no mercado de trabalho.</label>
+                <label><input type="radio" name="q10" value="B"> Cerca de 60% dos desempregados na África são jovens, e a esmagadora maioria dos que trabalham está na economia informal.</label>
+                <label><input type="radio" name="q10" value="C"> O desemprego é inexistente na África Subsaariana devido aos programas estatais de pleno emprego.</label>
+                <label><input type="radio" name="q10" value="D"> O setor secundário e terciário formal suprem com folga as vagas de trabalho necessárias.</label>
             </div>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="a" class="mr-2"> a) Apenas o item I está correto.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="b" class="mr-2"> b) Apenas o item II está correto.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="c" class="mr-2"> c) Ambos os itens estão corretos.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="d" class="mr-2"> d) Nenhum dos itens está correto.</label>
-            </div>
-            <div id="feedback-10" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra C.</span> O Banco Mundial aponta alto desemprego jovem e forte informalidade.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Dados do Banco Mundial indicam que os jovens representam 60% dos desempregados e a maioria dos empregados atua na informalidade.</div>
         </div>
 
-        <!-- QUESTÃO 11 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="11">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 11 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Segundo dados da ONU citados no texto, dos 18 países do mundo com parcela significativa da população em extrema pobreza (menos de um dólar diário), quantos estão na África?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="a" class="mr-2"> a) 5 países</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="b" class="mr-2"> b) 9 países</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="c" class="mr-2"> c) 14 países</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="d" class="mr-2"> d) 18 países</label>
+        <!-- Q11: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="C">
+            <div class="question-title">Questão 11: Em relação à extrema pobreza mundial e os dados da ONU, assinale a alternativa correta:</div>
+            <div class="options">
+                <label><input type="radio" name="q11" value="A"> Todos os países do mundo com extrema pobreza situam-se na América Latina.</label>
+                <label><input type="radio" name="q11" value="B"> Dos 18 países do mundo com parcela significativa da população em extrema pobreza, nenhum fica na África.</label>
+                <label><input type="radio" name="q11" value="C"> Dos 18 países do mundo com parte significativa de sua população vivendo em extrema pobreza, 14 estão na África.</label>
+                <label><input type="radio" name="q11" value="D"> A pobreza extrema foi totalmente erradicada na África Subsaariana no século XXI.</label>
             </div>
-            <div id="feedback-11" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra C.</span> 14 dos 18 países encontram-se no continente africano.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O texto aponta claramente que, dos 18 países com parcela em extrema pobreza segundo a ONU, 14 estão localizados na África.</div>
         </div>
 
-        <!-- QUESTÃO 12 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="12">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 12 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual organização internacional aponta que cerca de 20,4% da população da África vive em situação de subnutrição?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="a" class="mr-2"> a) FAO (Organização das Nações Unidas para Alimentação e Agricultura)</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="b" class="mr-2"> b) Otan</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="c" class="mr-2"> c) FMI</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="d" class="mr-2"> d) Unesco</label>
+        <!-- Q12: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="A">
+            <div class="question-title">Questão 12: Sobre o problema da fome e da subnutrição na África, segundo a FAO:</div>
+            <div class="options">
+                <label><input type="radio" name="q12" value="A"> A África Subsaariana apresenta índices de subnutrição e insegurança alimentar substancialmente superiores aos da África do Norte.</label>
+                <label><input type="radio" name="q12" value="B"> A África do Norte possui a maior taxa de subnutrição do continente, superando 40%.</label>
+                <label><input type="radio" name="q12" value="C"> A fome é um fenômeno restrito exclusivamente a áreas urbanas da África Austral.</label>
+                <label><input type="radio" name="q12" value="D"> A subnutrição foi totalmente eliminada graças ao avanço tecnológico agrícola sem intercorrências climáticas.</label>
             </div>
-            <div id="feedback-12" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Dados fornecidos pela FAO sobre crise alimentar e subnutrição.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A subnutrição e insegurança alimentar afetam de forma mais severa a África Subsaariana em comparação ao norte do continente.</div>
         </div>
 
-        <!-- QUESTÃO 13 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="13">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 13 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Quais fatores naturais agravam crônica e severamente a segurança alimentar na África Subsaariana e na região do Sahel?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="a" class="mr-2"> a) Mudanças climáticas, secas prolongadas e chuvas irregulares.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="b" class="mr-2"> b) Tsunami e terremotos constantes na bacia amazônica.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="c" class="mr-2"> c) Vulcões ativos em larga escala na tundra ártica.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="d" class="mr-2"> d) Neves perpétuas nas savanas tropicais.</label>
+        <!-- Q13: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="D">
+            <div class="question-title">Questão 13: Eventos climáticos como secas prolongadas, inundações e chuvas irregulares têm gerado crises alimentares severas em diversas regiões africanas. Entre as áreas fortemente ameaçadas pelas mudanças climáticas destaca-se:</div>
+            <div class="options">
+                <label><input type="radio" name="q13" value="A"> A bacia central do Rio Amazonas.</label>
+                <label><input type="radio" name="q13" value="B"> O sul da Europa mediterrânea.</label>
+                <label><input type="radio" name="q13" value="C"> As planícies centrais da América do Norte.</label>
+                <label><input type="radio" name="q13" value="D"> A região do Sahel e países da África Subsaariana.</label>
             </div>
-            <div id="feedback-13" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Desastres climáticos como secas e inundações afetam a produção agrícola local.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O texto destaca a região do Sahel e diversos países da África Subsaariana como altamente vulneráveis e afetados por eventos climáticos que geram crises alimentares.</div>
         </div>
 
-        <!-- QUESTÃO 14 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="14">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 14 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual país africano possui o quadro mais desafiador em relação ao HIV/AIDS, com milhões de pessoas vivendo com o vírus, embora venha ampliando o tratamento?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="a" class="mr-2"> a) África do Sul</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="b" class="mr-2"> b) Tunísia</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="c" class="mr-2"> c) Marrocos</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="d" class="mr-2"> d) Argélia</label>
+        <!-- Q14: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 14: No tocante aos problemas de saúde pública na África Subsaariana, o texto aponta que:</div>
+            <div class="options">
+                <label><input type="radio" name="q14" value="A"> A África do Sul conseguiu zerar totalmente os casos de HIV/AIDS na última década.</label>
+                <label><input type="radio" name="q14" value="B"> A África Subsaariana concentra a grande maioria das pessoas que vivem com AIDS no mundo, sendo a África do Sul um dos países mais afetados em número absoluto.</label>
+                <label><input type="radio" name="q14" value="C"> Doenças tropicais como malária e febre amarela foram erradicadas do continente.</label>
+                <label><input type="radio" name="q14" value="D"> O surto de ebola ocorreu exclusivamente no continente europeu.</label>
             </div>
-            <div id="feedback-14" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> A África do Sul possui cerca de 7,1 milhões de pessoas vivendo com HIV.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A África Subsaariana concentra mais de 20 milhões de pessoas vivendo com AIDS, e a África do Sul possui números expressivos, embora venha aumentando o tratamento.</div>
         </div>
 
-        <!-- QUESTÃO 15 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="15">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 15 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Além do HIV/AIDS, quais outras enfermidades são bastante comuns e desafiadoras nos sistemas de saúde de várias regiões africanas?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="a" class="mr-2"> a) Doenças tropicais como malária, febre amarela, ebola e MPOX.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="b" class="mr-2"> b) Doenças causadas exclusivamente pelo frio ártico e hipotermia.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="c" class="mr-2"> c) Es1corbuto e bócio alpino generalizado.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="d" class="mr-2"> d) Doença da vaca louca e febre do Vale do Silício.</label>
+        <!-- Q15: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="C">
+            <div class="question-title">Questão 15: Sobre o Índice de Desenvolvimento Humano (IDH) dos países africanos, assinale a alternativa correta:</div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="A"> Todos os países do continente possuem IDH considerado muito alto.</label>
+                <label><input type="radio" name="q15" value="B"> Nenhuma nação africana figura acima da categoria de IDH baixo.</label>
+                <label><input type="radio" name="q15" value="C"> Apenas Seychelles apresenta IDH muito alto, enquanto países como Argélia e Ilhas Maurício encontram-se nas categorias de IDH alto.</label>
+                <label><input type="radio" name="q15" value="D"> Os conflitos internos não exercem nenhuma influência sobre os índices de IDH das nações.</label>
             </div>
-            <div id="feedback-15" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Malária, febre amarela, ebola e MPOX são endemias/epidemias marcantes no continente.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Seychelles destaca-se com IDH muito alto, Ilhas Maurício e Argélia com IDH alto, e há forte correlação entre conflitos armados e menores IDHs.</div>
         </div>
 
-        <!-- QUESTÃO 16 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="16">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 16 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é o único país africano que figura no ranking mundial com IDH (Índice de Desenvolvimento Humano) considerado "muito alto"?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="a" class="mr-2"> a) Seychelles</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="b" class="mr-2"> b) Nigéria</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="c" class="mr-2"> c) Togo</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="d" class="mr-2"> d) Chade</label>
+        <!-- Q16: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="A">
+            <div class="question-title">Questão 16: O processo histórico de migrações e o popolamento da África incluem fatores como:</div>
+            <div class="options">
+                <label><input type="radio" name="q16" value="A"> A conquista árabe iniciada em 647 no norte da África, que tornou a etnia árabe predominante na região.</label>
+                <label><input type="radio" name="q16" value="B"> A imigração exclusiva de europeus para o centro da África Subsaariana no século X.</label>
+                <label><input type="radio" name="q16" value="C"> A ausência total de fluxos migratórios internos até o século XXI.</label>
+                <label><input type="radio" name="q16" value="D"> O isolamento absoluto do continente em relação à Europa e Ásia ao longo dos milênios.</label>
             </div>
-            <div id="feedback-16" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Seychelles possui IDH muito alto (0,802).
-            </div>
+            <div class="feedback"><b>Explicação:</b> O Império Árabe conquistou o norte da África a partir de 647, consolidando a origem árabe em grande parte da população da região.</div>
         </div>
 
-        <!-- QUESTÃO 17 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="17">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 17 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Que fator político e social impacta de forma direta e negativa o IDH e a estabilidade de vários países africanos?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="a" class="mr-2"> a) Conflitos armados e guerras civis internas.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="b" class="mr-2"> b) Excesso absolutíssimo de acordos de paz intercontinentais.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="c" class="mr-2"> c) Superabundância de infraestrutura espacial.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="d" class="mr-2"> d) Inexistência de fronteiras terrestres.</label>
+        <!-- Q17: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="D">
+            <div class="question-title">Questão 17: Fatores como pobreza, falta de perspectivas econômicas e conflitos intensos transformam a África em:</div>
+            <div class="options">
+                <label><input type="radio" name="q17" value="A"> Uma zona estritamente imigratória que atrai centenas de milhões de europeus anualmente.</label>
+                <label><input type="radio" name="q17" value="B"> Um continente isolado onde não ocorrem deslocamentos populacionais de nenhuma espécie.</label>
+                <label><input type="radio" name="q17" value="C"> Uma área sem qualquer ligação com antigos países colonizadores.</label>
+                <label><input type="radio" name="q17" value="D"> Uma zona repulsora de migrantes, com fluxos direcionados para a Europa, América do Norte e Oriente Médio.</label>
             </div>
-            <div id="feedback-17" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Conflitos internos e guerras civis afetam drasticamente as condições de vida e o IDH.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Por causa da pobreza e dos conflitos, a África atua como zona repulsora, enviando emigrantes para países desenvolvidos (muitas vezes antigos colonizadores).</div>
         </div>
 
-        <!-- QUESTÃO 18 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="18">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 18 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Um dos marcos históricos forçados nos fluxos migratórios africanos antigos foi:</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="a" class="mr-2"> a) O tráfico transatlântico de pessoas escravizadas rumo à América.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="b" class="mr-2"> b) A imigração voluntária em massa para a Sibéria.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="c" class="mr-2"> c) O fluxo pacífico colonial para a Antártida.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="d" class="mr-2"> d) A migração turística para o Polo Norte.</label>
+        <!-- Q18: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 18: No contexto das migrações internas africanas, destaca-se que:</div>
+            <div class="options">
+                <label><input type="radio" name="q18" value="A"> Os deslocamentos ocorrem exclusivamente de países ricos para países em desenvolvimento sem qualquer êxodo rural.</label>
+                <label><input type="radio" name="q18" value="B"> Há um intenso êxodo rural motivado por crises econômicas no campo e questões ambientais, além de fluxos rural-rural e urbano-urbano.</label>
+                <label><input type="radio" name="q18" value="C"> O número de migrantes intra-africanos é insignificante, somando menos de mil pessoas.</label>
+                <label><input type="radio" name="q18" value="D"> As migrações internas restringem-se unicamente ao território da África do Sul.</label>
             </div>
-            <div id="feedback-18" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> O tráfico de escravizados iniciado nas Grandes Navegações levou africanos para o continente americano.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Os principais fluxos são internos, englobando forte êxodo rural, migrações rural-rural em busca de terras/mineração e deslocamentos urbano-urbanos.</div>
         </div>
 
-        <!-- QUESTÃO 19 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="19">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 19 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">A partir do século VII (ano 647), a conquista promovida pelo Império Árabe no norte da África resultou em:</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="a" class="mr-2"> a) Tornar a etnia árabe a maioria populacional nos países daquela região.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="b" class="mr-2"> b) A extinção completa de qualquer atividade econômica no Mediterrâneo.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="c" class="mr-2"> c) A migração imediata de todos os povos árabes para a América do Sul.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="d" class="mr-2"> d) O isolamento absoluto entre a África e o Oriente Médio.</label>
+        <!-- Q19: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="C">
+            <div class="question-title">Questão 19: Com base na análise regional dos fluxos migratórios africanos, o texto aponta que:</div>
+            <div class="options">
+                <label><input type="radio" name="q19" value="A"> Na África Oriental prevalece exclusivamente a emigração transoceânica rumo à Oceania.</label>
+                <label><input type="radio" name="q19" value="B"> A África Central não possui nenhum tipo de movimentação de migrantes.</label>
+                <label><input type="radio" name="q19" value="C"> Na África do Norte, ao contrário das demais regiões, prevalece a emigração para outros continentes, sobretudo para a Europa.</label>
+                <label><input type="radio" name="q19" value="D"> A África Ocidental tem migrações internas nulas, focando apenas em emigrações para a Antártida.</label>
             </div>
-            <div id="feedback-19" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> A expansão árabe tornou a etnia maioria na África do Norte.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A África do Norte destaca-se pela forte emigração rumo a outros continentes (especialmente Europa) devido à proximidade geográfica e econômica.</div>
         </div>
 
-        <!-- QUESTÃO 20 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="20">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 20 • Itens Estruturados</span>
-            <p class="font-medium text-slate-800 mt-3 mb-2">Sobre os fluxos emigratórios atuais da África para países desenvolvidos:</p>
-            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs sm:text-sm mb-3 text-slate-700">
-                <p><strong>I.</strong> Muitos emigrantes buscam nações europeias antigas colonizadoras devido à facilidade linguística.</p>
-                <p><strong>II.</strong> O Mar Mediterrâneo é uma das principais rotas de travessia, frequentemente marcada por embarcações precárias.</p>
+        <!-- Q20: Múltipla Escolha -->
+        <div class="question-card" data-qtype="mc" data-answer="A">
+            <div class="question-title">Questão 20: Sobre refugiados e deslocados internos no continente africano, assinale a alternativa correta:</div>
+            <div class="options">
+                <label><input type="radio" name="q20" value="A"> O Sudão do Sul destacou-se como o país que mais gerou emigrantes em situação de refugiados em 2022, e a República Democrática do Congo apresenta milhões de deslocados internos.</label>
+                <label><input type="radio" name="q20" value="B"> Nenhum país africano abriga refugiados em seu território.</label>
+                <label><input type="radio" name="q20" value="C"> O conceito de refugiado aplica-se exclusivamente a pessoas que mudam de país por motivos puramente turísticos.</label>
+                <label><input type="radio" name="q20" value="D"> A Somália não possui nenhum registro histórico de refugiados ou deslocados internos.</label>
             </div>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="a" class="mr-2"> a) Apenas I é correto.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="b" class="mr-2"> b) Apenas II é correto.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="c" class="mr-2"> c) Ambos estão corretos.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="d" class="mr-2"> d) Ambos estão incorretos.</label>
-            </div>
-            <div id="feedback-20" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra C.</span> Conexões linguísticas com ex-metrópoles e as perigosas travessias pelo Mediterrâneo são fatos reais.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O Sudão do Sul liderou os dados de refugiados em 2022, enquanto a RD Congo destaca-se pelo elevado número de deslocados internos e refugiados.</div>
         </div>
 
-        <!-- QUESTÃO 21 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="21">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 21 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é o principal fluxo migratório interno nos países africanos?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="a" class="mr-2"> a) O êxodo rural (movimento do campo para as cidades).</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="b" class="mr-2"> b) O êxodo urbano rumo a desertos inabitados.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="c" class="mr-2"> c) A migração em massa para picos nevados.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="d" class="mr-2"> d) O retorno exclusivo de populações para florestas densas.</label>
+        <!-- Q21: Itens Estruturados -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 21: Analise os itens sobre a dinâmica populacional e urbana da África:</div>
+            <p>I. Lagos, na Nigéria, é uma das maiores cidades da África e figura entre as mais populosas do mundo.<br>
+            II. O Egito possui a maior parte de sua população vivendo em áreas estritamente industriais e hiperurbanizadas, sem presença rural.<br>
+            III. A África Subsaariana apresenta altas taxas de natalidade e de mortalidade, impulsionando o crescimento vegetativo.</p>
+            <p>Estão corretos:</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="A"> A) Apenas I e II.</label>
+                <label><input type="radio" name="q21" value="B"> B) Apenas I e III.</label>
+                <label><input type="radio" name="q21" value="C"> C) Apenas II e III.</label>
+                <label><input type="radio" name="q21" value="D"> D) I, II e III.</label>
             </div>
-            <div id="feedback-21" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Crises no campo e busca por oportunidades geram intenso êxodo rural.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O item II está incorreto pois o Egito tem a maior parte de sua população vivendo em áreas rurais. Os itens I e III estão corretos. Gabarito: B.</div>
         </div>
 
-        <!-- QUESTÃO 22 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="22">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 22 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">O que caracteriza a condição de uma pessoa "refugiada"?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="a" class="mr-2"> a) Sair forçadamente do país por perseguição (étnica, religiosa, política) ou risco de morte.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="b" class="mr-2"> b) Viajar voluntariamente a turismo por motivos de lazer nas férias.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="c" class="mr-2"> c) Mudar de casa dentro do mesmo bairro por motivos estéticos.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="d" class="mr-2"> d) Trabalhar temporariamente como diplomata governamental.</label>
+        <!-- Q22: Itens Estruturados -->
+        <div class="question-card" data-qtype="mc" data-answer="D">
+            <div class="question-title">Questão 22: Analise os itens sobre demografia e transição demográfica na África:</div>
+            <p>I. Nenhum país africano concluiu integralmente a transição demográfica até o momento.<br>
+            II. Países como Nigéria e República Democrática do Congo encontram-se em fases onde o crescimento vegetativo é elevado.<br>
+            III. Na África do Norte, as taxas de natalidade e mortalidade são mais baixas que na África Subsaariana, embora não sejam baixas em termos globais.</p>
+            <p>Estão corretos:</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="A"> A) Apenas I.</label>
+                <label><input type="radio" name="q22" value="B"> B) Apenas II.</label>
+                <label><input type="radio" name="q22" value="C"> C) Apenas I e II.</label>
+                <label><input type="radio" name="q22" value="D"> D) I, II e III.</label>
             </div>
-            <div id="feedback-22" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Refugiados fogem forçadamente devido a perseguições ou conflitos.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Todas as afirmações estão corretas de acordo com o texto base sobre a transição demográfica e suas variações regionais. Gabarito: D.</div>
         </div>
 
-        <!-- QUESTÃO 23 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="23">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 23 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual país africano destacou-se recentemente (dados de 2022) como o que mais gerou emigrantes em situação de refugiados?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="a" class="mr-2"> a) Sudão do Sul</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="b" class="mr-2"> b) Ilhas Maurício</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="c" class="mr-2"> c) Botsuana</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="d" class="mr-2"> d) Cabo Verde</label>
+        <!-- Q23: Itens Estruturados -->
+        <div class="question-card" data-qtype="mc" data-answer="A">
+            <div class="question-title">Questão 23: Analise as afirmativas sobre os desafios educacionais e etários na África:</div>
+            <p>I. A base muito larga das pirâmides etárias reflete altas taxas de fecundidade.<br>
+            II. A maior proporção de jovens exige investimentos expressivos na ampliação e na qualidade dos sistemas escolares e de saúde.<br>
+            III. A África Subsaariana possui as menores taxas de fecundidade de todo o planeta.</p>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="A"> A) Apenas I e II.</label>
+                <label><input type="radio" name="q23" value="B"> B) Apenas I e III.</label>
+                <label><input type="radio" name="q23" value="C"> C) Apenas II e III.</label>
+                <label><input type="radio" name="q23" value="D"> D) I, II e III.</label>
             </div>
-            <div id="feedback-23" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> O Sudão do Sul liderou o ranking de emissão de refugiados no continente.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A África Subsaariana possui algumas das *maiores* taxas de fecundidade do mundo, tornando o item III falso. I e II corretos. Gabarito: A.</div>
         </div>
 
-        <!-- QUESTÃO 24 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="24">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 24 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">O que diferencia um "deslocado interno" de um "refugiado"?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="a" class="mr-2"> a) O deslocado interno é forçado a sair de casa, mas permanece dentro das fronteiras de seu próprio país.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="b" class="mr-2"> b) O deslocado interno cruza sempre continentes de avião.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="c" class="mr-2"> c) O refugiado nunca sai de sua cidade natal.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="d" class="mr-2"> d) Não há nenhuma diferença legal ou conceitual.</label>
+        <!-- Q24: Itens Estruturados -->
+        <div class="question-card" data-qtype="mc" data-answer="C">
+            <div class="question-title">Questão 24: Analise os itens referentes aos problemas socioeconômicos e à fome na África:</div>
+            <p>I. A economia de diversos países baseia-se na exploração de recursos naturais cujos lucros frequentemente beneficiam apenas pequenas elites ou empresas estrangeiras.<br>
+            II. A subnutrição atinge índices superiores na África Subsaariana em comparação à África do Norte.<br>
+            III. O aquecimento global e as mudanças climáticas tendem a abrandar e eliminar totalmente os problemas de segurança alimentar na região do Sahel.</p>
+            <p>Estão corretos:</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="A"> A) Apenas I.</label>
+                <label><input type="radio" name="q24" value="B"> B) Apenas III.</label>
+                <label><input type="radio" name="q24" value="C"> C) Apenas I e II.</label>
+                <label><input type="radio" name="q24" value="D"> D) I, II e III.</label>
             </div>
-            <div id="feedback-24" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Deslocados internos não cruzam fronteiras internacionais.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O item III é falso porque as mudanças climáticas *agravam* a fome e a insegurança alimentar, e não as abrandam. I e II corretos. Gabarito: C.</div>
         </div>
 
-        <!-- QUESTÃO 25 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="25">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 25 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual região africana destaca-se pela maior movimentação de emigrantes com destino a outros continentes (principalmente Europa)?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="a" class="mr-2"> a) África do Norte</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="b" class="mr-2"> b) Antártida Africana</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="c" class="mr-2"> c) Região Insular do Pacífico</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="d" class="mr-2"> d) América Central</label>
+        <!-- Q25: Itens Estruturados -->
+        <div class="question-card" data-qtype="mc" data-answer="B">
+            <div class="question-title">Questão 25: Analise as afirmativas sobre saúde pública e IDH na África:</div>
+            <p>I. A África do Sul apresenta milhões de pessoas vivendo com HIV, mas tem registrado avanços nos tratamentos e queda de óbitos.<br>
+            II. Doenças tropicais como malária, febre amarela e dengue são desconhecidas no continente africano.<br>
+            III. O IDH dos países africanos sofre forte influência de problemas nas áreas de saúde, educação, renda e da presença de conflitos armados.</p>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="A"> A) Apenas I e II.</label>
+                <label><input type="radio" name="q25" value="B"> B) Apenas I e III.</label>
+                <label><input type="radio" name="q25" value="C"> C) Apenas II e III.</label>
+                <label><input type="radio" name="q25" value="D"> D) I, II e III.</label>
             </div>
-            <div id="feedback-25" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> A proximidade geográfica com a Europa fomenta a emigração norte-africana.
-            </div>
+            <div class="feedback"><b>Explicação:</b> O item II é falso, pois doenças tropicais (malária, febre amarela, etc.) são bastante comuns no continente. I e III corretos. Gabarito: B.</div>
         </div>
 
-        <!-- QUESTÃO 26 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="26">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 26 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Em relação às maiores economias do continente africano (África do Sul, Nigéria e Egito), qual delas possui a maior parte de sua população vivendo em áreas rurais?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="a" class="mr-2"> a) Egito</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="b" class="mr-2"> b) Nigéria</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="c" class="mr-2"> c) África do Sul</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="d" class="mr-2"> d) Nenhuma delas</label>
+        <!-- Q26: VF -->
+        <div class="question-card" data-qtype="vf" data-answer="V,F,V,F">
+            <div class="question-title">Questão 26 (Verdadeiro ou Falso): Julgue as afirmativas sobre a dinâmica populacional e urbana:</div>
+            <p>I. () Com cerca de 1,3 bilhão de habitantes, a África é o segundo continente mais populoso do planeta.<br>
+            II. () A África possui mais de 80% da sua população vivendo em metrópoles altamente industrializadas.<br>
+            III. () O crescimento populacional acelerado projeta mais de 2 bilhões de habitantes em 2050.<br>
+            IV. () O continente africano concluiu totalmente a sua transição demográfica no século passado.</p>
+            <div class="options">
+                <label><input type="radio" name="q26" value="A"> A) V - V - F - F</label>
+                <label><input type="radio" name="q26" value="B"> B) V - F - V - F</label>
+                <label><input type="radio" name="q26" value="C"> C) F - V - F - V</label>
+                <label><input type="radio" name="q26" value="D"> D) V - V - V - V</label>
             </div>
-            <div id="feedback-26" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> O Egito tem a maior parte da população vivendo no campo, enquanto Nigéria e África do Sul concentram maioria urbana.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Afirmativas I (correta, 1,3 bi, 2º mais populoso) e III (correta, projeção para 2050) são verdadeiras. II é falsa (urbanização é de cerca de 40%) e IV é falsa (nenhum país concluiu). Gabarito: B.</div>
         </div>
 
-        <!-- QUESTÃO 27 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="27">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 27 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">O que expressa o indicador de "expectativa de vida ao nascer"?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="a" class="mr-2"> a) Uma projeção de quantos anos, em média, viverá uma pessoa nascida no ano em questão.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="b" class="mr-2"> b) O número total de filhos por mulher em idade fértil.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="c" class="mr-2"> c) A quantidade exata de idosos aposentados em um país.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="d" class="mr-2"> d) A taxa anual de imigração internacional.</label>
+        <!-- Q27: VF -->
+        <div class="question-card" data-qtype="vf" data-answer="F,V,V,V">
+            <div class="question-title">Questão 27 (Verdadeiro ou Falso): Julgue os itens acerca dos aspectos demográficos regionais:</div>
+            <p>I. () A África do Norte apresenta taxas de fecundidade superiores a todas as regiões da África Subsaariana.<br>
+            II. () Argélia, Marrocos e Tunísia possuem as maiores expectativas de vida ao nascer do continente.<br>
+            III. () O Níger e a Somália registram algumas das maiores taxas de fecundidade do mundo.<br>
+            IV. () A expectativa de vida ao nascer vem crescendo na maioria dos países africanos nos últimos anos.</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="A"> A) V - V - F - F</label>
+                <label><input type="radio" name="q27" value="B"> B) F - V - V - V</label>
+                <label><input type="radio" name="q27" value="C"> C) V - F - V - V</label>
+                <label><input type="radio" name="q27" value="D"> D) F - F - V - V</label>
             </div>
-            <div id="feedback-27" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> É a esperança média de vida ao nascer baseada nas condições de saúde e mortalidade.
-            </div>
+            <div class="feedback"><b>Explicação:</b> A África do Norte tem taxas menores que a Subsaariana (I Falso). Argélia, Marrocos e Tunísia lideram a expectativa de vida (II Verdadeiro). Níger e Somália têm altíssimas taxas de fecundidade (III Verdadeiro). A expectativa de vida tem crescido (IV Verdadeiro). Gabarito: B.</div>
         </div>
 
-        <!-- QUESTÃO 28 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="28">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 28 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Quais países da África do Norte apresentam as maiores expectativas de vida e melhores indicadores nessa categoria?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="a" class="mr-2"> a) Argélia, Marrocos e Tunísia.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="b" class="mr-2"> b) Somália, Chade e Níger.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="c" class="mr-2"> c) Etiópia e Sudão do Sul.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="d" class="mr-2"> d) Madagascar e Moçambique.</label>
+        <!-- Q28: VF -->
+        <div class="question-card" data-qtype="vf" data-answer="V,V,F,V">
+            <div class="question-title">Questão 28 (Verdadeiro ou Falso): Analise as afirmações sobre economia, emprego e fome:</div>
+            <p>I. () A população em idade ativa está crescendo, mas a economia não gera vagas formais suficientes, gerando alto desemprego e informalidade.<br>
+            II. () A FAO aponta que uma parcela expressiva da população africana sofre com subnutrição e insegurança alimentar, com índices piores na África Subsaariana.<br>
+            III. () A África Subsaariana é totalmente isenta de problemas relacionados a desastres naturais ou secas.<br>
+            IV. () Vários países da África enfrentam graves crises alimentares agravadas por eventos climáticos e conflitos.</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="A"> A) V - V - F - V</label>
+                <label><input type="radio" name="q28" value="B"> V - F - V - F</label>
+                <label><input type="radio" name="q28" value="C"> C) F - V - V - F</label>
+                <label><input type="radio" name="q28" value="D"> D) V - V - V - V</label>
             </div>
-            <div id="feedback-28" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Argélia, Marrocos e Tunísia lideram os indicadores de expectativa de vida na região norte.
-            </div>
+            <div class="feedback"><b>Explicação:</b> I, II e IV são verdadeiras. A III é falsa pois a África Subsaariana sofre fortemente com secas e eventos climáticos adversos. Gabarito: A.</div>
         </div>
 
-        <!-- QUESTÃO 29 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="29">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 29 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">O jogo digital "Salaam", criado por um refugiado (Lual Mayen), tem como proposta central:</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="a" class="mr-2"> a) Mostrar aos jogadores como é viver como um refugiado, fugindo de bombas e buscando água, comida e energia.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="b" class="mr-2"> b) Promover corridas espaciais entre foguetes intergalácticos.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="c" class="mr-2"> c) Ensinar táticas de investimentos na bolsa de valores europeia.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="d" class="mr-2"> d) Construção de arranha-céus luxuosos em metrópoles desenvolvidas.</label>
+        <!-- Q29: VF -->
+        <div class="question-card" data-qtype="vf" data-answer="V,F,V,V">
+            <div class="question-title">Questão 29 (Verdadeiro ou Falso): Julgue os itens sobre IDH e saúde na África:</div>
+            <p>I. () Seychelles destaca-se no ranking mundial com IDH muito alto.<br>
+            II. () Os países com IDH alto e muito alto no continente estão frequentemente envolvidos em guerras civis prolongadas.<br>
+            III. () A África do Sul possui milhões de pessoas vivendo com HIV, representando um desafio expressivo de saúde pública.<br>
+            IV. () O quadro de pobreza generalizada em partes da região contribui diretamente para a propagação de doenças e epidemias.</p>
+            <div class="options">
+                <label><input type="radio" name="q29" value="A"> A) V - V - F - F</label>
+                <label><input type="radio" name="q29" value="B"> B) V - F - V - V</label>
+                <label><input type="radio" name="q29" value="C"> C) F - V - V - V</label>
+                <label><input type="radio" name="q29" value="D"> D) V - V - V - V</label>
             </div>
-            <div id="feedback-29" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> O jogo retrata a dura realidade de refugiados e reverte recursos para ONGs parceiras.
-            </div>
+            <div class="feedback"><b>Explicação:</b> Seychelles tem IDH muito alto (I V). O texto afirma que países com melhores IDH *não* estão envolvidos em conflitos (II F). África do Sul e HIV (III V). Pobreza e saúde (IV V). Gabarito: B.</div>
         </div>
 
-        <!-- QUESTÃO 30 -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="30">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 30 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é a principal projeção demográfica apontada para o continente africano até o ano de 2050?</p>
-            <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="a" class="mr-2"> a) A população ultrapassará os 2 bilhões de habitantes, impondo grandes desafios socioeconômicos.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="b" class="mr-2"> b) A população cairá para menos de 100 milhões de habitantes.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="c" class="mr-2"> c) O continente ficará totalmente despovoado devido a migrações.</label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="d" class="mr-2"> d) A taxa de natalidade zerará imediatamente em todos os 54 países.</label>
+        <!-- Q30: VF -->
+        <div class="question-card" data-qtype="vf" data-answer="V,V,F,V">
+            <div class="question-title">Questão 30 (Verdadeiro ou Falso): Analise as afirmativas sobre migrações e refugiados:</div>
+            <p>I. () A África é uma zona repulsora de migrantes devido à pobreza, falta de perspectivas econômicas e conflitos armados.<br>
+            II. () A África do Norte destaca-se por intensa emigração rumo a outros continentes, especialmente a Europa através do Mar Mediterrâneo.<br>
+            III. () Os fluxos migratórios na África restringem-se exclusivamente a outros continentes, não havendo migrações internas.<br>
+            IV. () O Sudão do Sul e a República Democrática do Congo destacam-se expressivamente em número de refugiados e deslocados internos.</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="A"> A) F - V - V - F</label>
+                <label><input type="radio" name="q30" value="B"> B) V - V - F - V</label>
+                <label><input type="radio" name="q30" value="C"> C) V - F - V - V</label>
+                <label><input type="radio" name="q30" value="D"> D) V - V - V - V</label>
             </div>
-            <div id="feedback-30" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
-                <span class="font-bold">Gabarito: Letra A.</span> Projeções indicam mais de 2 bilhões de habitantes até 2050.
-            </div>
+            <div class="feedback"><b>Explicação:</b> I, II e IV são verdadeiras. A III é falsa porque os principais fluxos migratórios africanos são internos (milhões de pessoas em êxodo rural e entre países do continente). Gabarito: B.</div>
         </div>
 
-        <!-- Botão de Envio -->
-        <div class="text-center pt-6">
-            <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-10 py-4 rounded-xl shadow-xl transition-all duration-200 cursor-pointer text-lg">
-                🚀 Enviar Respostas e Ver Correção Completa
-            </button>
-        </div>
-
+        <button type="button" class="btn-submit" onclick="gradeQuiz()">Enviar e Corrigir Questionário</button>
     </form>
 </div>
 
-<!-- Script de Correção Interativa -->
 <script>
-    // Gabarito Oficial das 30 Questões
-    const gabarito = {
-        q1_1: 'V', q1_2: 'F',
-        q2: 'c',
-        q3: 'b',
-        q4: 'b',
-        q5: 'a',
-        q6: 'b',
-        q7: 'a',
-        q8: 'a',
-        q9: 'a',
-        q10: 'c',
-        q11: 'c',
-        q12: 'a',
-        q13: 'a',
-        q14: 'a',
-        q15: 'a',
-        q16: 'a',
-        q17: 'a',
-        q18: 'a',
-        q19: 'a',
-        q20: 'c',
-        q21: 'a',
-        q22: 'a',
-        q23: 'a',
-        q24: 'a',
-        q25: 'a',
-        q26: 'a',
-        q27: 'a',
-        q28: 'a',
-        q29: 'a',
-        q30: 'a'
-    };
+    let globalReportText = "";
 
-    let quizSubmitted = false;
-    let finalScoreData = { score: 0, total: 30, percentage: 0, studentName: '', details: [] };
-
-    function handleFormSubmit(event) {
-        event.preventDefault();
-
-        // Validação do Nome
-        const nameInput = document.getElementById('student-name');
-        const nameAlert = document.getElementById('name-alert');
-        const studentName = nameInput.value.trim();
+    function gradeQuiz() {
+        const studentNameInput = document.getElementById('studentName');
+        const studentName = studentNameInput.value.trim();
 
         if (!studentName) {
-            nameAlert.classList.remove('hidden');
-            document.getElementById('student-info-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            nameInput.focus();
+            alert('Por favor, digite o seu Nome Completo antes de enviar o questionário.');
+            studentNameInput.focus();
+            window.scrollTo({ top: studentNameInput.offsetTop - 50, behavior: 'smooth' });
             return;
-        } else {
-            nameAlert.classList.add('hidden');
         }
 
-        let score = 0;
-        let details = [];
+        const cards = document.querySelectorAll('.question-card');
+        let correctCount = 0;
+        let totalQuestions = cards.length;
+        let summaryDetails = [];
 
-        // Correção Q1 (V ou F com 2 subitens)
-        let q1CorrectCount = 0;
-        ['1', '2'].forEach(sub => {
-            const selected = document.querySelector(`input[name="q1_${sub}"]:checked`);
-            const userVal = selected ? selected.value : null;
-            const correctVal = gabarito[`q1_${sub}`];
+        cards.forEach((card, index) => {
+            const qNum = index + 1;
+            const qName = `q${qNum}`;
+            const radios = card.querySelectorAll(`input[name="${qName}"]`);
+            const correctAnswer = card.getAttribute('data-answer');
+            const feedbackDiv = card.querySelector('.feedback');
+            
+            let selectedVal = null;
+            radios.forEach(r => {
+                if (r.checked) selectedVal = r.value;
+            });
 
-            document.querySelectorAll(`input[name="q1_${sub}"]`).forEach(radio => {
-                const parentLabel = radio.parentElement;
-                if (radio.value === correctVal) {
-                    parentLabel.classList.add('correct-answer');
-                } else if (radio.checked && radio.value !== correctVal) {
-                    parentLabel.classList.add('incorrect-answer');
+            feedbackDiv.style.display = 'block';
+
+            // Destacar alternativas corretas e erradas
+            radios.forEach(r => {
+                const parentLabel = r.parentElement;
+                parentLabel.classList.remove('highlight-correct', 'highlight-incorrect');
+                
+                if (r.value === correctAnswer) {
+                    parentLabel.classList.add('highlight-correct');
+                } else if (r.checked && r.value !== correctAnswer) {
+                    parentLabel.classList.add('highlight-incorrect');
                 }
             });
 
-            if (userVal === correctVal) q1CorrectCount++;
+            let isCorrect = false;
+            if (selectedVal === correctAnswer) {
+                correctCount++;
+                isCorrect = true;
+                feedbackDiv.className = 'feedback correct-fb';
+            } else {
+                feedbackDiv.className = 'feedback incorrect-fb';
+            }
+
+            summaryDetails.push({
+                q: qNum,
+                correct: isCorrect,
+                marked: selectedVal ? selectedVal : "Não respondida",
+                gabarito: correctAnswer
+            });
         });
 
-        let q1Passed = (q1CorrectCount === 2);
-        if (q1Passed) score++;
-        details.push({
-            questao: 'Questão 1 (V ou F)',
-            status: q1Passed ? 'Acertou' : 'Errou',
-            detalhe: `${q1CorrectCount}/2 corretos`
-        });
-        document.getElementById('feedback-1').classList.remove('hidden');
-
-        // Correção Q2 a Q30 (Múltipla escolha)
-        for (let i = 2; i <= 30; i++) {
-            const selected = document.querySelector(`input[name="q${i}"]:checked`);
-            const userVal = selected ? selected.value : null;
-            const correctVal = gabarito[`q${i}`];
-
-            document.querySelectorAll(`input[name="q${i}"]`).forEach(radio => {
-                const parentLabel = radio.parentElement;
-                if (radio.value === correctVal) {
-                    parentLabel.classList.add('correct-answer');
-                } else if (radio.checked && radio.value !== correctVal) {
-                    parentLabel.classList.add('incorrect-answer');
-                }
-            });
-
-            let isCorrect = (userVal === correctVal);
-            if (isCorrect) score++;
-
-            details.push({
-                questao: `Questão ${i}`,
-                status: isCorrect ? 'Acertou' : 'Errou',
-                marcou: userVal ? userVal.toUpperCase() : 'Não respondeu',
-                gabarito: correctVal.toUpperCase()
-            });
-
-            const feedbackEl = document.getElementById(`feedback-${i}`);
-            if (feedbackEl) feedbackEl.classList.remove('hidden');
-        }
-
-        const percentage = Math.round((score / 30) * 100);
-
-        finalScoreData = {
-            score: score,
-            total: 30,
-            percentage: percentage,
-            studentName: studentName,
-            details: details
-        };
-
-        // Exibir Painel de Resultados
-        document.getElementById('score-text').innerText = `${score} de 30 acertos (${percentage}%)`;
-        document.getElementById('score-message').innerText = percentage >= 70 ? '🎉 Excelente desempenho! Você demonstrou forte domínio do conteúdo.' : '📚 Bom esforço! Revise os feedbacks detalhados em cada questão para aprimorar seus estudos.';
+        const percentage = ((correctCount / totalQuestions) * 100).toFixed(1);
         
-        const resultsPanel = document.getElementById('results-panel');
-        resultsPanel.classList.remove('hidden');
-        resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Exibir resultados no topo
+        const resultsContainer = document.getElementById('results-container');
+        const scoreText = document.getElementById('scoreText');
+        scoreText.innerHTML = `Aluno(a): ${studentName}<br>Pontuação: ${correctCount} de ${totalQuestions} acertos (${percentage}%)`;
+        resultsContainer.style.display = 'block';
 
-        // Desabilitar botão de envio
-        const submitBtn = document.getElementById('submit-btn');
-        submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-500');
-        submitBtn.innerText = 'Questionário Corrigido com Sucesso!';
+        // Montar texto formatado para o WhatsApp / Relatório
+        let reportLines = [];
+        reportLines.push(`📋 *RELATÓRIO DE DESEMPENHO - QUIZ DE GEOGRAFIA*`);
+        reportLines.push(`👤 *Aluno:* ${studentName}`);
+        reportLines.push(`📊 *Resultado:* ${correctCount}/${totalQuestions} (${percentage}% de acertos)`);
+        reportLines.push(`-----------------------------------`);
+        reportLines.push(`*Histórico das Questões:*`);
 
-        quizSubmitted = true;
+        summaryDetails.forEach(item => {
+            let statusIcon = item.correct ? "✅ Acertou" : "❌ Errou";
+            reportLines.push(`Q${item.q}: ${statusIcon} (Marcou: ${item.marked} | Gabarito: ${item.gabarito})`);
+        });
+
+        globalReportText = reportLines.join('\n');
+
+        window.scrollTo({ top: resultsContainer.offsetTop - 20, behavior: 'smooth' });
     }
 
-    function copyReport() {
-        if (!quizSubmitted) return;
+    function copySummary() {
+        if (!globalReportText) {
+            alert('Envie o questionário primeiro para gerar o resumo.');
+            return;
+        }
 
-        let reportText = `📋 *RELATÓRIO DE DESEMPENHO - GEOGRAFIA*\n`;
-        reportText += `📌 *Título:* Aspectos Humanos da África (30 Questões)\n`;
-        reportText += `👤 *Aluno(a):* ${finalScoreData.studentName}\n`;
-        reportText += `📊 *Nota Final:* ${finalScoreData.score}/30 (${finalScoreData.percentage}% de acertos)\n\n`;
-        reportText += `📝 *Histórico Detalhado:* \n`;
-
-        finalScoreData.details.forEach((item, index) => {
-            if (index === 0) {
-                reportText += `• ${item.questao}: ${item.status} (${item.detalhe})\n`;
-            } else {
-                reportText += `• ${item.questao}: ${item.status} (Marcou: ${item.marcou} | Gabarito: ${item.gabarito})\n`;
-            }
-        });
-
-        navigator.clipboard.writeText(reportText).then(() => {
-            const feedbackEl = document.getElementById('copy-feedback');
-            feedbackEl.classList.remove('hidden');
+        navigator.clipboard.writeText(globalReportText).then(() => {
+            const btn = document.getElementById('copyBtn');
+            btn.innerText = "¡Resumo Copiado com Sucesso!";
+            btn.style.background = "#1e3a8a";
             setTimeout(() => {
-                feedbackEl.classList.add('hidden');
-            }, 4000);
+                btn.innerText = "Copiar Resumo para Enviar ao Professor";
+                btn.style.background = "#16a34a";
+            }, 3000);
         }).catch(err => {
-            alert('Erro ao copiar relatório. Tente novamente.');
+            alert('Erro ao copiar automaticamente. Selecione e copie manualmente.');
         });
     }
 </script>
+
+</body>
+</html>
