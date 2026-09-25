@@ -1,193 +1,553 @@
-<!-- Cabeçalho -->
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-10 border border-slate-200">
+    
+    <!-- Cabeçalho -->
     <header class="text-center border-b border-slate-200 pb-6 mb-8">
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">Geografia: Aspectos Humanos da África</h1>
-        <p class="text-sm text-slate-500 mt-2">Questionário interativo baseado nos conteúdos de demografia, economia, saúde e migrações do continente africano.</p>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-blue-900 tracking-tight">Geografia: Aspectos Humanos da África</h1>
+        <p class="text-sm sm:text-base text-slate-600 mt-2">Avaliação interativa completa com 30 questões baseada no conteúdo demográfico, social, econômico e migratório.</p>
     </header>
 
-    <!-- Campo de Identificação -->
-    <div id="student-info-container" class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-8 shadow-sm">
-        <label for="student-name" class="block text-sm font-semibold text-blue-900 mb-2">Digite o seu Nome Completo (Obrigatório):</label>
-        <input type="text" id="student-name" placeholder="Ex: Maria Silva Santos" class="w-full px-4 py-3 rounded-lg border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white text-slate-700 font-medium">
-        <p id="name-alert" class="text-xs text-red-600 font-medium mt-1 hidden">Por favor, preencha o seu nome completo antes de enviar o questionário.</p>
+    <!-- Identificação do Aluno -->
+    <div id="student-info-container" class="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 mb-8 shadow-sm">
+        <label for="student-name" class="block text-sm sm:text-base font-bold text-blue-900 mb-2">Digite o seu Nome Completo (Obrigatório):</label>
+        <input type="text" id="student-name" placeholder="Ex: Ana Clara Souza Lima" class="w-full px-4 py-3 rounded-lg border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white text-slate-700 font-medium text-base">
+        <p id="name-alert" class="text-xs sm:text-sm text-red-600 font-bold mt-2 hidden">⚠️ Por favor, digite o seu nome completo antes de enviar o questionário.</p>
     </div>
 
     <!-- Painel de Resultados (Oculto Inicialmente) -->
-    <div id="results-panel" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8 text-center">
-        <h2 class="text-xl font-bold text-slate-800 mb-2">Resultado da Avaliação</h2>
-        <p id="score-text" class="text-2xl font-extrabold text-blue-600 mb-4"></p>
-        <button type="button" id="copy-btn" onclick="copyReport()" class="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors duration-200 cursor-pointer">
+    <div id="results-panel" class="hidden bg-slate-900 text-white rounded-2xl p-6 mb-10 text-center shadow-lg transition-all duration-300">
+        <h2 class="text-2xl font-bold mb-2">📊 Relatório de Desempenho</h2>
+        <p id="score-text" class="text-3xl font-extrabold text-emerald-400 mb-4"></p>
+        <p id="score-message" class="text-sm text-slate-300 mb-6"></p>
+        <button type="button" onclick="copyReport()" class="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-colors cursor-pointer text-base">
             📋 Copiar Resumo para Enviar ao Professor
         </button>
-        <p id="copy-feedback" class="text-xs text-emerald-700 font-medium mt-2 hidden">Resumo copiado com sucesso para a área de transferência!</p>
+        <p id="copy-feedback" class="text-xs text-emerald-300 font-medium mt-2 hidden">✅ Resumo copiado com sucesso para a área de transferência!</p>
     </div>
 
-    <!-- Formulário do Questionário -->
+    <!-- Formulário do Quiz -->
     <form id="quiz-form" onsubmit="handleFormSubmit(event)" class="space-y-8">
 
-        <!-- Questão 1 (V ou F) -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="1">
+        <!-- QUESTÃO 1 (V ou F) -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="1">
             <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 1 • Verdadeiro ou Falso</span>
-            <p class="font-medium text-slate-800 mt-3 mb-4">Analise as afirmativas abaixo sobre a população e características demográficas da África e marque se são Verdadeiras (V) ou Falsas (F):</p>
-            
-            <div class="space-y-4 text-sm">
-                <!-- Item A -->
+            <p class="font-medium text-slate-800 mt-3 mb-4">Analise as afirmações sobre a população total e o crescimento demográfico da África:</p>
+            <div class="space-y-3 text-sm">
                 <div class="bg-white p-3 rounded-lg border border-slate-200">
-                    <p class="mb-2 font-medium text-slate-700">1. A África tem uma grande população, ultrapassando 1,3 bilhão de habitantes, sendo o segundo continente mais populoso do planeta.</p>
+                    <p class="mb-2 text-slate-700 font-medium">1. Com cerca de 1,3 bilhão de habitantes, a África é o segundo continente mais populoso do mundo.</p>
                     <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_1" value="V"> Verdadeiro</label>
-                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_1" value="F"> Falso</label>
+                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_1" value="V"> V</label>
+                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_1" value="F"> F</label>
                     </div>
                 </div>
-                <!-- Item B -->
                 <div class="bg-white p-3 rounded-lg border border-slate-200">
-                    <p class="mb-2 font-medium text-slate-700">2. Os países da África do Norte são os que apresentam os menores indicadores socioeconômicos e as maiores taxas de natalidade do continente.</p>
+                    <p class="mb-2 text-slate-700 font-medium">2. O crescimento populacional da maioria dos países africanos é inferior ao registrado no Brasil.</p>
                     <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_2" value="V"> Verdadeiro</label>
-                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_2" value="F"> Falso</label>
-                    </div>
-                </div>
-                <!-- Item C -->
-                <div class="bg-white p-3 rounded-lg border border-slate-200">
-                    <p class="mb-2 font-medium text-slate-700">3. A população rural ainda é expressiva, mas o continente passa por um rápido processo de urbanização com cidades que carecem de infraestrutura adequada.</p>
-                    <div class="flex gap-4">
-                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_3" value="V"> Verdadeiro</label>
-                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_3" value="F"> Falso</label>
+                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_2" value="V"> V</label>
+                        <label class="flex items-center gap-2 cursor-pointer font-medium"><input type="radio" name="q1_2" value="F"> F</label>
                     </div>
                 </div>
             </div>
-
-            <div id="feedback-1" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
-                <span class="font-bold">Gabarito e Explicação:</span> Os itens 1 e 3 são Verdadeiros (população de cerca de 1,3 bilhão e rápido processo de urbanização). O item 2 é Falso, pois a África do Norte possui melhores indicadores e menores taxas de fecundidade/natalidade em comparação à África Subsaariana.
+            <div id="feedback-1" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito:</span> 1: V | 2: F. (O crescimento africano é muito superior ao brasileiro).
             </div>
         </div>
 
-        <!-- Questão 2 (Múltipla Escolha) -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="2">
+        <!-- QUESTÃO 2 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="2">
             <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 2 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-4">Sobre a dinâmica demográfica e as pirâmides etárias dos países africanos, assinale a alternativa correta:</p>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é o país mais populoso do continente africano atualmente?</p>
             <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q2" value="a" class="mr-2"> a) As pirâmides etárias apresentam base muito estreita e topo largo, indicando envelhecimento populacional acelerado.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q2" value="b" class="mr-2"> b) A base muito larga das pirâmides etárias indica alta taxa de fecundidade, reflexo de um continente com população predominantemente jovem.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q2" value="c" class="mr-2"> c) Nenhum país africano apresenta crescimento vegetativo expressivo, situando-se todos próximos a zero.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q2" value="d" class="mr-2"> d) A transição demográfica já foi concluída por todos os países do continente, estabilizando a população.
-                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="a" class="mr-2"> a) Egito</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="b" class="mr-2"> b) Etiópia</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="c" class="mr-2"> c) Nigéria</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q2" value="d" class="mr-2"> d) África do Sul</label>
             </div>
-            <div id="feedback-2" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
-                <span class="font-bold">Gabarito: Letra B.</span> <span class="explanation">A base larga nas pirâmides etárias da África (sobretudo na Subsaariana) reflete as elevadas taxas de fecundidade e o perfil de uma população majoritariamente jovem. Nenhum país concluiu totalmente a transição demográfica.</span>
+            <div id="feedback-2" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra C.</span> A Nigéria é o país mais populoso, com mais de 200 milhões de habitantes.
             </div>
         </div>
 
-        <!-- Questão 3 (Itens Estruturados) -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="3">
-            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 3 • Itens Estruturados</span>
-            <p class="font-medium text-slate-800 mt-3 mb-3">Analise os itens abaixo sobre os problemas socioeconômicos e de saúde na África Subsaariana:</p>
-            <div class="bg-white p-4 rounded-lg border border-slate-200 text-xs sm:text-sm space-y-2 mb-4 text-slate-700">
-                <p><strong>I.</strong> A falta de emprego formal e a desestruturação econômica fazem com que grande parte da população ativa trabalhe na informalidade ou sofra com o desemprego, que atinge fortemente os jovens.</p>
-                <p><strong>II.</strong> O quadro de pobreza extrema está associado a graves problemas alimentares, como altas taxas de subnutrição e insegurança alimentar agravadas por eventos climáticos e secas.</p>
-                <p><strong>III.</strong> A AIDS e doenças tropicais (como malária e ebola) deixaram de representar desafios de saúde pública relevantes no continente nas últimas décadas.</p>
-            </div>
-            <p class="font-medium text-slate-800 mb-3">Quais itens estão corretos?</p>
+        <!-- QUESTÃO 3 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="3">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 3 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é a maior cidade da África e da Nigéria?</p>
             <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q3" value="a" class="mr-2"> a) Apenas I.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q3" value="b" class="mr-2"> b) Apenas II e III.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q3" value="c" class="mr-2"> c) Apenas I e II.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q3" value="d" class="mr-2"> d) I, II e III.
-                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="a" class="mr-2"> a) Cairo</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="b" class="mr-2"> b) Lagos</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="c" class="mr-2"> c) Joanesburgo</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q3" value="d" class="mr-2"> d) Nairóbi</label>
             </div>
-            <div id="feedback-3" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
-                <span class="font-bold">Gabarito: Letra C.</span> <span class="explanation">Os itens I e II estão corretos (desemprego/informalidade juvenil alta e fome ligada à pobreza e mudanças climáticas). O item III está incorreto porque doenças como HIV/AIDS e endemias tropicais continuam sendo enormes desafios de saúde pública na África Subsaariana.</span>
+            <div id="feedback-3" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra B.</span> Lagos possui cerca de 16 milhões de habitantes, sendo a maior cidade nigeriana e africana.
             </div>
         </div>
 
-        <!-- Questão 4 (Múltipla Escolha - Migrações) -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="4">
+        <!-- QUESTÃO 4 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="4">
             <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 4 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-4">Em relação às migrações no continente africano, assinale a alternativa que descreve corretamente um dos principais fluxos:</p>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Como se caracteriza a distribuição demográfica geral no Deserto do Saara?</p>
             <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q4" value="a" class="mr-2"> a) O continente africano recebe mais imigrantes europeus do que gera emigrantes, devido à atração econômica das nações subsarianas.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q4" value="b" class="mr-2"> b) A África atua como zona repulsora de migrantes devido à pobreza e conflitos, destacando-se emigrações para a Europa e intensos fluxos migratórios internos (como o êxodo rural).
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q4" value="c" class="mr-2"> c) Os fluxos migratórios internos restringem-se estritamente aos limites municipais, não havendo deslocamentos de refugiados entre países.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q4" value="d" class="mr-2"> d) A África do Norte apresenta predominância absoluta de migrações internas rurais, sem emigração para outros continentes.
-                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="a" class="mr-2"> a) Altíssima densidade em toda a sua extensão territorial.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="b" class="mr-2"> b) Baixíssima densidade demográfica, com exceção das margens do Rio Nilo.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="c" class="mr-2"> c) Totalmente desabitada, sem nenhum tipo de povoamento ou atividade humana.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q4" value="d" class="mr-2"> d) Concentração exclusiva de megacidades industriais.</label>
             </div>
-            <div id="feedback-4" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
-                <span class="font-bold">Gabarito: Letra B.</span> <span class="explanation">A África é uma zona repulsora de migrantes devido a crises econômicas e conflitos, com rotas para a Europa e fortes fluxos internos (êxodo rural, migrações entre países e deslocados/refugiados).</span>
+            <div id="feedback-4" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra B.</span> O Saara tem baixa densidade, exceto junto ao Rio Nilo e oásis.
             </div>
         </div>
 
-        <!-- Questão 5 (Múltipla Escolha - Infográfico/Regiões) -->
-        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="5">
+        <!-- QUESTÃO 5 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="5">
             <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 5 • Múltipla Escolha</span>
-            <p class="font-medium text-slate-800 mt-3 mb-4">Com base nos estudos sobre as regiões migratórias africanas, assinale a alternativa que traz, respectivamente, a região com maior emigração para fora do continente e a que se destaca pela forte movimentação intrarregional:</p>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Quais povos nômades tradicionais destacam-se no Deserto do Saara?</p>
             <div class="space-y-2 text-sm">
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q5" value="a" class="mr-2"> a) África Central e África Ocidental.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q5" value="b" class="mr-2"> b) África Ocidental e África Oriental.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q5" value="c" class="mr-2"> c) África Oriental e África do Norte.
-                </label>
-                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
-                    <input type="radio" name="q5" value="d" class="mr-2"> d) África do Norte e África Ocidental.
-                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="a" class="mr-2"> a) Beduínos e tuaregues.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="b" class="mr-2"> b) b) Esquimós e inuítes.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="c" class="mr-2"> c) Aborígenes e maoris.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q5" value="d" class="mr-2"> d) Cossacos e curdos.</label>
             </div>
-            <div id="feedback-5" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
-                <span class="font-bold">Gabarito: Letra D.</span> <span class="explanation">A África do Norte destaca-se pela emigração para outros continentes (principalmente Europa, devido à proximidade), enquanto na África Ocidental e Oriental é intensa a movimentação intrarregional de migrantes.</span>
+            <div id="feedback-5" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Beduínos e tuaregues são nômades fundamentais na história comercial e travessia do Saara.
             </div>
         </div>
 
-        <!-- Botão Enviar -->
-        <div class="text-center pt-4">
-            <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-200 cursor-pointer text-base">
-                Enviar Respostas e Ver Correção
+        <!-- QUESTÃO 6 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="6">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 6 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é a porcentagem aproximada da população urbana no continente africano?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="a" class="mr-2"> a) 20%</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="b" class="mr-2"> b) 40%</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="c" class="mr-2"> c) 70%</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q6" value="d" class="mr-2"> d) 90%</label>
+            </div>
+            <div id="feedback-6" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra B.</span> A África possui o menor percentual de população urbana do mundo, cerca de 40%.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 7 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="7">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 7 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">O que significa o conceito de "crescimento vegetativo"?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="a" class="mr-2"> a) A diferença entre as taxas de natalidade e de mortalidade.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="b" class="mr-2"> b) O saldo migratório de entradas e saídas de estrangeiros.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="c" class="mr-2"> c) A taxa de expansão agrícola nos países em desenvolvimento.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q7" value="d" class="mr-2"> d) O crescimento exclusivo da população idosa urbana.</label>
+            </div>
+            <div id="feedback-7" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> É a diferença estatística entre natalidade e mortalidade.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 8 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="8">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 8 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual região africana destaca-se por iniciar o processo de transição demográfica mantendo altas taxas de natalidade e reduzindo a mortalidade, resultando em explosão demográfica?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="a" class="mr-2"> a) África Subsaariana</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="b" class="mr-2"> b) Europa Ocidental</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="c" class="mr-2"> c) América do Norte</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q8" value="d" class="mr-2"> d) Oceania</label>
+            </div>
+            <div id="feedback-8" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> A África Subsaariana concentra países em plena fase de alta taxa de crescimento vegetativo.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 9 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="9">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 9 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">O formato típico da pirâmide etária da maioria dos países africanos possui:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="a" class="mr-2"> a) Base muito larga e topo estreito.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="b" class="mr-2"> b) Base estreita e topo muito largo.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="c" class="mr-2"> c) Formato perfeitamente retangular.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q9" value="d" class="mr-2"> d) Ausência total de base infantil.</label>
+            </div>
+            <div id="feedback-9" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Base larga indica muita fecundidade e juventude; topo estreito reflete menor expectativa de vida.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 10 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="10">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 10 • Itens Estruturados</span>
+            <p class="font-medium text-slate-800 mt-3 mb-2">Sobre os desafios socioeconômicos dos jovens africanos, avalie:</p>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs sm:text-sm mb-3 text-slate-700">
+                <p><strong>I.</strong> Os jovens representam fatia expressiva dos desempregados na África.</p>
+                <p><strong>II.</strong> Quando conseguem ocupação, a esmagadora maioria está no setor informal.</p>
+            </div>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="a" class="mr-2"> a) Apenas o item I está correto.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="b" class="mr-2"> b) Apenas o item II está correto.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="c" class="mr-2"> c) Ambos os itens estão corretos.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q10" value="d" class="mr-2"> d) Nenhum dos itens está correto.</label>
+            </div>
+            <div id="feedback-10" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra C.</span> O Banco Mundial aponta alto desemprego jovem e forte informalidade.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 11 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="11">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 11 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Segundo dados da ONU citados no texto, dos 18 países do mundo com parcela significativa da população em extrema pobreza (menos de um dólar diário), quantos estão na África?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="a" class="mr-2"> a) 5 países</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="b" class="mr-2"> b) 9 países</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="c" class="mr-2"> c) 14 países</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q11" value="d" class="mr-2"> d) 18 países</label>
+            </div>
+            <div id="feedback-11" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra C.</span> 14 dos 18 países encontram-se no continente africano.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 12 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="12">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 12 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual organização internacional aponta que cerca de 20,4% da população da África vive em situação de subnutrição?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="a" class="mr-2"> a) FAO (Organização das Nações Unidas para Alimentação e Agricultura)</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="b" class="mr-2"> b) Otan</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="c" class="mr-2"> c) FMI</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q12" value="d" class="mr-2"> d) Unesco</label>
+            </div>
+            <div id="feedback-12" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Dados fornecidos pela FAO sobre crise alimentar e subnutrição.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 13 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="13">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 13 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Quais fatores naturais agravam crônica e severamente a segurança alimentar na África Subsaariana e na região do Sahel?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="a" class="mr-2"> a) Mudanças climáticas, secas prolongadas e chuvas irregulares.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="b" class="mr-2"> b) Tsunami e terremotos constantes na bacia amazônica.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="c" class="mr-2"> c) Vulcões ativos em larga escala na tundra ártica.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q13" value="d" class="mr-2"> d) Neves perpétuas nas savanas tropicais.</label>
+            </div>
+            <div id="feedback-13" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Desastres climáticos como secas e inundações afetam a produção agrícola local.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 14 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="14">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 14 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual país africano possui o quadro mais desafiador em relação ao HIV/AIDS, com milhões de pessoas vivendo com o vírus, embora venha ampliando o tratamento?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="a" class="mr-2"> a) África do Sul</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="b" class="mr-2"> b) Tunísia</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="c" class="mr-2"> c) Marrocos</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q14" value="d" class="mr-2"> d) Argélia</label>
+            </div>
+            <div id="feedback-14" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> A África do Sul possui cerca de 7,1 milhões de pessoas vivendo com HIV.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 15 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="15">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 15 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Além do HIV/AIDS, quais outras enfermidades são bastante comuns e desafiadoras nos sistemas de saúde de várias regiões africanas?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="a" class="mr-2"> a) Doenças tropicais como malária, febre amarela, ebola e MPOX.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="b" class="mr-2"> b) Doenças causadas exclusivamente pelo frio ártico e hipotermia.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="c" class="mr-2"> c) Es1corbuto e bócio alpino generalizado.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q15" value="d" class="mr-2"> d) Doença da vaca louca e febre do Vale do Silício.</label>
+            </div>
+            <div id="feedback-15" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Malária, febre amarela, ebola e MPOX são endemias/epidemias marcantes no continente.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 16 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="16">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 16 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é o único país africano que figura no ranking mundial com IDH (Índice de Desenvolvimento Humano) considerado "muito alto"?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="a" class="mr-2"> a) Seychelles</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="b" class="mr-2"> b) Nigéria</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="c" class="mr-2"> c) Togo</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q16" value="d" class="mr-2"> d) Chade</label>
+            </div>
+            <div id="feedback-16" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Seychelles possui IDH muito alto (0,802).
+            </div>
+        </div>
+
+        <!-- QUESTÃO 17 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="17">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 17 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Que fator político e social impacta de forma direta e negativa o IDH e a estabilidade de vários países africanos?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="a" class="mr-2"> a) Conflitos armados e guerras civis internas.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="b" class="mr-2"> b) Excesso absolutíssimo de acordos de paz intercontinentais.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="c" class="mr-2"> c) Superabundância de infraestrutura espacial.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q17" value="d" class="mr-2"> d) Inexistência de fronteiras terrestres.</label>
+            </div>
+            <div id="feedback-17" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Conflitos internos e guerras civis afetam drasticamente as condições de vida e o IDH.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 18 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="18">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 18 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Um dos marcos históricos forçados nos fluxos migratórios africanos antigos foi:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="a" class="mr-2"> a) O tráfico transatlântico de pessoas escravizadas rumo à América.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="b" class="mr-2"> b) A imigração voluntária em massa para a Sibéria.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="c" class="mr-2"> c) O fluxo pacífico colonial para a Antártida.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q18" value="d" class="mr-2"> d) A migração turística para o Polo Norte.</label>
+            </div>
+            <div id="feedback-18" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> O tráfico de escravizados iniciado nas Grandes Navegações levou africanos para o continente americano.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 19 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="19">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 19 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">A partir do século VII (ano 647), a conquista promovida pelo Império Árabe no norte da África resultou em:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="a" class="mr-2"> a) Tornar a etnia árabe a maioria populacional nos países daquela região.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="b" class="mr-2"> b) A extinção completa de qualquer atividade econômica no Mediterrâneo.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="c" class="mr-2"> c) A migração imediata de todos os povos árabes para a América do Sul.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q19" value="d" class="mr-2"> d) O isolamento absoluto entre a África e o Oriente Médio.</label>
+            </div>
+            <div id="feedback-19" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> A expansão árabe tornou a etnia maioria na África do Norte.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 20 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="20">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 20 • Itens Estruturados</span>
+            <p class="font-medium text-slate-800 mt-3 mb-2">Sobre os fluxos emigratórios atuais da África para países desenvolvidos:</p>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs sm:text-sm mb-3 text-slate-700">
+                <p><strong>I.</strong> Muitos emigrantes buscam nações europeias antigas colonizadoras devido à facilidade linguística.</p>
+                <p><strong>II.</strong> O Mar Mediterrâneo é uma das principais rotas de travessia, frequentemente marcada por embarcações precárias.</p>
+            </div>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="a" class="mr-2"> a) Apenas I é correto.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="b" class="mr-2"> b) Apenas II é correto.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="c" class="mr-2"> c) Ambos estão corretos.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q20" value="d" class="mr-2"> d) Ambos estão incorretos.</label>
+            </div>
+            <div id="feedback-20" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra C.</span> Conexões linguísticas com ex-metrópoles e as perigosas travessias pelo Mediterrâneo são fatos reais.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 21 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="21">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 21 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é o principal fluxo migratório interno nos países africanos?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="a" class="mr-2"> a) O êxodo rural (movimento do campo para as cidades).</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="b" class="mr-2"> b) O êxodo urbano rumo a desertos inabitados.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="c" class="mr-2"> c) A migração em massa para picos nevados.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q21" value="d" class="mr-2"> d) O retorno exclusivo de populações para florestas densas.</label>
+            </div>
+            <div id="feedback-21" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Crises no campo e busca por oportunidades geram intenso êxodo rural.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 22 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="22">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 22 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">O que caracteriza a condição de uma pessoa "refugiada"?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="a" class="mr-2"> a) Sair forçadamente do país por perseguição (étnica, religiosa, política) ou risco de morte.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="b" class="mr-2"> b) Viajar voluntariamente a turismo por motivos de lazer nas férias.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="c" class="mr-2"> c) Mudar de casa dentro do mesmo bairro por motivos estéticos.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q22" value="d" class="mr-2"> d) Trabalhar temporariamente como diplomata governamental.</label>
+            </div>
+            <div id="feedback-22" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Refugiados fogem forçadamente devido a perseguições ou conflitos.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 23 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="23">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 23 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual país africano destacou-se recentemente (dados de 2022) como o que mais gerou emigrantes em situação de refugiados?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="a" class="mr-2"> a) Sudão do Sul</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="b" class="mr-2"> b) Ilhas Maurício</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="c" class="mr-2"> c) Botsuana</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q23" value="d" class="mr-2"> d) Cabo Verde</label>
+            </div>
+            <div id="feedback-23" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> O Sudão do Sul liderou o ranking de emissão de refugiados no continente.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 24 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="24">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 24 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">O que diferencia um "deslocado interno" de um "refugiado"?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="a" class="mr-2"> a) O deslocado interno é forçado a sair de casa, mas permanece dentro das fronteiras de seu próprio país.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="b" class="mr-2"> b) O deslocado interno cruza sempre continentes de avião.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="c" class="mr-2"> c) O refugiado nunca sai de sua cidade natal.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q24" value="d" class="mr-2"> d) Não há nenhuma diferença legal ou conceitual.</label>
+            </div>
+            <div id="feedback-24" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Deslocados internos não cruzam fronteiras internacionais.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 25 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="25">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 25 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual região africana destaca-se pela maior movimentação de emigrantes com destino a outros continentes (principalmente Europa)?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="a" class="mr-2"> a) África do Norte</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="b" class="mr-2"> b) Antártida Africana</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="c" class="mr-2"> c) Região Insular do Pacífico</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q25" value="d" class="mr-2"> d) América Central</label>
+            </div>
+            <div id="feedback-25" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> A proximidade geográfica com a Europa fomenta a emigração norte-africana.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 26 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="26">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 26 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Em relação às maiores economias do continente africano (África do Sul, Nigéria e Egito), qual delas possui a maior parte de sua população vivendo em áreas rurais?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="a" class="mr-2"> a) Egito</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="b" class="mr-2"> b) Nigéria</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="c" class="mr-2"> c) África do Sul</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q26" value="d" class="mr-2"> d) Nenhuma delas</label>
+            </div>
+            <div id="feedback-26" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> O Egito tem a maior parte da população vivendo no campo, enquanto Nigéria e África do Sul concentram maioria urbana.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 27 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="27">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 27 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">O que expressa o indicador de "expectativa de vida ao nascer"?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="a" class="mr-2"> a) Uma projeção de quantos anos, em média, viverá uma pessoa nascida no ano em questão.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="b" class="mr-2"> b) O número total de filhos por mulher em idade fértil.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="c" class="mr-2"> c) A quantidade exata de idosos aposentados em um país.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q27" value="d" class="mr-2"> d) A taxa anual de imigração internacional.</label>
+            </div>
+            <div id="feedback-27" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> É a esperança média de vida ao nascer baseada nas condições de saúde e mortalidade.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 28 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="28">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 28 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Quais países da África do Norte apresentam as maiores expectativas de vida e melhores indicadores nessa categoria?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="a" class="mr-2"> a) Argélia, Marrocos e Tunísia.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="b" class="mr-2"> b) Somália, Chade e Níger.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="c" class="mr-2"> c) Etiópia e Sudão do Sul.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q28" value="d" class="mr-2"> d) Madagascar e Moçambique.</label>
+            </div>
+            <div id="feedback-28" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Argélia, Marrocos e Tunísia lideram os indicadores de expectativa de vida na região norte.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 29 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="29">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 29 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">O jogo digital "Salaam", criado por um refugiado (Lual Mayen), tem como proposta central:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="a" class="mr-2"> a) Mostrar aos jogadores como é viver como um refugiado, fugindo de bombas e buscando água, comida e energia.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="b" class="mr-2"> b) Promover corridas espaciais entre foguetes intergalácticos.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="c" class="mr-2"> c) Ensinar táticas de investimentos na bolsa de valores europeia.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q29" value="d" class="mr-2"> d) Construção de arranha-céus luxuosos em metrópoles desenvolvidas.</label>
+            </div>
+            <div id="feedback-29" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> O jogo retrata a dura realidade de refugiados e reverte recursos para ONGs parceiras.
+            </div>
+        </div>
+
+        <!-- QUESTÃO 30 -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm" data-q="30">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 30 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Qual é a principal projeção demográfica apontada para o continente africano até o ano de 2050?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="a" class="mr-2"> a) A população ultrapassará os 2 bilhões de habitantes, impondo grandes desafios socioeconômicos.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="b" class="mr-2"> b) A população cairá para menos de 100 milhões de habitantes.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="c" class="mr-2"> c) O continente ficará totalmente despovoado devido a migrações.</label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition"><input type="radio" name="q30" value="d" class="mr-2"> d) A taxa de natalidade zerará imediatamente em todos os 54 países.</label>
+            </div>
+            <div id="feedback-30" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900">
+                <span class="font-bold">Gabarito: Letra A.</span> Projeções indicam mais de 2 bilhões de habitantes até 2050.
+            </div>
+        </div>
+
+        <!-- Botão de Envio -->
+        <div class="text-center pt-6">
+            <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-10 py-4 rounded-xl shadow-xl transition-all duration-200 cursor-pointer text-lg">
+                🚀 Enviar Respostas e Ver Correção Completa
             </button>
         </div>
 
     </form>
 </div>
 
+<!-- Script de Correção Interativa -->
 <script>
-    // Gabarito oficial do questionário
+    // Gabarito Oficial das 30 Questões
     const gabarito = {
-        q1_1: 'V',
-        q1_2: 'F',
-        q1_3: 'V',
-        q2: 'b',
-        q3: 'c',
+        q1_1: 'V', q1_2: 'F',
+        q2: 'c',
+        q3: 'b',
         q4: 'b',
-        q5: 'd'
+        q5: 'a',
+        q6: 'b',
+        q7: 'a',
+        q8: 'a',
+        q9: 'a',
+        q10: 'c',
+        q11: 'c',
+        q12: 'a',
+        q13: 'a',
+        q14: 'a',
+        q15: 'a',
+        q16: 'a',
+        q17: 'a',
+        q18: 'a',
+        q19: 'a',
+        q20: 'c',
+        q21: 'a',
+        q22: 'a',
+        q23: 'a',
+        q24: 'a',
+        q25: 'a',
+        q26: 'a',
+        q27: 'a',
+        q28: 'a',
+        q29: 'a',
+        q30: 'a'
     };
 
     let quizSubmitted = false;
-    let finalScoreData = { score: 0, total: 5, percentage: 0, studentName: '', details: [] };
+    let finalScoreData = { score: 0, total: 30, percentage: 0, studentName: '', details: [] };
 
     function handleFormSubmit(event) {
         event.preventDefault();
 
-        // Validação do Nome do Aluno
+        // Validação do Nome
         const nameInput = document.getElementById('student-name');
         const nameAlert = document.getElementById('name-alert');
         const studentName = nameInput.value.trim();
@@ -204,14 +564,13 @@
         let score = 0;
         let details = [];
 
-        // Correção Questão 1 (V ou F com 3 subitens)
+        // Correção Q1 (V ou F com 2 subitens)
         let q1CorrectCount = 0;
-        ['1', '2', '3'].forEach(sub => {
+        ['1', '2'].forEach(sub => {
             const selected = document.querySelector(`input[name="q1_${sub}"]:checked`);
             const userVal = selected ? selected.value : null;
             const correctVal = gabarito[`q1_${sub}`];
-            
-            // Destacar opções na Q1
+
             document.querySelectorAll(`input[name="q1_${sub}"]`).forEach(radio => {
                 const parentLabel = radio.parentElement;
                 if (radio.value === correctVal) {
@@ -224,21 +583,21 @@
             if (userVal === correctVal) q1CorrectCount++;
         });
 
-        let q1Passed = (q1CorrectCount === 3);
+        let q1Passed = (q1CorrectCount === 2);
         if (q1Passed) score++;
         details.push({
-            questao: 'Questão 1 (Verdadeiro ou Falso)',
+            questao: 'Questão 1 (V ou F)',
             status: q1Passed ? 'Acertou' : 'Errou',
-            detalhe: `${q1CorrectCount}/3 subitens corretos`
+            detalhe: `${q1CorrectCount}/2 corretos`
         });
         document.getElementById('feedback-1').classList.remove('hidden');
 
-        // Correção Questões 2 a 5 (Múltipla escolha)
-        for (let i = 2; i <= 5; i++) {
-            const selected = document.querySelector(`input[name="q8"]:checked` || `input[name="q${i}"]:checked`);
+        // Correção Q2 a Q30 (Múltipla escolha)
+        for (let i = 2; i <= 30; i++) {
+            const selected = document.querySelector(`input[name="q${i}"]:checked`);
             const userVal = selected ? selected.value : null;
             const correctVal = gabarito[`q${i}`];
-            
+
             document.querySelectorAll(`input[name="q${i}"]`).forEach(radio => {
                 const parentLabel = radio.parentElement;
                 if (radio.value === correctVal) {
@@ -258,30 +617,33 @@
                 gabarito: correctVal.toUpperCase()
             });
 
-            document.getElementById(`feedback-${i}`).classList.remove('hidden');
+            const feedbackEl = document.getElementById(`feedback-${i}`);
+            if (feedbackEl) feedbackEl.classList.remove('hidden');
         }
 
-        const percentage = Math.round((score / 5) * 100);
-        
-        // Salvar dados globais para o relatório
+        const percentage = Math.round((score / 30) * 100);
+
         finalScoreData = {
             score: score,
-            total: 5,
+            total: 30,
             percentage: percentage,
             studentName: studentName,
             details: details
         };
 
-        // Atualizar UI de resultados
-        document.getElementById('score-text5' || 'score-text').innerText = `${score} de 5 acertos (${percentage}%)`;
-        document.getElementById('results-panel').classList.remove('hidden');
-        document.getElementById('results-panel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Exibir Painel de Resultados
+        document.getElementById('score-text').innerText = `${score} de 30 acertos (${percentage}%)`;
+        document.getElementById('score-message').innerText = percentage >= 70 ? '🎉 Excelente desempenho! Você demonstrou forte domínio do conteúdo.' : '📚 Bom esforço! Revise os feedbacks detalhados em cada questão para aprimorar seus estudos.';
+        
+        const resultsPanel = document.getElementById('results-panel');
+        resultsPanel.classList.remove('hidden');
+        resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        // Desabilitar botão de envio após correção
+        // Desabilitar botão de envio
         const submitBtn = document.getElementById('submit-btn');
         submitBtn.disabled = true;
-        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-        submitBtn.innerText = 'Questionário Corrigido';
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-500');
+        submitBtn.innerText = 'Questionário Corrigido com Sucesso!';
 
         quizSubmitted = true;
     }
@@ -289,11 +651,11 @@
     function copyReport() {
         if (!quizSubmitted) return;
 
-        let reportText = `📋 *RELATÓRIO DE DESEMPENHO - QUESTIONÁRIO*\n`;
-        reportText += `📌 *Título:* Geografia: Aspectos Humanos da África\n`;
+        let reportText = `📋 *RELATÓRIO DE DESEMPENHO - GEOGRAFIA*\n`;
+        reportText += `📌 *Título:* Aspectos Humanos da África (30 Questões)\n`;
         reportText += `👤 *Aluno(a):* ${finalScoreData.studentName}\n`;
-        reportText += `📊 *Nota Final:* ${finalScoreData.score}/5 (${finalScoreData.percentage}% de acertos)\n\n`;
-        reportText += `📝 *Histórico Detalhado por Questão:*\n`;
+        reportText += `📊 *Nota Final:* ${finalScoreData.score}/30 (${finalScoreData.percentage}% de acertos)\n\n`;
+        reportText += `📝 *Histórico Detalhado:* \n`;
 
         finalScoreData.details.forEach((item, index) => {
             if (index === 0) {
