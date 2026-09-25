@@ -3,715 +3,682 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionário de Geografia - África: Aspectos Humanos</title>
+    <title>Questionário Completo - Múltiplo Formato com Gabarito Explicativo</title>
     <style>
-        :root {
-            --primary-color: #1e3a8a;
-            --secondary-color: #3b82f6;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #334155;
-            --success-color: #16a34a;
-            --error-color: #dc2626;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        h1 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .student-info {
-            background: #eff6ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            border: 1px solid #bfdbfe;
-        }
-
-        .student-info label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: var(--primary-color);
-        }
-
-        .student-info input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        .question-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .question-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-        }
-
-        .options label {
-            display: block;
-            padding: 8px 12px;
-            margin: 6px 0;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .options label:hover {
-            background: #f1f5f9;
-        }
-
-        .options input {
-            margin-right: 10px;
-        }
-
-        .feedback {
-            margin-top: 12px;
-            padding: 10px 15px;
-            border-radius: 6px;
-            font-size: 14px;
-            display: none;
-        }
-
-        .feedback.correct-fb {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #bbf7d0;
-        }
-
-        .feedback.incorrect-fb {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-
-        .highlight-correct {
-            font-weight: bold;
-            color: var(--success-color) !important;
-        }
-
-        .highlight-incorrect {
-            font-weight: bold;
-            color: var(--error-color) !important;
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 30px;
-        }
-
-        .btn-submit:hover {
-            background: #2563eb;
-        }
-
-        #results-container {
-            display: none;
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        #results-container h2 {
-            color: #166534;
-            margin-top: 0;
-        }
-
-        .btn-copy {
-            background: var(--success-color);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background 0.2s;
-        }
-
-        .btn-copy:hover {
-            background: #15803d;
-        }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        h1, h2 { color: #2c3e50; text-align: center; }
+        .question { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .question p { font-weight: bold; }
+        .options { margin-left: 20px; }
+        .options label { display: block; margin-bottom: 8px; cursor: pointer; padding: 4px; border-radius: 4px; }
+        .propositions { background: #fdfdfd; border-left: 3px solid #7f8c8d; padding: 10px; margin: 10px 0; font-size: 14px; }
+        .feedback { display: none; margin-top: 10px; padding: 10px; background: #eef2f3; border-left: 4px solid #2980b9; font-size: 14px; border-radius: 4px; }
+        #resultado { display: none; background: #e2f0d9; border: 2px solid #385723; padding: 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
+        .btn-enviar, .btn-copiar { display: block; width: 100%; color: white; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
+        .btn-enviar { background: #2c3e50; }
+        .btn-enviar:hover { background: #34495e; }
+        .btn-copiar { background: #27ae60; display: none; }
+        .btn-copiar:hover { background: #219653; }
+        #avisoCopia { color: #27ae60; font-weight: bold; display: none; margin-top: 10px; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Geografia - Aspectos Humanos da África</h1>
+    <h1>Questionário Educativo: Biologia Humana (40 Questões Variadas)</h1>
+    <hr>
 
-    <div class="student-info" id="studentInfoBox">
-        <label for="studentName">Nome Completo do Aluno (Obrigatório):</label>
-        <input type="text" id="studentName" placeholder="Digite seu nome completo aqui..." required>
-    </div>
-
-    <div id="results-container">
-        <h2>Resultado do Questionário</h2>
-        <p id="scoreText" style="font-size: 18px; font-weight: bold;"></p>
-        <button class="btn-copy" id="copyBtn" onclick="copySummary()">Copiar Resumo para Enviar ao Professor</button>
-    </div>
+    <div id="resultado"></div>
 
     <form id="quizForm">
-        <!-- Q1: VF -->
-        <div class="question-card" data-qtype="vf" data-answer="V,V,F,V">
-            <div class="question-title">Questão 1 (Verdadeiro ou Falso): Analise as afirmativas sobre a população africana:</div>
-            <p>I. () A África tem uma grande população, com aproximadamente 1,3 bilhão de habitantes.<br>
-            II. () Apesar de as taxas de crescimento vegetativo estarem caindo, o continente africano ainda crescerá por décadas.<br>
-            III. () Os países da África do Norte são os mais populosos e os com piores indicadores do continente.<br>
-            IV. () A população rural é maior do que a urbana, apesar da crescente urbanização do continente.</p>
+        <!-- BLOCO 1: QUESTÕES 1 A 20 -->
+        <h2>Parte 1: Sistema Reprodutor e Fisiologia Humana</h2>
+
+        <div class="question" data-q="1">
+            <p>1. (Convencional) Qual estrutura do sistema genital masculino é responsável pela produção dos espermatozoides?</p>
             <div class="options">
-                <label><input type="radio" name="q1" value="A"> A) V - V - F - V</label>
-                <label><input type="radio" name="q1" value="B"> B) V - F - V - F</label>
-                <label><input type="radio" name="q1" value="C"> C) F - V - V - V</label>
-                <label><input type="radio" name="q1" value="D"> D) V - V - V - F</label>
+                <label><input type="radio" name="q1" value="0"> a) Próstata</label>
+                <label><input type="radio" name="q1" value="1"> b) Testículos</label>
+                <label><input type="radio" name="q1" value="2"> c) Vesícula seminal</label>
+                <label><input type="radio" name="q1" value="3"> d) Uretra</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> A África possui cerca de 1,3 bilhão de habitantes (V), continuará crescendo (V), a África do Norte possui bons indicadores comparada à Subsaariana (F no trecho de piores indicadores) e a África possui o menor percentual de população urbana do mundo, cerca de 40%, predominando a rural (V). Gabarito correto: A.</div>
+            <div class="feedback" id="feedback1"><b>Resposta Correta:</b> b) Testículos. Os testículos são as gônadas masculinas responsáveis pela produção dos espermatozoides e da testosterona.</div>
         </div>
 
-        <!-- Q2: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 2: Sobre o país mais populoso da África e seus dados demográficos recentes, assinale a alternativa correta:</div>
-            <div class="options">
-                <label><input type="radio" name="q2" value="A"> A) O Egito é o país mais populoso, superando 200 milhões de habitantes.</label>
-                <label><input type="radio" name="q2" value="B"> B) A Nigéria é o país mais populoso, com mais de 200 milhões de habitantes.</label>
-                <label><input type="radio" name="q2" value="C"> C) A África do Sul concentra o maior contingente populacional da África Subsaariana com mais de 300 milhões de habitantes.</label>
-                <label><input type="radio" name="q2" value="D"> D) A Etiópia possui população inferior a 50 milhões de habitantes.</label>
+        <div class="question" data-q="2">
+            <p>2. (Itens I, II e III) Analise as proposições sobre o sistema genital feminino:</p>
+            <div class="propositions">
+                I. A fecundação ocorre usualmente na tuba uterina.<br>
+                II. O endométrio é a camada uterina que descama na menstruação.<br>
+                III. Os ovários produzem exclusivamente testosterona.
             </div>
-            <div class="feedback"><b>Explicação:</b> A Nigéria destaca-se como o país mais populoso da África, ultrapassando a marca de 200 milhões de habitantes.</div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="0"> a) Apenas I e III</label>
+                <label><input type="radio" name="q2" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q2" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q2" value="3"> d) I, II e III</label>
+            </div>
+            <div class="feedback" id="feedback2"><b>Resposta Correta:</b> b) Apenas I e II. O item III está incorreto pois os ovários produzem estrogênio e progesterona.</div>
         </div>
 
-        <!-- Q3: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="C">
-            <div class="question-title">Questão 3: Em relação ao crescimento populacional comparativo entre a África e o Brasil, o texto aponta que:</div>
-            <div class="options">
-                <label><input type="radio" name="q3" value="A"> A) O Brasil apresenta um crescimento populacional superior à maioria dos países africanos.</label>
-                <label><input type="radio" name="q3" value="B"> B) O Egito tem o maior crescimento populacional do continente, superando 4% ao ano.</label>
-                <label><input type="radio" name="q3" value="C"> C) Com exceção do Egito, os países africanos listados têm crescimento populacional cerca de 5 a 6 vezes superior ao do Brasil.</label>
-                <label><input type="radio" name="q3" value="D"> D) Todos os países africanos possuem taxa de crescimento idêntica à brasileira.</label>
+        <div class="question" data-q="3">
+            <p>3. (Verdadeiro ou Falso) Analise as afirmações a seguir e assinale a alternativa que indica a sequência correta:</p>
+            <div class="propositions">
+                ( ) O miométrio é a camada muscular lisa do útero responsável pelas contrações do parto.<br>
+                ( ) A nidação consiste na fixação do embrião na parede da tuba uterina.<br>
+                ( ) A placenta é o órgão responsável pelas trocas gasosas e de nutrientes entre mãe e feto.
             </div>
-            <div class="feedback"><b>Explicação:</b> O texto destaca que o Brasil registrou 0,5% de crescimento em 2022, enquanto os países africanos (exceto o Egito) apresentam taxas superiores a 2%, sendo de 5 a 6 vezes maiores.</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q3" value="1"> b) V - V - F</label>
+                <label><input type="radio" name="q3" value="2"> c) F - V - V</label>
+                <label><input type="radio" name="q3" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback3"><b>Resposta Correta:</b> a) V - F - V. A segunda assertiva é falsa porque a nidação ocorre no endométrio do útero.</div>
         </div>
 
-        <!-- Q4: Múltipla Escolha -->
-        <div class="question-title-wrapper"></div>
-        <div class="question-card" data-qtype="mc" data-answer="A">
-            <div class="question-title">Questão 4: Sobre a distribuição da população africana e a densidade demográfica, é correto afirmar:</div>
+        <div class="question" data-q="4">
+            <p>4. (Convencional) Qual é o tipo de reprodução característica da espécie humana?</p>
             <div class="options">
-                <label><input type="radio" name="q4" value="A"> A) A região do Deserto do Saara tem baixíssima densidade demográfica, exceto nas margens do Rio Nilo.</label>
-                <label><input type="radio" name="q4" value="B"> B) A densidade demográfica média da África é extremamente alta, superando 200 hab/km².</label>
-                <label><input type="radio" name="q4" value="C"> C) O Deserto do Kalahari e a Namíbia apresentam as maiores concentrações urbanas do continente.</label>
-                <label><input type="radio" name="q4" value="D"> D) A população distribui-se de forma perfeitamente homogênea por todo o território africano.</label>
+                <label><input type="radio" name="q4" value="0"> a) Assexuada por brotamento</label>
+                <label><input type="radio" name="q4" value="1"> b) Sexuada, com fecundação interna e desenvolvimento geralmente vivíparo</label>
+                <label><input type="radio" name="q4" value="2"> c) Assexuada por bipartição</label>
+                <label><input type="radio" name="q4" value="3"> d) Sexuada com fecundação estritamente externa</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> O Saara possui baixíssima densidade, com exceção notável das margens do Rio Nilo, especialmente no Egito.</div>
+            <div class="feedback" id="feedback4"><b>Resposta Correta:</b> b) Sexuada, com fecundação interna e desenvolvimento geralmente vivíparo.</div>
         </div>
 
-        <!-- Q5: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="D">
-            <div class="question-title">Questão 5: A respeito dos povos nômades do Deserto do Saara, como os berberes, beduínos e tuaregues, assinale a alternativa correta:</div>
-            <div class="options">
-                <label><input type="radio" name="q5" value="A"> A) Eles possuem grande densidade populacional e habitam exclusivamente grandes metrópoles litorâneas.</label>
-                <label><input type="radio" name="q5" value="B"> B) Perderam completamente qualquer relevância histórica nos dias atuais.</label>
-                <label><input type="radio" name="q5" value="C"> C) São grupos sedentários dedicados exclusivamente à agricultura irrigada de alta tecnologia.</label>
-                <label><input type="radio" name="q5" value="D"> D) Têm grande importância histórica na comunicação e comércio entre a África do Norte e a África Subsaariana.</label>
+        <div class="question" data-q="5">
+            <p>5. (Itens I, II e III) Sobre os hormônios da reprodução humana, avalie:</p>
+            <div class="propositions">
+                I. A ocitocina estimula as contrações uterinas no parto e a ejeção do leite.<br>
+                II. A prolactina é essencial para a produção do leite materno.<br>
+                III. A progesterona é o principal hormônio que mantém o endométrio na gravidez.
             </div>
-            <div class="feedback"><b>Explicação:</b> Os povos nômades desempenharam importante papel histórico unindo comercialmente o norte e o sul do continente.</div>
-        </div>
-
-        <!-- Q6: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 6: No que tange à taxa de urbanização do continente africano, o texto aponta que:</div>
-            <div class="options">
-                <label><input type="radio" name="q6" value="A"> A) A África é o continente mais urbanizado do planeta, com mais de 80% nas cidades.</label>
-                <label><input type="radio" name="q6" value="B"> B) A África é o continente com o menor percentual de população urbana do mundo, cerca de 40%.</label>
-                <label><input type="radio" name="q6" value="C"> C) O Egito tem a maioria absoluta de sua população vivendo em áreas estritamente urbanas e industriais.</label>
-                <label><input type="radio" name="q6" value="D"> D) O rápido processo de urbanização tem sido acompanhado por uma infraestrutura urbana exemplar.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> A África possui cerca de 40% da população em áreas urbanas, sendo o menor percentual mundial, enfrentando desafios severos de infraestrutura.</div>
-        </div>
-
-        <!-- Q7: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="C">
-            <div class="question-title">Questão 7: O conceito de "transição demográfica" refere-se a:</div>
-            <div class="options">
-                <label><input type="radio" name="q7" value="A"> A) O deslocamento forçado de populações urbanas para o campo devido a conflitos armados.</label>
-                <label><input type="radio" name="q7" value="B"> B) A migração em massa de africanos rumo ao continente europeu pelo Mar Mediterrâneo.</label>
-                <label><input type="radio" name="q7" value="C"> C) O processo de modificação das taxas de crescimento vegetativo, natalidade e mortalidade de patamares elevados para patamares mais baixos.</label>
-                <label><input type="radio" name="q7" value="D"> D) A estabilização imediata da taxa de fecundidade abaixo de zero em todos os países da África Subsaariana.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> A transição demográfica descreve a mudança de taxas altas para baixas, aproximando o crescimento vegetativo de zero.</div>
-        </div>
-
-        <!-- Q8: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="A">
-            <div class="question-title">Questão 8: Sobre a estrutura da população e pirâmides etárias na África, assinale a alternativa correta:</div>
-            <div class="options">
-                <label><input type="radio" name="q8" value="A"> A) As pirâmides etárias apresentam uma base muito larga, indicando alta taxa de fecundidade e população jovem.</label>
-                <label><input type="radio" name="q8" value="B"> B) O topo das pirâmides etárias é extremamente largo, indicando uma população majoritariamente idosa.</label>
-                <label><input type="radio" name="q8" value="C"> C) A África do Sul e o Níger possuem as maiores taxas de fecundidade do mundo.</label>
-                <label><input type="radio" name="q8" value="D"> D) A África do Norte apresenta taxas de fecundidade superiores às da África Subsaariana.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> A base larga reflete a alta fecundidade e a predominância de jovens, enquanto o topo estreito aponta menor expectativa de vida.</div>
-        </div>
-
-        <!-- Q9: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="D">
-            <div class="question-title">Questão 9: Entre os fatores que contribuem para as baixas expectativas de vida em partes da África, NÃO se pode citar:</div>
-            <div class="options">
-                <label><input type="radio" name="q9" value="A"> Condições precárias de saúde e mortalidade infantil.</label>
-                <label><input type="radio" name="q9" value="B"> O problema da fome e de epidemias/endemias.</label>
-                <label><input type="radio" name="q9" value="C"> Conflitos armados e episódios de violência.</label>
-                <label><input type="radio" name="q9" value="D"> O pleno desenvolvimento de sistemas de saúde universais altamente eficazes e sem carências.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> Sistemas de saúde universais e eficazes elevam a expectativa de vida, logo o oposto (defasagem) é que causa baixas expectativas.</div>
-        </div>
-
-        <!-- Q10: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 10: Sobre o desemprego e a informalidade no continente africano, o texto aponta que:</div>
-            <div class="options">
-                <label><input type="radio" name="q10" value="A"> A economia formal absorve todos os jovens que entram anualmente no mercado de trabalho.</label>
-                <label><input type="radio" name="q10" value="B"> Cerca de 60% dos desempregados na África são jovens, e a esmagadora maioria dos que trabalham está na economia informal.</label>
-                <label><input type="radio" name="q10" value="C"> O desemprego é inexistente na África Subsaariana devido aos programas estatais de pleno emprego.</label>
-                <label><input type="radio" name="q10" value="D"> O setor secundário e terciário formal suprem com folga as vagas de trabalho necessárias.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> Dados do Banco Mundial indicam que os jovens representam 60% dos desempregados e a maioria dos empregados atua na informalidade.</div>
-        </div>
-
-        <!-- Q11: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="C">
-            <div class="question-title">Questão 11: Em relação à extrema pobreza mundial e os dados da ONU, assinale a alternativa correta:</div>
-            <div class="options">
-                <label><input type="radio" name="q11" value="A"> Todos os países do mundo com extrema pobreza situam-se na América Latina.</label>
-                <label><input type="radio" name="q11" value="B"> Dos 18 países do mundo com parcela significativa da população em extrema pobreza, nenhum fica na África.</label>
-                <label><input type="radio" name="q11" value="C"> Dos 18 países do mundo com parte significativa de sua população vivendo em extrema pobreza, 14 estão na África.</label>
-                <label><input type="radio" name="q11" value="D"> A pobreza extrema foi totalmente erradicada na África Subsaariana no século XXI.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> O texto aponta claramente que, dos 18 países com parcela em extrema pobreza segundo a ONU, 14 estão localizados na África.</div>
-        </div>
-
-        <!-- Q12: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="A">
-            <div class="question-title">Questão 12: Sobre o problema da fome e da subnutrição na África, segundo a FAO:</div>
-            <div class="options">
-                <label><input type="radio" name="q12" value="A"> A África Subsaariana apresenta índices de subnutrição e insegurança alimentar substancialmente superiores aos da África do Norte.</label>
-                <label><input type="radio" name="q12" value="B"> A África do Norte possui a maior taxa de subnutrição do continente, superando 40%.</label>
-                <label><input type="radio" name="q12" value="C"> A fome é um fenômeno restrito exclusivamente a áreas urbanas da África Austral.</label>
-                <label><input type="radio" name="q12" value="D"> A subnutrição foi totalmente eliminada graças ao avanço tecnológico agrícola sem intercorrências climáticas.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> A subnutrição e insegurança alimentar afetam de forma mais severa a África Subsaariana em comparação ao norte do continente.</div>
-        </div>
-
-        <!-- Q13: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="D">
-            <div class="question-title">Questão 13: Eventos climáticos como secas prolongadas, inundações e chuvas irregulares têm gerado crises alimentares severas em diversas regiões africanas. Entre as áreas fortemente ameaçadas pelas mudanças climáticas destaca-se:</div>
-            <div class="options">
-                <label><input type="radio" name="q13" value="A"> A bacia central do Rio Amazonas.</label>
-                <label><input type="radio" name="q13" value="B"> O sul da Europa mediterrânea.</label>
-                <label><input type="radio" name="q13" value="C"> As planícies centrais da América do Norte.</label>
-                <label><input type="radio" name="q13" value="D"> A região do Sahel e países da África Subsaariana.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> O texto destaca a região do Sahel e diversos países da África Subsaariana como altamente vulneráveis e afetados por eventos climáticos que geram crises alimentares.</div>
-        </div>
-
-        <!-- Q14: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 14: No tocante aos problemas de saúde pública na África Subsaariana, o texto aponta que:</div>
-            <div class="options">
-                <label><input type="radio" name="q14" value="A"> A África do Sul conseguiu zerar totalmente os casos de HIV/AIDS na última década.</label>
-                <label><input type="radio" name="q14" value="B"> A África Subsaariana concentra a grande maioria das pessoas que vivem com AIDS no mundo, sendo a África do Sul um dos países mais afetados em número absoluto.</label>
-                <label><input type="radio" name="q14" value="C"> Doenças tropicais como malária e febre amarela foram erradicadas do continente.</label>
-                <label><input type="radio" name="q14" value="D"> O surto de ebola ocorreu exclusivamente no continente europeu.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> A África Subsaariana concentra mais de 20 milhões de pessoas vivendo com AIDS, e a África do Sul possui números expressivos, embora venha aumentando o tratamento.</div>
-        </div>
-
-        <!-- Q15: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="C">
-            <div class="question-title">Questão 15: Sobre o Índice de Desenvolvimento Humano (IDH) dos países africanos, assinale a alternativa correta:</div>
-            <div class="options">
-                <label><input type="radio" name="q15" value="A"> Todos os países do continente possuem IDH considerado muito alto.</label>
-                <label><input type="radio" name="q15" value="B"> Nenhuma nação africana figura acima da categoria de IDH baixo.</label>
-                <label><input type="radio" name="q15" value="C"> Apenas Seychelles apresenta IDH muito alto, enquanto países como Argélia e Ilhas Maurício encontram-se nas categorias de IDH alto.</label>
-                <label><input type="radio" name="q15" value="D"> Os conflitos internos não exercem nenhuma influência sobre os índices de IDH das nações.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> Seychelles destaca-se com IDH muito alto, Ilhas Maurício e Argélia com IDH alto, e há forte correlação entre conflitos armados e menores IDHs.</div>
-        </div>
-
-        <!-- Q16: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="A">
-            <div class="question-title">Questão 16: O processo histórico de migrações e o popolamento da África incluem fatores como:</div>
-            <div class="options">
-                <label><input type="radio" name="q16" value="A"> A conquista árabe iniciada em 647 no norte da África, que tornou a etnia árabe predominante na região.</label>
-                <label><input type="radio" name="q16" value="B"> A imigração exclusiva de europeus para o centro da África Subsaariana no século X.</label>
-                <label><input type="radio" name="q16" value="C"> A ausência total de fluxos migratórios internos até o século XXI.</label>
-                <label><input type="radio" name="q16" value="D"> O isolamento absoluto do continente em relação à Europa e Ásia ao longo dos milênios.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> O Império Árabe conquistou o norte da África a partir de 647, consolidando a origem árabe em grande parte da população da região.</div>
-        </div>
-
-        <!-- Q17: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="D">
-            <div class="question-title">Questão 17: Fatores como pobreza, falta de perspectivas econômicas e conflitos intensos transformam a África em:</div>
-            <div class="options">
-                <label><input type="radio" name="q17" value="A"> Uma zona estritamente imigratória que atrai centenas de milhões de europeus anualmente.</label>
-                <label><input type="radio" name="q17" value="B"> Um continente isolado onde não ocorrem deslocamentos populacionais de nenhuma espécie.</label>
-                <label><input type="radio" name="q17" value="C"> Uma área sem qualquer ligação com antigos países colonizadores.</label>
-                <label><input type="radio" name="q17" value="D"> Uma zona repulsora de migrantes, com fluxos direcionados para a Europa, América do Norte e Oriente Médio.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> Por causa da pobreza e dos conflitos, a África atua como zona repulsora, enviando emigrantes para países desenvolvidos (muitas vezes antigos colonizadores).</div>
-        </div>
-
-        <!-- Q18: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 18: No contexto das migrações internas africanas, destaca-se que:</div>
-            <div class="options">
-                <label><input type="radio" name="q18" value="A"> Os deslocamentos ocorrem exclusivamente de países ricos para países em desenvolvimento sem qualquer êxodo rural.</label>
-                <label><input type="radio" name="q18" value="B"> Há um intenso êxodo rural motivado por crises econômicas no campo e questões ambientais, além de fluxos rural-rural e urbano-urbano.</label>
-                <label><input type="radio" name="q18" value="C"> O número de migrantes intra-africanos é insignificante, somando menos de mil pessoas.</label>
-                <label><input type="radio" name="q18" value="D"> As migrações internas restringem-se unicamente ao território da África do Sul.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> Os principais fluxos são internos, englobando forte êxodo rural, migrações rural-rural em busca de terras/mineração e deslocamentos urbano-urbanos.</div>
-        </div>
-
-        <!-- Q19: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="C">
-            <div class="question-title">Questão 19: Com base na análise regional dos fluxos migratórios africanos, o texto aponta que:</div>
-            <div class="options">
-                <label><input type="radio" name="q19" value="A"> Na África Oriental prevalece exclusivamente a emigração transoceânica rumo à Oceania.</label>
-                <label><input type="radio" name="q19" value="B"> A África Central não possui nenhum tipo de movimentação de migrantes.</label>
-                <label><input type="radio" name="q19" value="C"> Na África do Norte, ao contrário das demais regiões, prevalece a emigração para outros continentes, sobretudo para a Europa.</label>
-                <label><input type="radio" name="q19" value="D"> A África Ocidental tem migrações internas nulas, focando apenas em emigrações para a Antártida.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> A África do Norte destaca-se pela forte emigração rumo a outros continentes (especialmente Europa) devido à proximidade geográfica e econômica.</div>
-        </div>
-
-        <!-- Q20: Múltipla Escolha -->
-        <div class="question-card" data-qtype="mc" data-answer="A">
-            <div class="question-title">Questão 20: Sobre refugiados e deslocados internos no continente africano, assinale a alternativa correta:</div>
-            <div class="options">
-                <label><input type="radio" name="q20" value="A"> O Sudão do Sul destacou-se como o país que mais gerou emigrantes em situação de refugiados em 2022, e a República Democrática do Congo apresenta milhões de deslocados internos.</label>
-                <label><input type="radio" name="q20" value="B"> Nenhum país africano abriga refugiados em seu território.</label>
-                <label><input type="radio" name="q20" value="C"> O conceito de refugiado aplica-se exclusivamente a pessoas que mudam de país por motivos puramente turísticos.</label>
-                <label><input type="radio" name="q20" value="D"> A Somália não possui nenhum registro histórico de refugiados ou deslocados internos.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> O Sudão do Sul liderou os dados de refugiados em 2022, enquanto a RD Congo destaca-se pelo elevado número de deslocados internos e refugiados.</div>
-        </div>
-
-        <!-- Q21: Itens Estruturados -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 21: Analise os itens sobre a dinâmica populacional e urbana da África:</div>
-            <p>I. Lagos, na Nigéria, é uma das maiores cidades da África e figura entre as mais populosas do mundo.<br>
-            II. O Egito possui a maior parte de sua população vivendo em áreas estritamente industriais e hiperurbanizadas, sem presença rural.<br>
-            III. A África Subsaariana apresenta altas taxas de natalidade e de mortalidade, impulsionando o crescimento vegetativo.</p>
-            <p>Estão corretos:</p>
-            <div class="options">
-                <label><input type="radio" name="q21" value="A"> A) Apenas I e II.</label>
-                <label><input type="radio" name="q21" value="B"> B) Apenas I e III.</label>
-                <label><input type="radio" name="q21" value="C"> C) Apenas II e III.</label>
-                <label><input type="radio" name="q21" value="D"> D) I, II e III.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> O item II está incorreto pois o Egito tem a maior parte de sua população vivendo em áreas rurais. Os itens I e III estão corretos. Gabarito: B.</div>
-        </div>
-
-        <!-- Q22: Itens Estruturados -->
-        <div class="question-card" data-qtype="mc" data-answer="D">
-            <div class="question-title">Questão 22: Analise os itens sobre demografia e transição demográfica na África:</div>
-            <p>I. Nenhum país africano concluiu integralmente a transição demográfica até o momento.<br>
-            II. Países como Nigéria e República Democrática do Congo encontram-se em fases onde o crescimento vegetativo é elevado.<br>
-            III. Na África do Norte, as taxas de natalidade e mortalidade são mais baixas que na África Subsaariana, embora não sejam baixas em termos globais.</p>
-            <p>Estão corretos:</p>
-            <div class="options">
-                <label><input type="radio" name="q22" value="A"> A) Apenas I.</label>
-                <label><input type="radio" name="q22" value="B"> B) Apenas II.</label>
-                <label><input type="radio" name="q22" value="C"> C) Apenas I e II.</label>
-                <label><input type="radio" name="q22" value="D"> D) I, II e III.</label>
-            </div>
-            <div class="feedback"><b>Explicação:</b> Todas as afirmações estão corretas de acordo com o texto base sobre a transição demográfica e suas variações regionais. Gabarito: D.</div>
-        </div>
-
-        <!-- Q23: Itens Estruturados -->
-        <div class="question-card" data-qtype="mc" data-answer="A">
-            <div class="question-title">Questão 23: Analise as afirmativas sobre os desafios educacionais e etários na África:</div>
-            <p>I. A base muito larga das pirâmides etárias reflete altas taxas de fecundidade.<br>
-            II. A maior proporção de jovens exige investimentos expressivos na ampliação e na qualidade dos sistemas escolares e de saúde.<br>
-            III. A África Subsaariana possui as menores taxas de fecundidade de todo o planeta.</p>
             <p>Estão corretas:</p>
             <div class="options">
-                <label><input type="radio" name="q23" value="A"> A) Apenas I e II.</label>
-                <label><input type="radio" name="q23" value="B"> B) Apenas I e III.</label>
-                <label><input type="radio" name="q23" value="C"> C) Apenas II e III.</label>
-                <label><input type="radio" name="q23" value="D"> D) I, II e III.</label>
+                <label><input type="radio" name="q5" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q5" value="1"> b) I, II e III</label>
+                <label><input type="radio" name="q5" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q5" value="3"> d) Apenas I e III</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> A África Subsaariana possui algumas das *maiores* taxas de fecundidade do mundo, tornando o item III falso. I e II corretos. Gabarito: A.</div>
+            <div class="feedback" id="feedback5"><b>Resposta Correta:</b> b) I, II e III. Todos os três enunciados descrevem corretamente os papéis hormonais citados.</div>
         </div>
 
-        <!-- Q24: Itens Estruturados -->
-        <div class="question-card" data-qtype="mc" data-answer="C">
-            <div class="question-title">Questão 24: Analise os itens referentes aos problemas socioeconômicos e à fome na África:</div>
-            <p>I. A economia de diversos países baseia-se na exploração de recursos naturais cujos lucros frequentemente beneficiam apenas pequenas elites ou empresas estrangeiras.<br>
-            II. A subnutrição atinge índices superiores na África Subsaariana em comparação à África do Norte.<br>
-            III. O aquecimento global e as mudanças climáticas tendem a abrandar e eliminar totalmente os problemas de segurança alimentar na região do Sahel.</p>
-            <p>Estão corretos:</p>
+        <div class="question" data-q="6">
+            <p>6. (Verdadeiro ou Falso) Julgue os itens sobre o ciclo menstrual e gônadas:</p>
+            <div class="propositions">
+                ( ) Em um ciclo de 28 dias, a ovulação ocorre tipicamente por volta do 14º dia.<br>
+                ( ) O epidídimo armazena e permite a maturação dos espermatozoides.<br>
+                ( ) A próstata produz um líquido ácido que paralisa os espermatozoides.
+            </div>
             <div class="options">
-                <label><input type="radio" name="q24" value="A"> A) Apenas I.</label>
-                <label><input type="radio" name="q24" value="B"> B) Apenas III.</label>
-                <label><input type="radio" name="q24" value="C"> C) Apenas I e II.</label>
-                <label><input type="radio" name="q24" value="D"> D) I, II e III.</label>
+                <label><input type="radio" name="q6" value="0"> a) F - V - F</label>
+                <label><input type="radio" name="q6" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q6" value="2"> c) V - V - F</label>
+                <label><input type="radio" name="q6" value="3"> d) V - V - V</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> O item III é falso porque as mudanças climáticas *agravam* a fome e a insegurança alimentar, e não as abrandam. I e II corretos. Gabarito: C.</div>
+            <div class="feedback" id="feedback6"><b>Resposta Correta:</b> c) V - V - F. O terceiro item é falso pois a próstata secreta um líquido alcalino.</div>
         </div>
 
-        <!-- Q25: Itens Estruturados -->
-        <div class="question-card" data-qtype="mc" data-answer="B">
-            <div class="question-title">Questão 25: Analise as afirmativas sobre saúde pública e IDH na África:</div>
-            <p>I. A África do Sul apresenta milhões de pessoas vivendo com HIV, mas tem registrado avanços nos tratamentos e queda de óbitos.<br>
-            II. Doenças tropicais como malária, febre amarela e dengue são desconhecidas no continente africano.<br>
-            III. O IDH dos países africanos sofre forte influência de problemas nas áreas de saúde, educação, renda e da presença de conflitos armados.</p>
+        <div class="question" data-q="7">
+            <p>7. (Convencional) O que caracteriza o planejamento familiar no contexto da saúde e dos direitos reprodutivos?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="0"> a) A proibição do uso de métodos contraceptivos</label>
+                <label><input type="radio" name="q7" value="1"> b) O conjunto de ações de regulação da fecundidade que garante o direito de decisão sobre ter ou não filhos</label>
+                <label><input type="radio" name="q7" value="2"> c) A obrigatoriedade de esterilização após o segundo filho</label>
+                <label><input type="radio" name="q7" value="3"> d) A exclusão dos métodos de barreira das políticas públicas</label>
+            </div>
+            <div class="feedback" id="feedback7"><b>Resposta Correta:</b> b) O conjunto de ações de regulação da fecundidade que garante o direito de decisão sobre ter ou não filhos.</div>
+        </div>
+
+        <div class="question" data-q="8">
+            <p>8. (Itens I, II e III) Sobre a anatomia do sistema reprodutor masculino, analise:</p>
+            <div class="propositions">
+                I. A uretra masculina conduz tanto a urina quanto o esperma.<br>
+                II. As vesículas seminais produzem fluido rico em frutose para nutrir os gametas.<br>
+                III. Os ductos deferentes conectam o epidídimo à uretra.
+            </div>
             <p>Estão corretas:</p>
             <div class="options">
-                <label><input type="radio" name="q25" value="A"> A) Apenas I e II.</label>
-                <label><input type="radio" name="q25" value="B"> B) Apenas I e III.</label>
-                <label><input type="radio" name="q25" value="C"> C) Apenas II e III.</label>
-                <label><input type="radio" name="q25" value="D"> D) I, II e III.</label>
+                <label><input type="radio" name="q8" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q8" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q8" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q8" value="3"> d) Apenas I e III</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> O item II é falso, pois doenças tropicais (malária, febre amarela, etc.) são bastante comuns no continente. I e III corretos. Gabarito: B.</div>
+            <div class="feedback" id="feedback8"><b>Resposta Correta:</b> c) I, II e III. Todas as estruturas e funções descritas estão corretas.</div>
         </div>
 
-        <!-- Q26: VF -->
-        <div class="question-card" data-qtype="vf" data-answer="V,F,V,F">
-            <div class="question-title">Questão 26 (Verdadeiro ou Falso): Julgue as afirmativas sobre a dinâmica populacional e urbana:</div>
-            <p>I. () Com cerca de 1,3 bilhão de habitantes, a África é o segundo continente mais populoso do planeta.<br>
-            II. () A África possui mais de 80% da sua população vivendo em metrópoles altamente industrializadas.<br>
-            III. () O crescimento populacional acelerado projeta mais de 2 bilhões de habitantes em 2050.<br>
-            IV. () O continente africano concluiu totalmente a sua transição demográfica no século passado.</p>
+        <div class="question" data-q="9">
+            <p>9. (Verdadeiro ou Falso) Analise as afirmações sobre a embriologia e gametogênese inicial:</p>
+            <div class="propositions">
+                ( ) O gameta feminino é liberado na ovulação sob a forma de ovócito secundário.<br>
+                ( ) A ovogênese na mulher começa e termina totalmente antes do nascimento.<br>
+                ( ) O clitóris é um órgão erétil e altamente sensível da genitália externa feminina.
+            </div>
             <div class="options">
-                <label><input type="radio" name="q26" value="A"> A) V - V - F - F</label>
-                <label><input type="radio" name="q26" value="B"> B) V - F - V - F</label>
-                <label><input type="radio" name="q26" value="C"> C) F - V - F - V</label>
-                <label><input type="radio" name="q26" value="D"> D) V - V - V - V</label>
+                <label><input type="radio" name="q9" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q9" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q9" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q9" value="3"> d) F - F - V</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> Afirmativas I (correta, 1,3 bi, 2º mais populoso) e III (correta, projeção para 2050) são verdadeiras. II é falsa (urbanização é de cerca de 40%) e IV é falsa (nenhum país concluiu). Gabarito: B.</div>
+            <div class="feedback" id="feedback9"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso pois a ovogênese estagna na fase fetal.</div>
         </div>
 
-        <!-- Q27: VF -->
-        <div class="question-card" data-qtype="vf" data-answer="F,V,V,V">
-            <div class="question-title">Questão 27 (Verdadeiro ou Falso): Julgue os itens acerca dos aspectos demográficos regionais:</div>
-            <p>I. () A África do Norte apresenta taxas de fecundidade superiores a todas as regiões da África Subsaariana.<br>
-            II. () Argélia, Marrocos e Tunísia possuem as maiores expectativas de vida ao nascer do continente.<br>
-            III. () O Níger e a Somália registram algumas das maiores taxas de fecundidade do mundo.<br>
-            IV. () A expectativa de vida ao nascer vem crescendo na maioria dos países africanos nos últimos anos.</p>
+        <div class="question" data-q="10">
+            <p>10. (Convencional) Qual glândula endócrina localizada na base do cérebro comanda o ciclo menstrual liberando FSH e LH?</p>
             <div class="options">
-                <label><input type="radio" name="q27" value="A"> A) V - V - F - F</label>
-                <label><input type="radio" name="q27" value="B"> B) F - V - V - V</label>
-                <label><input type="radio" name="q27" value="C"> C) V - F - V - V</label>
-                <label><input type="radio" name="q27" value="D"> D) F - F - V - V</label>
+                <label><input type="radio" name="q10" value="0"> a) Tireoide</label>
+                <label><input type="radio" name="q10" value="1"> b) Hipófise (pituitária)</label>
+                <label><input type="radio" name="q10" value="2"> c) Adrenal</label>
+                <label><input type="radio" name="q10" value="3"> d) Pâncreas</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> A África do Norte tem taxas menores que a Subsaariana (I Falso). Argélia, Marrocos e Tunísia lideram a expectativa de vida (II Verdadeiro). Níger e Somália têm altíssimas taxas de fecundidade (III Verdadeiro). A expectativa de vida tem crescido (IV Verdadeiro). Gabarito: B.</div>
+            <div class="feedback" id="feedback10"><b>Resposta Correta:</b> b) Hipófise (pituitária).</div>
         </div>
 
-        <!-- Q28: VF -->
-        <div class="question-card" data-qtype="vf" data-answer="V,V,F,V">
-            <div class="question-title">Questão 28 (Verdadeiro ou Falso): Analise as afirmações sobre economia, emprego e fome:</div>
-            <p>I. () A população em idade ativa está crescendo, mas a economia não gera vagas formais suficientes, gerando alto desemprego e informalidade.<br>
-            II. () A FAO aponta que uma parcela expressiva da população africana sofre com subnutrição e insegurança alimentar, com índices piores na África Subsaariana.<br>
-            III. () A África Subsaariana é totalmente isenta de problemas relacionados a desastres naturais ou secas.<br>
-            IV. () Vários países da África enfrentam graves crises alimentares agravadas por eventos climáticos e conflitos.</p>
+        <div class="question" data-q="11">
+            <p>11. (Itens I, II e III) Sobre a gestação e o desenvolvimento embrionário, analise:</p>
+            <div class="propositions">
+                I. O embrião se implanta no endométrio do útero.<br>
+                II. A placenta atua nas trocas metabólicas entre a mãe e o feto.<br>
+                III. O corpo lúteo regride e cessa a produção de progesterona durante toda a gravidez.
+            </div>
+            <p>Está correto apenas o que se afirma em:</p>
             <div class="options">
-                <label><input type="radio" name="q28" value="A"> A) V - V - F - V</label>
-                <label><input type="radio" name="q28" value="B"> V - F - V - F</label>
-                <label><input type="radio" name="q28" value="C"> C) F - V - V - F</label>
-                <label><input type="radio" name="q28" value="D"> D) V - V - V - V</label>
+                <label><input type="radio" name="q11" value="0"> a) I e II</label>
+                <label><input type="radio" name="q11" value="1"> b) II e III</label>
+                <label><input type="radio" name="q11" value="2"> c) I e III</label>
+                <label><input type="radio" name="q11" value="3"> d) I, II e III</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> I, II e IV são verdadeiras. A III é falsa pois a África Subsaariana sofre fortemente com secas e eventos climáticos adversos. Gabarito: A.</div>
+            <div class="feedback" id="feedback11"><b>Resposta Correta:</b> a) I e II. O item III está incorreto porque o corpo lúteo mantém-se ativo no início.</div>
         </div>
 
-        <!-- Q29: VF -->
-        <div class="question-card" data-qtype="vf" data-answer="V,F,V,V">
-            <div class="question-title">Questão 29 (Verdadeiro ou Falso): Julgue os itens sobre IDH e saúde na África:</div>
-            <p>I. () Seychelles destaca-se no ranking mundial com IDH muito alto.<br>
-            II. () Os países com IDH alto e muito alto no continente estão frequentemente envolvidos em guerras civis prolongadas.<br>
-            III. () A África do Sul possui milhões de pessoas vivendo com HIV, representando um desafio expressivo de saúde pública.<br>
-            IV. () O quadro de pobreza generalizada em partes da região contribui diretamente para a propagação de doenças e epidemias.</p>
+        <div class="question" data-q="12">
+            <p>12. (Verdadeiro ou Falso) Julgue os conceitos anatômicos e fisiológicos:</p>
+            <div class="propositions">
+                ( ) O miométrio é formado por tecido muscular liso.<br>
+                ( ) A tuba uterina é o local onde o espermatozoide se forma originalmente.<br>
+                ( ) Os testículos realizam a espermatogênese e produzem testosterona.
+            </div>
             <div class="options">
-                <label><input type="radio" name="q29" value="A"> A) V - V - F - F</label>
-                <label><input type="radio" name="q29" value="B"> B) V - F - V - V</label>
-                <label><input type="radio" name="q29" value="C"> C) F - V - V - V</label>
-                <label><input type="radio" name="q29" value="D"> D) V - V - V - V</label>
+                <label><input type="radio" name="q12" value="0"> a) V - V - V</label>
+                <label><input type="radio" name="q12" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q12" value="2"> c) F - V - F</label>
+                <label><input type="radio" name="q12" value="3"> d) F - F - V</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> Seychelles tem IDH muito alto (I V). O texto afirma que países com melhores IDH *não* estão envolvidos em conflitos (II F). África do Sul e HIV (III V). Pobreza e saúde (IV V). Gabarito: B.</div>
+            <div class="feedback" id="feedback12"><b>Resposta Correta:</b> b) V - F - V. O segundo item é falso pois os espermatozoides são produzidos nos testículos.</div>
         </div>
 
-        <!-- Q30: VF -->
-        <div class="question-card" data-qtype="vf" data-answer="V,V,F,V">
-            <div class="question-title">Questão 30 (Verdadeiro ou Falso): Analise as afirmativas sobre migrações e refugiados:</div>
-            <p>I. () A África é uma zona repulsora de migrantes devido à pobreza, falta de perspectivas econômicas e conflitos armados.<br>
-            II. () A África do Norte destaca-se por intensa emigração rumo a outros continentes, especialmente a Europa através do Mar Mediterrâneo.<br>
-            III. () Os fluxos migratórios na África restringem-se exclusivamente a outros continentes, não havendo migrações internas.<br>
-            IV. () O Sudão do Sul e a República Democrática do Congo destacam-se expressivamente em número de refugiados e deslocados internos.</p>
+        <div class="question" data-q="13">
+            <p>13. (Convencional) Qual das opções representa corretamente o caminho percorrido pelo espermatozoide desde a sua produção até a saída do corpo masculino?</p>
             <div class="options">
-                <label><input type="radio" name="q30" value="A"> A) F - V - V - F</label>
-                <label><input type="radio" name="q30" value="B"> B) V - V - F - V</label>
-                <label><input type="radio" name="q30" value="C"> C) V - F - V - V</label>
-                <label><input type="radio" name="q30" value="D"> D) V - V - V - V</label>
+                <label><input type="radio" name="q13" value="0"> a) Testículo -> Uretra -> Epidídimo -> Canal deferente</label>
+                <label><input type="radio" name="q13" value="1"> b) Testículo -> Epidídimo -> Canal deferente -> Uretra</label>
+                <label><input type="radio" name="q13" value="2"> c) Próstata -> Testículo -> Epidídimo -> Uretra</label>
+                <label><input type="radio" name="q13" value="3"> d) Epidídimo -> Testículo -> Uretra -> Canal deferente</label>
             </div>
-            <div class="feedback"><b>Explicação:</b> I, II e IV são verdadeiras. A III é falsa porque os principais fluxos migratórios africanos são internos (milhões de pessoas em êxodo rural e entre países do continente). Gabarito: B.</div>
+            <div class="feedback" id="feedback13"><b>Resposta Correta:</b> b) Testículo -> Epidídimo -> Canal deferente -> Uretra.</div>
         </div>
 
-        <button type="button" class="btn-submit" onclick="gradeQuiz()">Enviar e Corrigir Questionário</button>
+        <div class="question" data-q="14">
+            <p>14. (Itens I, II e III) Sobre a regulação hormonal masculina, avalie:</p>
+            <div class="propositions">
+                I. O hormônio LH estimula as células intersticiais a produzirem testosterona.<br>
+                II. O FSH atua nos túbulos seminíferos estimulando a espermatogênese.<br>
+                III. A testosterona inibe a produção de gonadotrofinas pela hipófise (feedback negativo).
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q14" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q14" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q14" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback14"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações descrevem com precisão o eixo hormonal masculino.</div>
+        </div>
+
+        <div class="question" data-q="15">
+            <p>15. (Verdadeiro ou Falso) Julgue os itens relativos ao útero e anexos:</p>
+            <div class="propositions">
+                ( ) O colo do útero faz a transição entre o canal vaginal e a cavidade uterina.<br>
+                ( ) A vagina possui glândulas que secretam o muco para a nidação embrionária.<br>
+                ( ) As vesículas seminais e a próstata ajudam a compor o sêmen.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q15" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q15" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q15" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback15"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso porque a nidação ocorre no endométrio do útero.</div>
+        </div>
+
+        <div class="question" data-q="16">
+            <p>16. (Convencional) O processo de formação dos gametas femininos nos ovários denomina-se:</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="0"> a) Espermatogênese</label>
+                <label><input type="radio" name="q16" value="1"> b) Ovogênese (ou oogênese)</label>
+                <label><input type="radio" name="q16" value="2"> c) Clivagem</label>
+                <label><input type="radio" name="q16" value="3"> d) Espermiogênese</label>
+            </div>
+            <div class="feedback" id="feedback16"><b>Resposta Correta:</b> b) Ovogênese (ou oogênese).</div>
+        </div>
+
+        <div class="question" data-q="17">
+            <p>17. (Itens I, II e III) Sobre as características sexuais secundárias humanas, analise:</p>
+            <div class="propositions">
+                I. A testosterona promove o engrossamento da voz e o crescimento de pelos nos homens.<br>
+                II. O estrogênio atua no desenvolvimento das mamas e redistribuição da gordura corporal nas mulheres.<br>
+                III. Os hormônios sexuais não interferem no comportamento e humor.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="0"> a) I, II e III</label>
+                <label><input type="radio" name="q17" value="1"> b) Apenas I e II</label>
+                <label><input type="radio" name="q17" value="2"> c) Apenas II e III</label>
+                <label><input type="radio" name="q17" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback17"><b>Resposta Correta:</b> b) Apenas I e II. O item III está incorreto pois os hormônios influenciam o metabolismo e sistema nervoso.</div>
+        </div>
+
+        <div class="question" data-q="18">
+            <p>18. (Verdadeiro ou Falso) Analise as proposições sobre fecundação e desenvolvimento:</p>
+            <div class="propositions">
+                ( ) A união dos núcleos do espermatozoide e do ovócito gera o zigoto (ou ovo).<br>
+                ( ) A placenta secreta hormônios como a gonadotrofina coriônica humana (hCG).<br>
+                ( ) O gêmeo dizigótico (fraterno) origina-se de um único óvulo fecundado por dois espermatozoides.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q18" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q18" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q18" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q18" value="3"> d) F - F - F</label>
+            </div>
+            <div class="feedback" id="feedback18"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso: gêmeos dizigóticos resultam de dois óvulos diferentes.</div>
+        </div>
+
+        <div class="question" data-q="19">
+            <p>19. (Convencional) Qual das camadas do útero sofre alterações cíclicas sob estímulo hormonal e descama na menstruação?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="0"> a) Miométrio</label>
+                <label><input type="radio" name="q19" value="1"> b) Endométrio</label>
+                <label><input type="radio" name="q19" value="2"> c) Perimétrio</label>
+                <label><input type="radio" name="q19" value="3"> d) Colo uterino</label>
+            </div>
+            <div class="feedback" id="feedback19"><b>Resposta Correta:</b> b) Endométrio.</div>
+        </div>
+
+        <div class="question" data-q="20">
+            <p>20. (Itens I, II e III) Sobre a fase lútea do ciclo menstrual, avalie:</p>
+            <div class="propositions">
+                I. O corpo lúteo forma-se a partir dos restos do folículo rompido após a ovulação.<br>
+                II. Ele secreta grandes quantidades de progesterona.<br>
+                III. Se houver gravidez, o corpo lúteo regride imediatamente no 14º dia sem suporte de hormônios.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q20" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q20" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q20" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback20"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso porque o hCG sustenta o corpo lúteo na gravidez.</div>
+        </div>
+
+        <hr>
+
+        <!-- BLOCO 2: QUESTÕES 21 A 40 -->
+        <h2>Parte 2: Métodos Contraceptivos e Infecções Sexualmente Transmissíveis (ISTs)</h2>
+
+        <div class="question" data-q="21">
+            <p>21. (Convencional) Qual dos métodos abaixo atua como barreira física e é o único capaz de prevenir simultaneamente a gravidez e as ISTs?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="0"> a) Pílula anticoncepcional oral</label>
+                <label><input type="radio" name="q21" value="1"> b) Preservativo (masculino e feminino)</label>
+                <label><input type="radio" name="q21" value="2"> c) DIU de cobre</label>
+                <label><input type="radio" name="q21" value="3"> d) Laqueadura tubária</label>
+            </div>
+            <div class="feedback" id="feedback21"><b>Resposta Correta:</b> b) Preservativo (masculino e feminino).</div>
+        </div>
+
+        <div class="question" data-q="22">
+            <p>22. (Itens I, II e III) Sobre os métodos contraceptivos hormonais combinados, analise:</p>
+            <div class="propositions">
+                I. Contêm análogos de estrogênio e progesterona.<br>
+                II. O principal mecanismo é inibir a ovulação.<br>
+                III. Protegem eficazmente o usuário contra o contágio por HIV e sífilis.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q22" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q22" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q22" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback22"><b>Resposta Correta:</b> a) Apenas I e II. O item III é incorreto, pois pílulas não oferecem barreira contra ISTs.</div>
+        </div>
+
+        <div class="question" data-q="23">
+            <p>23. (Verdadeiro ou Falso) Julgue os itens sobre cirurgias de esterilização voluntária:</p>
+            <div class="propositions">
+                ( ) A vasectomia corta ou bloqueia os ductos deferentes no homem.<br>
+                ( ) A laqueadura corta ou bloqueia as tubas uterinas na mulher.<br>
+                ( ) A vasectomia impede imediatamente a produção de espermatozoides pelos testículos.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q23" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q23" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q23" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q23" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback23"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso: a vasectomia apenas impede a passagem, mas os testículos continuam produzindo gametas.</div>
+        </div>
+
+        <div class="question" data-q="24">
+            <p>24. (Convencional) Onde deve ser posicionado o diafragma antes da relação sexual?</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="0"> a) Na entrada do colo do útero</label>
+                <label><input type="radio" name="q24" value="1"> b) No interior dos testículos</label>
+                <label><input type="radio" name="q24" value="2"> c) Nos ductos deferentes</label>
+                <label><input type="radio" name="q24" value="3"> d) No canal da uretra masculina</label>
+            </div>
+            <div class="feedback" id="feedback24"><b>Resposta Correta:</b> a) Na entrada do colo do útero.</div>
+        </div>
+
+        <div class="question" data-q="25">
+            <p>25. (Itens I, II e III) Sobre as Infecções Sexualmente Transmissíveis (ISTs), analise:</p>
+            <div class="propositions">
+                I. O termo IST substituiu DST por abranger também infecções assintomáticas.<br>
+                II. O HIV é um retrovírus que ataca os linfócitos T auxiliares.<br>
+                III. Todas as ISTs virais possuem cura total através de cursos rápidos de antibióticos.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q25" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q25" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q25" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback25"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso porque vírus não são curados por antibióticos.</div>
+        </div>
+
+        <div class="question" data-q="26">
+            <p>26. (Verdadeiro ou Falso) Julgue as afirmações sobre sífilis e gonorreia:</p>
+            <div class="propositions">
+                ( ) A sífilis é causada pela bactéria Treponema pallidum e apresenta o cancro duro no estágio inicial.<br>
+                ( ) A gonorreia é uma infecção viral que causa verrugas genitais generalizadas.<br>
+                ( ) Infecções bacterianas como a clamídia e a gonorreia podem ser tratadas com antibióticos adequados.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q26" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q26" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q26" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q26" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback26"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso porque a gonorreia é uma infecção bacteriana.</div>
+        </div>
+
+        <div class="question" data-q="27">
+            <p>27. (Convencional) O papilomavírus humano (HPV) está associado diretamente ao risco de desenvolvimento de qual tipo de patologia maligna?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="0"> a) Câncer do colo do útero e de pênis</label>
+                <label><input type="radio" name="q27" value="1"> b) Câncer de fígado fulminante</label>
+                <label><input type="radio" name="q27" value="2"> c) Leucemia mieloide aguda</label>
+                <label><input type="radio" name="q27" value="3"> d) Câncer gástrico avançado</label>
+            </div>
+            <div class="feedback" id="feedback27"><b>Resposta Correta:</b> a) Câncer do colo do útero e de pênis.</div>
+        </div>
+
+        <div class="question" data-q="28">
+            <p>28. (Itens I, II e III) Sobre a Hepatite B, analise as afirmativas:</p>
+            <div class="propositions">
+                I. É uma infecção viral que afeta principalmente o fígado.<br>
+                II. Pode ser transmitida por meio de fluidos corporais como sangue e esperma.<br>
+                III. O SUS oferece vacinação preventiva de forma gratuita.
+            </div>
+            <p>Está correto o que se afirma em:</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q28" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q28" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q28" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback28"><b>Resposta Correta:</b> c) I, II e III. Todas as afirmações sobre a hepatite B estão corretas.</div>
+        </div>
+
+        <div class="question" data-q="29">
+            <p>29. (Verdadeiro ou Falso) Avalie as inter-relações entre ISTs e o sistema imune:</p>
+            <div class="propositions">
+                ( ) A presença de feridas geradas por ISTs facilita a porta de entrada para o HIV.<br>
+                ( ) O vírus da herpes simples gera lesões vesiculosas que podem reaparecer em baixas imunidades.<br>
+                ( ) O tratamento da aids com antirretrovirais elimina por completo o vírus do organismo infectado.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q29" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q29" value="1"> b) F - V - V</label>
+                <label><input type="radio" name="q29" value="2"> c) V - F - V</label>
+                <label><input type="radio" name="q29" value="3"> d) V - V - V</label>
+            </div>
+            <div class="feedback" id="feedback29"><b>Resposta Correta:</b> a) V - V - F. O terceiro item é falso porque os antirretrovirais controlam, mas não eradicam totalmente o HIV.</div>
+        </div>
+
+        <div class="question" data-q="30">
+            <p>30. (Convencional) O que caracteriza o caráter "silencioso" de várias ISTs na população?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="0"> a) A ausência completa de sintomas nas fases iniciais, dificultando o diagnóstico precoce</label>
+                <label><input type="radio" name="q30" value="1"> b) A transmissão restrita exclusivamente a ambientes hospitalares</label>
+                <label><input type="radio" name="q30" value="2"> c) O fato de desaparecerem sozinhas em poucas horas sem intervenção</label>
+                <label><input type="radio" name="q30" value="3"> d) A imunidade permanente gerada logo após o primeiro contato</label>
+            </div>
+            <div class="feedback" id="feedback30"><b>Resposta Correta:</b> a) A ausência completa de sintomas nas fases iniciais, dificultando o diagnóstico precoce.</div>
+        </div>
+
+        <div class="question" data-q="31">
+            <p>31. (Itens I, II e III) Sobre a prevenção combinada contra o HIV, analise:</p>
+            <div class="propositions">
+                I. A Profilaxia Pré-Exposição (PrEP) envolve o uso de antirretrovirais por pessoas não infectadas antes da exposição ao risco.<br>
+                II. A Profilaxia Pós-Exposição (PEP) deve ser iniciada preferencialmente nas primeiras 72 horas após uma situação de risco.<br>
+                III. Indivíduos com carga viral indetectável em tratamento adequado não transmitem o HIV por via sexual.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q31" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q31" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q31" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback31"><b>Resposta Correta:</b> c) I, II e III. O conceito moderno de prevenção combinada engloba PrEP, PEP e o princípio I = I (Indetectável = Intransmissível).</div>
+        </div>
+
+        <div class="question" data-q="32">
+            <p>32. (Verdadeiro ou Falso) Julgue os itens sobre métodos contraceptivos comportamentais:</p>
+            <div class="propositions">
+                ( ) O método da tabelinha baseia-se no cálculo do período fértil com base na duração dos ciclos anteriores.<br>
+                ( ) A temperatura basal do corpo sofre uma leve queda no momento da ovulação e depois se eleva.<br>
+                ( ) Os métodos comportamentais apresentam altos índices de eficácia quando comparados aos dispositivos intrauterinos (DIU).
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q32" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q32" value="1"> b) V - F - V</label>
+                <label><input type="radio" name="q32" value="2"> c) F - V - F</label>
+                <label><input type="radio" name="q32" value="3"> d) V - F - F</label>
+            </div>
+            <div class="feedback" id="feedback32"><b>Resposta Correta:</b> d) V - F - F. O terceiro item é falso porque os métodos comportamentais possuem taxas de falha consideravelmente mais altas que os métodos de alta eficácia como o DIU.</div>
+        </div>
+
+        <div class="question" data-q="33">
+            <p>33. (Convencional) Como atua prioritariamente o Dispositivo Intrauterino (DIU) de cobre?</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="0"> a) Bloqueando permanentemente a produção de hormônios na hipófise</label>
+                <label><input type="radio" name="q33" value="1"> b) Provocando uma reação inflamatória local estéril que é tóxica aos espermatozoides e impede a fecundação</label>
+                <label><input type="radio" name="q33" value="2"> c) Destruindo todas as bactérias da microbiota vaginal</label>
+                <label><input type="radio" name="q33" value="3"> d) Impedindo o crescimento dos ovários</label>
+            </div>
+            <div class="feedback" id="feedback33"><b>Resposta Correta:</b> b) Provocando uma reação inflamatória local estéril que é tóxica aos espermatozoides e impede a fecundação.</div>
+        </div>
+
+        <div class="question" data-q="34">
+            <p>34. (Itens I, II e III) Sobre a candidíase vaginal, avalie:</p>
+            <div class="propositions">
+                I. É causada por um fungo (*Candida albicans*) que pode proliferar com desequilíbrios da flora local.<br>
+                II. O principal sintoma costuma incluir co intensa, ardência e corrimento esbranquiçado espesso.<br>
+                III. É classificada obrigatoriamente como uma IST de alta gravidade sistêmica.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q34" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q34" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q34" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback34"><b>Resposta Correta:</b> a) Apenas I e II. O item III está incorreto porque a candidíase não é classicamente uma IST, pois o fungo já habita o organismo e se manifesta por desequilíbrios na imunidade ou pH.</div>
+        </div>
+
+        <div class="question" data-q="35">
+            <p>35. (Verdadeiro ou Falso) Analise as assertivas sobre o HPV e vacinação:</p>
+            <div class="propositions">
+                ( ) A vacina contra o HPV quadrivalente protege contra os principais tipos virais causadores de verrugas genitais e cânceres do colo uterino.<br>
+                ( ) A transmissão do HPV ocorre estritamente por transfusão de sangue contaminado, sem relação com o contato sexual.<br>
+                ( ) O uso do preservativo reduz o risco de infecção por HPV, embora possa não cobrir toda a área de pele exposta.
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q35" value="0"> a) V - F - V</label>
+                <label><input type="radio" name="q35" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q35" value="2"> c) V - V - V</label>
+                <label><input type="radio" name="q35" value="3"> d) F - F - V</label>
+            </div>
+            <div class="feedback" id="feedback35"><b>Resposta Correta:</b> a) V - F - V. O segundo item é falso pois o HPV é transmitido por contato direto pele a pele ou mucosa durante a relação sexual.</div>
+        </div>
+
+        <div class="question" data-q="36">
+            <p>36. (Convencional) Qual exame preventivo de rotina ginecológica é amplamente utilizado para rastrear lesões precursoras do câncer do colo do útero?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="0"> a) Exame de sangue oculto nas fezes</label>
+                <label><input type="radio" name="q36" value="1"> b) Colpocitologia oncótica (Preventivo ou Papanicolau)</label>
+                <label><input type="radio" name="q36" value="2"> c) Ressonância magnética craniana</label>
+                <label><input type="radio" name="q36" value="3"> d) Espirometria pulmonar</label>
+            </div>
+            <div class="feedback" id="feedback36"><b>Resposta Correta:</b> b) Colpocitologia oncótica (Preventivo ou Papanicolau).</div>
+        </div>
+
+        <div class="question" data-q="37">
+            <p>37. (Itens I, II e III) Sobre os métodos de barreira quimico-mecânicos (espermicidas), analise:</p>
+            <div class="propositions">
+                I. Substanciam-se em cremes ou géis aplicados na vagina para imobilizar ou destruir espermatozoides.<br>
+                II. Quando usados isoladamente, possuem eficácia contraceptiva inferior aos preservativos e métodos hormonais.<br>
+                III. Protegem de forma altamente segura contra o vírus HIV e outras ISTs quando empregados sozinhos.
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q37" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q37" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q37" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback37"><b>Resposta Correta:</b> a) Apenas I e II. O item III é falso pois espermicidas não protegem contra ISTs e podem causar irritações mucosas que aumentam o risco de infecções.</div>
+        </div>
+
+        <div class="question" data-q="38">
+            <p>38. (Verdadeiro ou Falso) Julgue os conceitos acerca da pílula do dia seguinte (contracepção de emergência):</p>
+            <div class="propositions">
+                ( ) Deve ser utilizada rotineiramente como substituta dos métodos contraceptivos regulares de longa duração.<br>
+                ( ) Seu mecanismo principal consiste em retardar ou inibir a ocorrência da ovulação.<br>
+                ( ) É capaz de interromper uma gravidez já estabelecida (nidação efetivada).
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q38" value="0"> a) V - V - F</label>
+                <label><input type="radio" name="q38" value="1"> b) F - V - F</label>
+                <label><input type="radio" name="q38" value="2"> c) F - F - V</label>
+                <label><input type="radio" name="q38" value="3"> d) V - F - V</label>
+            </div>
+            <div class="feedback" id="feedback38"><b>Resposta Correta:</b> b) F - V - F. O primeiro item é falso (é método de emergência e perde eficácia se usado constantemente) e o terceiro é falso (ela não aborta embriões já implantados).</div>
+        </div>
+
+        <div class="question" data-q="39">
+            <p>39. (Convencional) O que caracteriza essencialmente a tricomoniase?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="0"> a) Uma infecção causada por um protozoário (*Trichomonas vaginalis*) transmitida por via sexual</label>
+                <label><input type="radio" name="q39" value="1"> b) Uma alteração genética congênita ligada ao cromossomo Y</label>
+                <label><input type="radio" name="q39" value="2"> c) Um distúrbio metabólico causado pelo excesso de açúcar no sangue</label>
+                <label><input type="radio" name="q39" value="3"> d) Uma inflamação estritamente alérgica provocada por tecidos sintéticos</label>
+            </div>
+            <div class="feedback" id="feedback39"><b>Resposta Correta:</b> a) Uma infecção causada por um protozoário (*Trichomonas vaginalis*) transmitida por via sexual.</div>
+        </div>
+
+        <div class="question" data-q="40">
+            <p>40. (Itens I, II e III) Sobre a responsabilidade em saúde pública relacionada à prevenção de gravidez indesejada e ISTs, conclui-se que:</p>
+            <div class="propositions">
+                I. A educação sexual nas escolas e comunidades promove a redução de taxas de infecções e gestações precoces.<br>
+                II. O acesso universal a insumos de prevenção pelo sistema público é fundamental para a equidade em saúde.<br>
+                III. O diagnóstico e tratamento simultâneo de parceiros sexuais em casos de ISTs evitam o efeito "ping-pong" (reinfecção mútua).
+            </div>
+            <p>Estão corretas:</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="0"> a) Apenas I e II</label>
+                <label><input type="radio" name="q40" value="1"> b) Apenas II e III</label>
+                <label><input type="radio" name="q40" value="2"> c) I, II e III</label>
+                <label><input type="radio" name="q40" value="3"> d) Apenas I e III</label>
+            </div>
+            <div class="feedback" id="feedback40"><b>Resposta Correta:</b> c) I, II e III. Todas as diretrizes apontadas refletem as melhores práticas da saúde coletiva e reprodutiva.</div>
+        </div>
+
+        <button type="button" class="btn-enviar" onclick="corrigirQuiz()">Enviar e Conferir Respostas</button>
+        <button type="button" class="btn-copiar" id="btnCopiar" onclick="copiarResultados()">Copiar Resultado para Envio</button>
+        <div id="avisoCopia">Texto copiado com sucesso!</div>
     </form>
-</div>
 
-<script>
-    let globalReportText = "";
+    <script>
+        const gabarito = [1, 1, 0, 1, 1, 2, 1, 2, 0, 1, 0, 1, 1, 2, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 3, 1, 0, 0, 1, 0, 1, 0, 2];
 
-    function gradeQuiz() {
-        const studentNameInput = document.getElementById('studentName');
-        const studentName = studentNameInput.value.trim();
+        function corrigirQuiz() {
+            let acertos = 0;
+            let totalRespondidas = 0;
 
-        if (!studentName) {
-            alert('Por favor, digite o seu Nome Completo antes de enviar o questionário.');
-            studentNameInput.focus();
-            window.scrollTo({ top: studentNameInput.offsetTop - 50, behavior: 'smooth' });
-            return;
-        }
+            for (let i = 1; i <= 40; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let respondida = false;
+                let userAnswer = -1;
 
-        const cards = document.querySelectorAll('.question-card');
-        let correctCount = 0;
-        let totalQuestions = cards.length;
-        let summaryDetails = [];
-
-        cards.forEach((card, index) => {
-            const qNum = index + 1;
-            const qName = `q${qNum}`;
-            const radios = card.querySelectorAll(`input[name="${qName}"]`);
-            const correctAnswer = card.getAttribute('data-answer');
-            const feedbackDiv = card.querySelector('.feedback');
-            
-            let selectedVal = null;
-            radios.forEach(r => {
-                if (r.checked) selectedVal = r.value;
-            });
-
-            feedbackDiv.style.display = 'block';
-
-            // Destacar alternativas corretas e erradas
-            radios.forEach(r => {
-                const parentLabel = r.parentElement;
-                parentLabel.classList.remove('highlight-correct', 'highlight-incorrect');
-                
-                if (r.value === correctAnswer) {
-                    parentLabel.classList.add('highlight-correct');
-                } else if (r.checked && r.value !== correctAnswer) {
-                    parentLabel.classList.add('highlight-incorrect');
+                for (let r = 0; r < radios.length; r++) {
+                    if (radios[r].checked) {
+                        respondida = true;
+                        userAnswer = parseInt(radios[r].value);
+                        break;
+                    }
                 }
-            });
 
-            let isCorrect = false;
-            if (selectedVal === correctAnswer) {
-                correctCount++;
-                isCorrect = true;
-                feedbackDiv.className = 'feedback correct-fb';
-            } else {
-                feedbackDiv.className = 'feedback incorrect-fb';
+                const feedbackDiv = document.getElementById('feedback' + i);
+                feedbackDiv.style.display = 'block';
+
+                if (respondida) {
+                    totalRespondidas++;
+                    if (userAnswer === gabarito[i - 1]) {
+                        acertos++;
+                        feedbackDiv.style.borderLeftColor = '#27ae60';
+                    } else {
+                        feedbackDiv.style.borderLeftColor = '#c0392b';
+                    }
+                } else {
+                    feedbackDiv.style.borderLeftColor = '#f39c12';
+                }
             }
 
-            summaryDetails.push({
-                q: qNum,
-                correct: isCorrect,
-                marked: selectedVal ? selectedVal : "Não respondida",
-                gabarito: correctAnswer
-            });
-        });
-
-        const percentage = ((correctCount / totalQuestions) * 100).toFixed(1);
-        
-        // Exibir resultados no topo
-        const resultsContainer = document.getElementById('results-container');
-        const scoreText = document.getElementById('scoreText');
-        scoreText.innerHTML = `Aluno(a): ${studentName}<br>Pontuação: ${correctCount} de ${totalQuestions} acertos (${percentage}%)`;
-        resultsContainer.style.display = 'block';
-
-        // Montar texto formatado para o WhatsApp / Relatório
-        let reportLines = [];
-        reportLines.push(`📋 *RELATÓRIO DE DESEMPENHO - QUIZ DE GEOGRAFIA*`);
-        reportLines.push(`👤 *Aluno:* ${studentName}`);
-        reportLines.push(`📊 *Resultado:* ${correctCount}/${totalQuestions} (${percentage}% de acertos)`);
-        reportLines.push(`-----------------------------------`);
-        reportLines.push(`*Histórico das Questões:*`);
-
-        summaryDetails.forEach(item => {
-            let statusIcon = item.correct ? "✅ Acertou" : "❌ Errou";
-            reportLines.push(`Q${item.q}: ${statusIcon} (Marcou: ${item.marked} | Gabarito: ${item.gabarito})`);
-        });
-
-        globalReportText = reportLines.join('\n');
-
-        window.scrollTo({ top: resultsContainer.offsetTop - 20, behavior: 'smooth' });
-    }
-
-    function copySummary() {
-        if (!globalReportText) {
-            alert('Envie o questionário primeiro para gerar o resumo.');
-            return;
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `<h2>Resultado Final</h2><p>Você acertou <b>${acertos}</b> de <b>40</b> questões (${((acertos/40)*100).toFixed(1)}%).</p>`;
+            
+            document.getElementById('btnCopiar').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        navigator.clipboard.writeText(globalReportText).then(() => {
-            const btn = document.getElementById('copyBtn');
-            btn.innerText = "¡Resumo Copiado com Sucesso!";
-            btn.style.background = "#1e3a8a";
-            setTimeout(() => {
-                btn.innerText = "Copiar Resumo para Enviar ao Professor";
-                btn.style.background = "#16a34a";
-            }, 3000);
-        }).catch(err => {
-            alert('Erro ao copiar automaticamente. Selecione e copie manualmente.');
-        });
-    }
-</script>
-
+        function copiarResultados() {
+            const resultadoTexto = document.getElementById('resultado').innerText;
+            navigator.clipboard.writeText(resultadoTexto).then(() => {
+                const aviso = document.getElementById('avisoCopia');
+                aviso.style.display = 'block';
+                setTimeout(() => { aviso.style.display = 'none'; }, 3000);
+            });
+        }
+    </script>
 </body>
 </html>
