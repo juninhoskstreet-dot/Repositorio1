@@ -1,0 +1,316 @@
+<!-- Cabeçalho -->
+    <header class="text-center border-b border-slate-200 pb-6 mb-8">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">Geografia: Aspectos Humanos da África</h1>
+        <p class="text-sm text-slate-500 mt-2">Questionário interativo baseado nos conteúdos de demografia, economia, saúde e migrações do continente africano.</p>
+    </header>
+
+    <!-- Campo de Identificação -->
+    <div id="student-info-container" class="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-8 shadow-sm">
+        <label for="student-name" class="block text-sm font-semibold text-blue-900 mb-2">Digite o seu Nome Completo (Obrigatório):</label>
+        <input type="text" id="student-name" placeholder="Ex: Maria Silva Santos" class="w-full px-4 py-3 rounded-lg border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white text-slate-700 font-medium">
+        <p id="name-alert" class="text-xs text-red-600 font-medium mt-1 hidden">Por favor, preencha o seu nome completo antes de enviar o questionário.</p>
+    </div>
+
+    <!-- Painel de Resultados (Oculto Inicialmente) -->
+    <div id="results-panel" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8 text-center">
+        <h2 class="text-xl font-bold text-slate-800 mb-2">Resultado da Avaliação</h2>
+        <p id="score-text" class="text-2xl font-extrabold text-blue-600 mb-4"></p>
+        <button type="button" id="copy-btn" onclick="copyReport()" class="inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors duration-200 cursor-pointer">
+            📋 Copiar Resumo para Enviar ao Professor
+        </button>
+        <p id="copy-feedback" class="text-xs text-emerald-700 font-medium mt-2 hidden">Resumo copiado com sucesso para a área de transferência!</p>
+    </div>
+
+    <!-- Formulário do Questionário -->
+    <form id="quiz-form" onsubmit="handleFormSubmit(event)" class="space-y-8">
+
+        <!-- Questão 1 (V ou F) -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="1">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 1 • Verdadeiro ou Falso</span>
+            <p class="font-medium text-slate-800 mt-3 mb-4">Analise as afirmativas abaixo sobre a população e características demográficas da África e marque se são Verdadeiras (V) ou Falsas (F):</p>
+            
+            <div class="space-y-4 text-sm">
+                <!-- Item A -->
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                    <p class="mb-2 font-medium text-slate-700">1. A África tem uma grande população, ultrapassando 1,3 bilhão de habitantes, sendo o segundo continente mais populoso do planeta.</p>
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_1" value="V"> Verdadeiro</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_1" value="F"> Falso</label>
+                    </div>
+                </div>
+                <!-- Item B -->
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                    <p class="mb-2 font-medium text-slate-700">2. Os países da África do Norte são os que apresentam os menores indicadores socioeconômicos e as maiores taxas de natalidade do continente.</p>
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_2" value="V"> Verdadeiro</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_2" value="F"> Falso</label>
+                    </div>
+                </div>
+                <!-- Item C -->
+                <div class="bg-white p-3 rounded-lg border border-slate-200">
+                    <p class="mb-2 font-medium text-slate-700">3. A população rural ainda é expressiva, mas o continente passa por um rápido processo de urbanização com cidades que carecem de infraestrutura adequada.</p>
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_3" value="V"> Verdadeiro</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1_3" value="F"> Falso</label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedback-1" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                <span class="font-bold">Gabarito e Explicação:</span> Os itens 1 e 3 são Verdadeiros (população de cerca de 1,3 bilhão e rápido processo de urbanização). O item 2 é Falso, pois a África do Norte possui melhores indicadores e menores taxas de fecundidade/natalidade em comparação à África Subsaariana.
+            </div>
+        </div>
+
+        <!-- Questão 2 (Múltipla Escolha) -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="2">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 2 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-4">Sobre a dinâmica demográfica e as pirâmides etárias dos países africanos, assinale a alternativa correta:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q2" value="a" class="mr-2"> a) As pirâmides etárias apresentam base muito estreita e topo largo, indicando envelhecimento populacional acelerado.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q2" value="b" class="mr-2"> b) A base muito larga das pirâmides etárias indica alta taxa de fecundidade, reflexo de um continente com população predominantemente jovem.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q2" value="c" class="mr-2"> c) Nenhum país africano apresenta crescimento vegetativo expressivo, situando-se todos próximos a zero.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q2" value="d" class="mr-2"> d) A transição demográfica já foi concluída por todos os países do continente, estabilizando a população.
+                </label>
+            </div>
+            <div id="feedback-2" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                <span class="font-bold">Gabarito: Letra B.</span> <span class="explanation">A base larga nas pirâmides etárias da África (sobretudo na Subsaariana) reflete as elevadas taxas de fecundidade e o perfil de uma população majoritariamente jovem. Nenhum país concluiu totalmente a transição demográfica.</span>
+            </div>
+        </div>
+
+        <!-- Questão 3 (Itens Estruturados) -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="3">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 3 • Itens Estruturados</span>
+            <p class="font-medium text-slate-800 mt-3 mb-3">Analise os itens abaixo sobre os problemas socioeconômicos e de saúde na África Subsaariana:</p>
+            <div class="bg-white p-4 rounded-lg border border-slate-200 text-xs sm:text-sm space-y-2 mb-4 text-slate-700">
+                <p><strong>I.</strong> A falta de emprego formal e a desestruturação econômica fazem com que grande parte da população ativa trabalhe na informalidade ou sofra com o desemprego, que atinge fortemente os jovens.</p>
+                <p><strong>II.</strong> O quadro de pobreza extrema está associado a graves problemas alimentares, como altas taxas de subnutrição e insegurança alimentar agravadas por eventos climáticos e secas.</p>
+                <p><strong>III.</strong> A AIDS e doenças tropicais (como malária e ebola) deixaram de representar desafios de saúde pública relevantes no continente nas últimas décadas.</p>
+            </div>
+            <p class="font-medium text-slate-800 mb-3">Quais itens estão corretos?</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q3" value="a" class="mr-2"> a) Apenas I.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q3" value="b" class="mr-2"> b) Apenas II e III.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q3" value="c" class="mr-2"> c) Apenas I e II.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q3" value="d" class="mr-2"> d) I, II e III.
+                </label>
+            </div>
+            <div id="feedback-3" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                <span class="font-bold">Gabarito: Letra C.</span> <span class="explanation">Os itens I e II estão corretos (desemprego/informalidade juvenil alta e fome ligada à pobreza e mudanças climáticas). O item III está incorreto porque doenças como HIV/AIDS e endemias tropicais continuam sendo enormes desafios de saúde pública na África Subsaariana.</span>
+            </div>
+        </div>
+
+        <!-- Questão 4 (Múltipla Escolha - Migrações) -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="4">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 4 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-4">Em relação às migrações no continente africano, assinale a alternativa que descreve corretamente um dos principais fluxos:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q4" value="a" class="mr-2"> a) O continente africano recebe mais imigrantes europeus do que gera emigrantes, devido à atração econômica das nações subsarianas.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q4" value="b" class="mr-2"> b) A África atua como zona repulsora de migrantes devido à pobreza e conflitos, destacando-se emigrações para a Europa e intensos fluxos migratórios internos (como o êxodo rural).
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q4" value="c" class="mr-2"> c) Os fluxos migratórios internos restringem-se estritamente aos limites municipais, não havendo deslocamentos de refugiados entre países.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q4" value="d" class="mr-2"> d) A África do Norte apresenta predominância absoluta de migrações internas rurais, sem emigração para outros continentes.
+                </label>
+            </div>
+            <div id="feedback-4" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                <span class="font-bold">Gabarito: Letra B.</span> <span class="explanation">A África é uma zona repulsora de migrantes devido a crises econômicas e conflitos, com rotas para a Europa e fortes fluxos internos (êxodo rural, migrações entre países e deslocados/refugiados).</span>
+            </div>
+        </div>
+
+        <!-- Questão 5 (Múltipla Escolha - Infográfico/Regiões) -->
+        <div class="question-card bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm" data-q="5">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Questão 5 • Múltipla Escolha</span>
+            <p class="font-medium text-slate-800 mt-3 mb-4">Com base nos estudos sobre as regiões migratórias africanas, assinale a alternativa que traz, respectivamente, a região com maior emigração para fora do continente e a que se destaca pela forte movimentação intrarregional:</p>
+            <div class="space-y-2 text-sm">
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q5" value="a" class="mr-2"> a) África Central e África Ocidental.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q5" value="b" class="mr-2"> b) África Ocidental e África Oriental.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q5" value="c" class="mr-2"> c) África Oriental e África do Norte.
+                </label>
+                <label class="block p-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 cursor-pointer transition">
+                    <input type="radio" name="q5" value="d" class="mr-2"> d) África do Norte e África Ocidental.
+                </label>
+            </div>
+            <div id="feedback-5" class="hidden mt-4 p-4 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-900">
+                <span class="font-bold">Gabarito: Letra D.</span> <span class="explanation">A África do Norte destaca-se pela emigração para outros continentes (principalmente Europa, devido à proximidade), enquanto na África Ocidental e Oriental é intensa a movimentação intrarregional de migrantes.</span>
+            </div>
+        </div>
+
+        <!-- Botão Enviar -->
+        <div class="text-center pt-4">
+            <button type="submit" id="submit-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-200 cursor-pointer text-base">
+                Enviar Respostas e Ver Correção
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    // Gabarito oficial do questionário
+    const gabarito = {
+        q1_1: 'V',
+        q1_2: 'F',
+        q1_3: 'V',
+        q2: 'b',
+        q3: 'c',
+        q4: 'b',
+        q5: 'd'
+    };
+
+    let quizSubmitted = false;
+    let finalScoreData = { score: 0, total: 5, percentage: 0, studentName: '', details: [] };
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        // Validação do Nome do Aluno
+        const nameInput = document.getElementById('student-name');
+        const nameAlert = document.getElementById('name-alert');
+        const studentName = nameInput.value.trim();
+
+        if (!studentName) {
+            nameAlert.classList.remove('hidden');
+            document.getElementById('student-info-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            nameInput.focus();
+            return;
+        } else {
+            nameAlert.classList.add('hidden');
+        }
+
+        let score = 0;
+        let details = [];
+
+        // Correção Questão 1 (V ou F com 3 subitens)
+        let q1CorrectCount = 0;
+        ['1', '2', '3'].forEach(sub => {
+            const selected = document.querySelector(`input[name="q1_${sub}"]:checked`);
+            const userVal = selected ? selected.value : null;
+            const correctVal = gabarito[`q1_${sub}`];
+            
+            // Destacar opções na Q1
+            document.querySelectorAll(`input[name="q1_${sub}"]`).forEach(radio => {
+                const parentLabel = radio.parentElement;
+                if (radio.value === correctVal) {
+                    parentLabel.classList.add('correct-answer');
+                } else if (radio.checked && radio.value !== correctVal) {
+                    parentLabel.classList.add('incorrect-answer');
+                }
+            });
+
+            if (userVal === correctVal) q1CorrectCount++;
+        });
+
+        let q1Passed = (q1CorrectCount === 3);
+        if (q1Passed) score++;
+        details.push({
+            questao: 'Questão 1 (Verdadeiro ou Falso)',
+            status: q1Passed ? 'Acertou' : 'Errou',
+            detalhe: `${q1CorrectCount}/3 subitens corretos`
+        });
+        document.getElementById('feedback-1').classList.remove('hidden');
+
+        // Correção Questões 2 a 5 (Múltipla escolha)
+        for (let i = 2; i <= 5; i++) {
+            const selected = document.querySelector(`input[name="q8"]:checked` || `input[name="q${i}"]:checked`);
+            const userVal = selected ? selected.value : null;
+            const correctVal = gabarito[`q${i}`];
+            
+            document.querySelectorAll(`input[name="q${i}"]`).forEach(radio => {
+                const parentLabel = radio.parentElement;
+                if (radio.value === correctVal) {
+                    parentLabel.classList.add('correct-answer');
+                } else if (radio.checked && radio.value !== correctVal) {
+                    parentLabel.classList.add('incorrect-answer');
+                }
+            });
+
+            let isCorrect = (userVal === correctVal);
+            if (isCorrect) score++;
+
+            details.push({
+                questao: `Questão ${i}`,
+                status: isCorrect ? 'Acertou' : 'Errou',
+                marcou: userVal ? userVal.toUpperCase() : 'Não respondeu',
+                gabarito: correctVal.toUpperCase()
+            });
+
+            document.getElementById(`feedback-${i}`).classList.remove('hidden');
+        }
+
+        const percentage = Math.round((score / 5) * 100);
+        
+        // Salvar dados globais para o relatório
+        finalScoreData = {
+            score: score,
+            total: 5,
+            percentage: percentage,
+            studentName: studentName,
+            details: details
+        };
+
+        // Atualizar UI de resultados
+        document.getElementById('score-text5' || 'score-text').innerText = `${score} de 5 acertos (${percentage}%)`;
+        document.getElementById('results-panel').classList.remove('hidden');
+        document.getElementById('results-panel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Desabilitar botão de envio após correção
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        submitBtn.innerText = 'Questionário Corrigido';
+
+        quizSubmitted = true;
+    }
+
+    function copyReport() {
+        if (!quizSubmitted) return;
+
+        let reportText = `📋 *RELATÓRIO DE DESEMPENHO - QUESTIONÁRIO*\n`;
+        reportText += `📌 *Título:* Geografia: Aspectos Humanos da África\n`;
+        reportText += `👤 *Aluno(a):* ${finalScoreData.studentName}\n`;
+        reportText += `📊 *Nota Final:* ${finalScoreData.score}/5 (${finalScoreData.percentage}% de acertos)\n\n`;
+        reportText += `📝 *Histórico Detalhado por Questão:*\n`;
+
+        finalScoreData.details.forEach((item, index) => {
+            if (index === 0) {
+                reportText += `• ${item.questao}: ${item.status} (${item.detalhe})\n`;
+            } else {
+                reportText += `• ${item.questao}: ${item.status} (Marcou: ${item.marcou} | Gabarito: ${item.gabarito})\n`;
+            }
+        });
+
+        navigator.clipboard.writeText(reportText).then(() => {
+            const feedbackEl = document.getElementById('copy-feedback');
+            feedbackEl.classList.remove('hidden');
+            setTimeout(() => {
+                feedbackEl.classList.add('hidden');
+            }, 4000);
+        }).catch(err => {
+            alert('Erro ao copiar relatório. Tente novamente.');
+        });
+    }
+</script>
